@@ -24,21 +24,24 @@ class LinkTypeCat
     /**
      * @var integer
      *
-     * @ORM\Column(name="id_type", type="integer")
+     * @ORM\ManyToOne(targetEntity="Type")
+     * @JoinColumn(name="id_type", referencedColumnName="id")
      */
     private $idType;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="id_category", type="integer")
+     * @ORM\ManyToOne(targetEntity="Category")
+     * @JoinColumn(name="id_category", referencedColumnName="id")
      */
     private $idCategory;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="id_gamme", type="integer")
+     * @ORM\ManyToOne(targetEntity="Gamme")
+     * @JoinColumn(name="id_gamme", referencedColumnName="id")
      */
     private $idGamme;
 

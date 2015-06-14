@@ -3,6 +3,7 @@
 namespace ClicSape\Bundle\ClotheBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Article
@@ -55,22 +56,22 @@ class Article
      * @ORM\Column(name="stock_alert", type="integer")
      */
     private $stockAlert;
-
+    
     /**
-     * @var integer
      *
-     * @ORM\Column(name="id_link_cat_art", type="integer")
+     * @ORM\ManyToMany(targetEntity="Category", cascade={"persist"})
      */
-    private $idLinkCatArt;
-
+    private $categories;
+    
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="id_link_pic_art", type="integer")
+     * 
+     * Constructeur
      */
-    private $idLinkPicArt;
-
-
+    public function __construct()
+    {
+        $this->categories = new ArrayCollection();
+    }
+    
     /**
      * Get id
      *
@@ -195,27 +196,22 @@ class Article
     {
         return $this->stockAlert;
     }
-
-    /**
-     * Set idLinkPicArt
-     *
-     * @param integer $idLinkPicArt
-     * @return Article
-     */
-    public function setIdLinkPicArt($idLinkPicArt)
+    
+     public function addCategory(Category $category)
     {
-        $this->idLinkPicArt = $idLinkPicArt;
-
+        $this->categories[] = $category;
+        
         return $this;
     }
 
-    /**
-     * Get idLinkPicArt
-     *
-     * @return integer 
-     */
-    public function getIdLinkPicArt()
+    public function removeCategory(Category $category)
     {
-        return $this->idLinkPicArt;
+        $this->categories->removeElement($category);
     }
+
+    public function getCategories()
+    {
+        return $this->categories;
+    }
+    
 }

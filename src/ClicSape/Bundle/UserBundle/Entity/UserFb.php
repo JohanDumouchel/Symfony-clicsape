@@ -3,11 +3,12 @@
 namespace ClicSape\Bundle\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ClicSape\Bundle\UserBundle\Entity\User as User;
 
 /**
  * UserFb
  *
- * @ORM\Table()
+ * @ORM\Table(name="user_fb")
  * @ORM\Entity(repositoryClass="ClicSape\Bundle\UserBundle\Entity\UserFbRepository")
  */
 class UserFb
@@ -24,16 +25,16 @@ class UserFb
     /**
      * @var string
      *
-     * @ORM\Column(name="firstName", type="string", length=55)
+     * @ORM\Column(name="first_name", type="string", length=55)
      */
     private $firstName;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="lastNAme", type="string", length=55)
+     * @ORM\Column(name="last_name", type="string", length=55)
      */
-    private $lastNAme;
+    private $lastName;
 
     /**
      * @var string
@@ -64,11 +65,11 @@ class UserFb
     private $country;
 
     /**
-     * @var integer
-     *
-     * @ORM\Column(name="idUser", type="integer")
+     * 
+     * @OneToOne(targetEntity="User")
+     * @JoinColumn(name="id_user", referencedColumnName="id")
      */
-    private $idUser;
+    private $user;
 
 
     /**
@@ -110,9 +111,9 @@ class UserFb
      * @param string $lastNAme
      * @return UserFb
      */
-    public function setLastNAme($lastNAme)
+    public function setLastName($lastNAme)
     {
-        $this->lastNAme = $lastNAme;
+        $this->lastName = $lastNAme;
 
         return $this;
     }
@@ -122,9 +123,9 @@ class UserFb
      *
      * @return string 
      */
-    public function getLastNAme()
+    public function getLastName()
     {
-        return $this->lastNAme;
+        return $this->lastName;
     }
 
     /**
@@ -222,23 +223,23 @@ class UserFb
     /**
      * Set idUser
      *
-     * @param integer $idUser
+     * @param User $user
      * @return UserFb
      */
-    public function setIdUser($idUser)
+    public function setUser(User $user)
     {
-        $this->idUser = $idUser;
+        $this->user = $user;
 
         return $this;
     }
 
     /**
-     * Get idUser
+     * Get user
      *
-     * @return integer 
+     * @return User 
      */
-    public function getIdUser()
+    public function getUser()
     {
-        return $this->idUser;
+        return $this->user;
     }
 }

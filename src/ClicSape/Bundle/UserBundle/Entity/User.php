@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * User
  *
- * @ORM\Table()
+ * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="ClicSape\Bundle\UserBundle\Entity\UserRepository")
  */
 class User
@@ -38,14 +38,14 @@ class User
     /**
      * @var string
      *
-     * @ORM\Column(name="firstName", type="string", length=55)
+     * @ORM\Column(name="first_name", type="string", length=55)
      */
     private $firstName;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="lastName", type="string", length=55)
+     * @ORM\Column(name="last_name", type="string", length=55)
      */
     private $lastName;
 
@@ -73,7 +73,7 @@ class User
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateCreated", type="date")
+     * @ORM\Column(name="date_created", type="date")
      */
     private $dateCreated;
 
