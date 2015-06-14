@@ -1,0 +1,3 @@
+clic_sape_clothe_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: ClicSapeClotheBundle:Default:index }

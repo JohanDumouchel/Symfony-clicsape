@@ -1,0 +1,11 @@
+clic_sape_clothe:
+    resource: "@ClicSapeClotheBundle/Resources/config/routing.yml"
+    prefix:   /
+
+clic_sape_user:
+    resource: "@ClicSapeUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
