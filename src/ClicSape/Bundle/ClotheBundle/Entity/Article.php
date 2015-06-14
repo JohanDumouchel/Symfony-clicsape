@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Article
  *
- * @ORM\Table()
+ * @ORM\Table(name="article")
  * @ORM\Entity(repositoryClass="ClicSape\Bundle\ClotheBundle\Entity\ArticleRepository")
  */
 class Article
@@ -52,28 +52,21 @@ class Article
     /**
      * @var integer
      *
-     * @ORM\Column(name="stockAlert", type="integer")
+     * @ORM\Column(name="stock_alert", type="integer")
      */
     private $stockAlert;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="idLinkCatArt", type="integer")
+     * @ORM\Column(name="id_link_cat_art", type="integer")
      */
     private $idLinkCatArt;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="idLinkSubArt", type="integer")
-     */
-    private $idLinkSubArt;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="idLinkPicArt", type="integer")
+     * @ORM\Column(name="id_link_pic_art", type="integer")
      */
     private $idLinkPicArt;
 
@@ -201,52 +194,6 @@ class Article
     public function getStockAlert()
     {
         return $this->stockAlert;
-    }
-
-    /**
-     * Set idLinkCatArt
-     *
-     * @param integer $idLinkCatArt
-     * @return Article
-     */
-    public function setIdLinkCatArt($idLinkCatArt)
-    {
-        $this->idLinkCatArt = $idLinkCatArt;
-
-        return $this;
-    }
-
-    /**
-     * Get idLinkCatArt
-     *
-     * @return integer 
-     */
-    public function getIdLinkCatArt()
-    {
-        return $this->idLinkCatArt;
-    }
-
-    /**
-     * Set idLinkSubArt
-     *
-     * @param integer $idLinkSubArt
-     * @return Article
-     */
-    public function setIdLinkSubArt($idLinkSubArt)
-    {
-        $this->idLinkSubArt = $idLinkSubArt;
-
-        return $this;
-    }
-
-    /**
-     * Get idLinkSubArt
-     *
-     * @return integer 
-     */
-    public function getIdLinkSubArt()
-    {
-        return $this->idLinkSubArt;
     }
 
     /**

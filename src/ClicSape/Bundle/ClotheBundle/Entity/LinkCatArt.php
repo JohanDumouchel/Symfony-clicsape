@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * LinkCatArt
  *
- * @ORM\Table()
+ * @ORM\Table(name="link_cat_art")
  * @ORM\Entity(repositoryClass="ClicSape\Bundle\ClotheBundle\Entity\LinkCatArtRepository")
  */
 class LinkCatArt
@@ -24,14 +24,14 @@ class LinkCatArt
     /**
      * @var integer
      *
-     * @ORM\Column(name="idCategory", type="integer")
+     * @ORM\Column(name="id_category", type="integer")
      */
     private $idCategory;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="idArticle", type="integer")
+     * @ORM\Column(name="id_article", type="integer")
      */
     private $idArticle;
 

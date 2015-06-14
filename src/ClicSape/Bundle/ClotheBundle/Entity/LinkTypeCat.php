@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * LinkTypeCat
  *
- * @ORM\Table()
+ * @ORM\Table(name="link_type_cat")
  * @ORM\Entity
  */
 class LinkTypeCat
@@ -24,21 +24,21 @@ class LinkTypeCat
     /**
      * @var integer
      *
-     * @ORM\Column(name="idType", type="integer")
+     * @ORM\Column(name="id_type", type="integer")
      */
     private $idType;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="idCategory", type="integer")
+     * @ORM\Column(name="id_category", type="integer")
      */
     private $idCategory;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="idGamme", type="integer")
+     * @ORM\Column(name="id_gamme", type="integer")
      */
     private $idGamme;
 

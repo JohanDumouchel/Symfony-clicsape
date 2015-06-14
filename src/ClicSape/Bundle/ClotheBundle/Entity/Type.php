@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Type
  *
- * @ORM\Table()
+ * @ORM\Table(name="type")
  * @ORM\Entity
  */
 class Type
@@ -31,7 +31,7 @@ class Type
     /**
      * @var integer
      *
-     * @ORM\Column(name="idPicture", type="integer")
+     * @ORM\Column(name="id_picture", type="integer")
      */
     private $idPicture;
 
