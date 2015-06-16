@@ -3,7 +3,6 @@
 namespace ClicSape\Bundle\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use ClicSape\Bundle\UserBundle\Entity\User as User;
 
 /**
  * UserFb
@@ -65,11 +64,12 @@ class UserFb
     private $country;
 
     /**
-     * 
-     * @OneToOne(targetEntity="User")
-     * @JoinColumn(name="id_user", referencedColumnName="id")
+     * @var integer
+     *
+     * @ORM\OneToOne(targetEntity="ClicSape\Bundle\UserBundle\Entity\User")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
-    private $user;
+    private $userId;
 
 
     /**
@@ -221,25 +221,25 @@ class UserFb
     }
 
     /**
-     * Set idUser
+     * Set userId
      *
-     * @param User $user
+     * @param integer $userId
      * @return UserFb
      */
-    public function setUser(User $user)
+    public function setUserId($userId)
     {
-        $this->user = $user;
+        $this->userId = $userId;
 
         return $this;
     }
 
     /**
-     * Get user
+     * Get userId
      *
-     * @return User 
+     * @return integer 
      */
-    public function getUser()
+    public function getUserId()
     {
-        return $this->user;
+        return $this->userId;
     }
 }

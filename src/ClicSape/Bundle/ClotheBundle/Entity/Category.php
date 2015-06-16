@@ -3,6 +3,7 @@
 namespace ClicSape\Bundle\ClotheBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Category
@@ -24,9 +25,9 @@ class Category
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=55)
+     * @ORM\Column(name="title", type="string", length=55)
      */
-    private $name;
+    private $title;
 
     /**
      * @var string
@@ -35,7 +36,22 @@ class Category
      */
     private $description;
 
-
+    /**
+     * @var ArrayCollection Article
+     *
+     * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Article", cascade={"persist"})
+     */
+    private $articles;
+    
+    /**
+     * 
+     * Constructeur
+     */
+    public function __construct()
+    {
+        $this->articles = new ArrayCollection();
+    }
+    
     /**
      * Get id
      *
@@ -47,26 +63,26 @@ class Category
     }
 
     /**
-     * Set name
+     * Set title
      *
-     * @param string $name
+     * @param string $title
      * @return Category
      */
-    public function setName($name)
+    public function setTitle($title)
     {
-        $this->name = $name;
+        $this->title = $title;
 
         return $this;
     }
 
     /**
-     * Get name
+     * Get title
      *
      * @return string 
      */
-    public function getName()
+    public function getTitle()
     {
-        return $this->name;
+        return $this->title;
     }
 
     /**
@@ -90,5 +106,38 @@ class Category
     public function getDescription()
     {
         return $this->description;
+    }
+    
+    /**
+     * @param Article $article
+     *
+     * @return Category 
+     */
+     public function addArticle(Article $article)
+    {
+        $this->articles[] = $article;
+        
+        return $this;
+    }
+    
+    /**
+     * @param Article $article
+     *
+     * @return Category 
+     */
+    public function removeArticle(Article $article)
+    {
+        $this->articles->removeElement($article);
+        
+        return $this;
+    }
+
+    /**
+     *
+     * @return ArrayCollection 
+     */
+    public function getArticles()
+    {
+        return $this->articles;
     }
 }

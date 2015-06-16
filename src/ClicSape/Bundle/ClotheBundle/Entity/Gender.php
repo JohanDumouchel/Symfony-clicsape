@@ -3,15 +3,14 @@
 namespace ClicSape\Bundle\ClotheBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Gamme
+ * Type
  *
- * @ORM\Table(name="gamme")
+ * @ORM\Table(name="gender")
  * @ORM\Entity
  */
-class Gamme
+class Gender
 {
     /**
      * @var integer
@@ -25,25 +24,24 @@ class Gamme
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=255)
+     * @ORM\Column(name="title", type="string", length=55)
      */
     private $title;
 
     /**
-     * @var string
+     * @var Picture
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\OneToOne(targetEntity="ClicSape\Bundle\CoreBundle\Entity\Picture"
      */
-    private $description;
+    private $picture;
     
     /**
-     * 
+     * @var Categories
      * 
      * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Category", cascade={"persist"})
      */
     private $categories;
     
-
     /**
      * 
      * Constructeur
@@ -67,7 +65,7 @@ class Gamme
      * Set title
      *
      * @param string $title
-     * @return Gamme
+     * @return Gender
      */
     public function setTitle($title)
     {
@@ -87,26 +85,26 @@ class Gamme
     }
 
     /**
-     * Set description
+     * Set picture
      *
-     * @param string $description
-     * @return Gamme
+     * @param Picture $picture
+     * @return Gender
      */
-    public function setDescription($description)
+    public function setPicture(Picture $picture)
     {
-        $this->description = $description;
+        $this->picture = $picture;
 
         return $this;
     }
 
     /**
-     * Get description
+     * Get pictureId
      *
-     * @return string 
+     * @return Picture 
      */
-    public function getDescription()
+    public function getPicture()
     {
-        return $this->description;
+        return $this->picture;
     }
     
     /**

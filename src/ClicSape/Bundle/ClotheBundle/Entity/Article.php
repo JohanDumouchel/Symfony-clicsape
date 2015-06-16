@@ -25,9 +25,9 @@ class Article
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="title", type="string", length=255)
      */
-    private $name;
+    private $title;
 
     /**
      * @var string
@@ -37,25 +37,11 @@ class Article
     private $descritpion;
 
     /**
-     * @var float
+     * @var integer
      *
      * @ORM\Column(name="price", type="float")
      */
     private $price;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="stock", type="integer")
-     */
-    private $stock;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="stock_alert", type="integer")
-     */
-    private $stockAlert;
     
     /**
      *
@@ -83,26 +69,26 @@ class Article
     }
 
     /**
-     * Set name
+     * Set title
      *
-     * @param string $name
+     * @param string $title
      * @return Article
      */
-    public function setName($name)
+    public function setTitle($title)
     {
-        $this->name = $name;
+        $this->title = $title;
 
         return $this;
     }
 
     /**
-     * Get name
+     * Get title
      *
      * @return string 
      */
-    public function getName()
+    public function getTitle()
     {
-        return $this->name;
+        return $this->title;
     }
 
     /**
@@ -128,75 +114,6 @@ class Article
         return $this->descritpion;
     }
 
-    /**
-     * Set price
-     *
-     * @param float $price
-     * @return Article
-     */
-    public function setPrice($price)
-    {
-        $this->price = $price;
-
-        return $this;
-    }
-
-    /**
-     * Get price
-     *
-     * @return float 
-     */
-    public function getPrice()
-    {
-        return $this->price;
-    }
-
-    /**
-     * Set stock
-     *
-     * @param integer $stock
-     * @return Article
-     */
-    public function setStock($stock)
-    {
-        $this->stock = $stock;
-
-        return $this;
-    }
-
-    /**
-     * Get stock
-     *
-     * @return integer 
-     */
-    public function getStock()
-    {
-        return $this->stock;
-    }
-
-    /**
-     * Set stockAlert
-     *
-     * @param integer $stockAlert
-     * @return Article
-     */
-    public function setStockAlert($stockAlert)
-    {
-        $this->stockAlert = $stockAlert;
-
-        return $this;
-    }
-
-    /**
-     * Get stockAlert
-     *
-     * @return integer 
-     */
-    public function getStockAlert()
-    {
-        return $this->stockAlert;
-    }
-    
      public function addCategory(Category $category)
     {
         $this->categories[] = $category;

@@ -1,3 +1,11 @@
+clic_sape_order:
+    resource: "@ClicSapeOrderBundle/Resources/config/routing.yml"
+    prefix:   /
+
+clic_sape_core:
+    resource: "@ClicSapeCoreBundle/Resources/config/routing.yml"
+    prefix:   /
+
 clic_sape_clothe:
     resource: "@ClicSapeClotheBundle/Resources/config/routing.yml"
     prefix:   /

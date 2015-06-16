@@ -18,6 +18,8 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new ClicSape\Bundle\UserBundle\ClicSapeUserBundle(),
             new ClicSape\Bundle\ClotheBundle\ClicSapeClotheBundle(),
+            new ClicSape\Bundle\CoreBundle\ClicSapeCoreBundle(),
+            new ClicSape\Bundle\OrderBundle\ClicSapeOrderBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
