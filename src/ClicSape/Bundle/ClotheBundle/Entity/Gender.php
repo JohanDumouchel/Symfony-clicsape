@@ -3,6 +3,7 @@
 namespace ClicSape\Bundle\ClotheBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Type
