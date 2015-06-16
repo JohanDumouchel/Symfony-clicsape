@@ -37,15 +37,44 @@ class Article
     private $descritpion;
 
     /**
-     * @var integer
+     * @var ArrayCollection Price
      *
-     * @ORM\Column(name="price", type="float")
+     * @ORM\OneToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Price", mappedBy="article")
      */
-    private $price;
+    private $prices;
     
     /**
+     * @var ArrayCollection Stock
      *
-     * @ORM\ManyToMany(targetEntity="Category", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Stock", mappedBy="article")
+     */
+    private $stocks;
+    
+    /**
+     * @var ArrayCollection Picture
+     *
+     * @ORM\OneToMany(targetEntity="ClicSape\Bundle\CoreBundle\Entity\Picture", mappedBy="article")
+     */
+    private $pictures;
+    
+    /**
+     * @var ArrayCollection ArticleInfo
+     *
+     * @ORM\OneToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\ArticleInfo", mappedBy="article")
+     */
+    private $articleInfos;
+    
+    /**
+     * @var ArrayCollection Price
+     *
+     * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Size", inversedBy="articles")
+     */
+    private $sizes;
+    
+    /**
+     * @var ArrayCollection Article
+     * 
+     * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Category", mappedBy="articles")
      */
     private $categories;
     
@@ -114,21 +143,203 @@ class Article
         return $this->descritpion;
     }
 
-     public function addCategory(Category $category)
+    
+    
+    /**
+     * @param Price $price
+     *
+     * @return Article 
+     */
+     public function addPrice(ClicSape\Bundle\ClotheBundle\Entity\Price $price)
+    {
+        $this->prices[] = $price;
+        
+        return $this;
+    }
+    
+    /**
+     * @param Price $price
+     *
+     * @return Article 
+     */
+    public function removePrice(ClicSape\Bundle\ClotheBundle\Entity\Price $price)
+    {
+        $this->prices->removeElement($price);
+        
+        return $this;
+    }
+
+    /**
+     *
+     * @return ArrayCollection Price
+     */
+    public function getPrices()
+    {
+        return $this->prices;
+    }
+    
+    /**
+     * @param Stock $stock
+     *
+     * @return Article 
+     */
+     public function addStock(ClicSape\Bundle\ClotheBundle\Entity\Stock $stock)
+    {
+        $this->stocks[] = $stock;
+        
+        return $this;
+    }
+    
+    /**
+     * @param Stock $stock
+     *
+     * @return Article 
+     */
+    public function removeStock(ClicSape\Bundle\ClotheBundle\Entity\Stock $stock)
+    {
+        $this->stocks->removeElement($stock);
+        
+        return $this;
+    }
+
+    /**
+     *
+     * @return ArrayCollection Stock
+     */
+    public function getStocks()
+    {
+        return $this->stocks;
+    }
+    
+    /**
+     * @param Picture $picture
+     *
+     * @return Article 
+     */
+     public function addPicture(ClicSape\Bundle\CoreBundle\Entity\Picture $picture)
+    {
+        $this->pictures[] = $picture;
+        
+        return $this;
+    }
+    
+    /**
+     * @param Picture $picture
+     *
+     * @return Article 
+     */
+    public function removePicture(ClicSape\Bundle\CoreBundle\Entity\Picture $picture)
+    {
+        $this->pictures->removeElement($picture);
+        
+        return $this;
+    }
+
+    /**
+     *
+     * @return ArrayCollection Picture
+     */
+    public function getPictures()
+    {
+        return $this->pictures;
+    }
+    
+    /**
+     * @param ArticleInfo $articleInfo
+     *
+     * @return Article 
+     */
+     public function addArticleInfo(ClicSape\Bundle\ClotheBundle\Entity\ArticleInfo $articleInfo)
+    {
+        $this->articleInfos[] = $articleInfo;
+        
+        return $this;
+    }
+    
+    /**
+     * @param ArticleInfo $articleInfo
+     *
+     * @return Article 
+     */
+    public function removeArticleInfo(ClicSape\Bundle\ClotheBundle\Entity\ArticleInfo $articleInfo)
+    {
+        $this->articleInfos->removeElement($articleInfo);
+        
+        return $this;
+    }
+
+    /**
+     *
+     * @return ArrayCollection ArticleInfo
+     */
+    public function getArticleInfos()
+    {
+        return $this->articleInfos;
+    }
+    
+    /**
+     * @param Size $size
+     *
+     * @return Article 
+     */
+     public function addSize(ClicSape\Bundle\ClotheBundle\Entity\Size $size)
+    {
+        $this->sizes[] = $size;
+        
+        return $this;
+    }
+    
+    /**
+     * @param Size $size
+     *
+     * @return Article 
+     */
+    public function removeSize(ClicSape\Bundle\ClotheBundle\Entity\Size $size)
+    {
+        $this->sizes->removeElement($size);
+        
+        return $this;
+    }
+
+    /**
+     *
+     * @return ArrayCollection Size
+     */
+    public function getSizes()
+    {
+        return $this->sizes;
+    }
+    
+    /**
+     * @param Category $category
+     *
+     * @return Article 
+     */
+    public function addCategory(ClicSape\Bundle\ClotheBundle\Entity\Category $category)
     {
         $this->categories[] = $category;
         
         return $this;
     }
 
-    public function removeCategory(Category $category)
+    /**
+     * @param Category $category
+     *
+     * @return Article 
+     */
+    public function removeCategory(ClicSape\Bundle\ClotheBundle\Entity\Category $category)
     {
         $this->categories->removeElement($category);
+        
+        return $this;
     }
-
+    
+    /**
+     *
+     * @return ArrayCollection Category
+     */
     public function getCategories()
     {
         return $this->categories;
     }
-    
 }

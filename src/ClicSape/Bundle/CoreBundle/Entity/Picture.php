@@ -34,6 +34,13 @@ class Picture
      * @ORM\Column(name="url", type="string", length=255)
      */
     private $url;
+    
+    /**
+     * @var Article
+     *
+     * @ORM\ManyToOne(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Article", inversedBy="pictures")
+     */
+    private $article;
 
 
     /**
@@ -90,5 +97,49 @@ class Picture
     public function getUrl()
     {
         return $this->url;
+    }
+    
+    /**
+     * Set level
+     *
+     * @param integer $level
+     * @return Picture
+     */
+    public function setLevel($level)
+    {
+        $this->level = $level;
+
+        return $this;
+    }
+
+    /**
+     * Get value
+     *
+     * @return string 
+     */
+    public function getLevel()
+    {
+        return $this->level;
+    }
+    
+    /**
+     * @param Article $article
+     *
+     * @return Picture 
+     */
+    public function setArticle(ClicSape\Bundle\ClotheBundle\Entity\Article $article)
+    {
+        $this->article = $article;
+        
+        return $this;
+    }
+    
+    /**
+     *
+     * @return Picture 
+     */
+     public function getArticle()
+    {
+        return $this->article;
     }
 }

@@ -114,7 +114,7 @@ class Gamme
      *
      * @return Gamme 
      */
-     public function addCategory(Category $category)
+     public function addCategory(ClicSape\Bundle\ClotheBundle\Entity\Category $category)
     {
         $this->categories[] = $category;
         
@@ -126,7 +126,7 @@ class Gamme
      *
      * @return Gamme 
      */
-    public function removeCategory(Category $category)
+    public function removeCategory(ClicSape\Bundle\ClotheBundle\Entity\Category $category)
     {
         $this->categories->removeElement($category);
         

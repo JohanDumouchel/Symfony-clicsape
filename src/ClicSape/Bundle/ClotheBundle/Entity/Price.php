@@ -27,6 +27,13 @@ class Price
      * @ORM\Column(name="value", type="float")
      */
     private $value;
+    
+    /**
+     * @var Article
+     *
+     * @ORM\ManyToOne(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Article", inversedBy="prices")
+     */
+    private $article;
 
 
     /**
@@ -61,4 +68,26 @@ class Price
     {
         return $this->value;
     }
+    
+    /**
+     * @param Article $article
+     *
+     * @return Price 
+     */
+    public function setArticle(ClicSape\Bundle\ClotheBundle\Entity\Article $article)
+    {
+        $this->article = $article;
+        
+        return $this;
+    }
+    
+    /**
+     *
+     * @return Price 
+     */
+     public function getArticle()
+    {
+        return $this->article;
+    }
+    
 }

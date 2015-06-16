@@ -34,6 +34,13 @@ class Stock
      * @ORM\Column(name="quantity_alert", type="integer")
      */
     private $quantityAlert;
+    
+    /**
+     * @var Article
+     *
+     * @ORM\ManyToOne(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Article", inversedBy="stocks")
+     */
+    private $article;
 
 
     /**
@@ -90,5 +97,26 @@ class Stock
     public function getQuantityAlert()
     {
         return $this->quantityAlert;
+    }
+    
+    /**
+     * @param Article $article
+     *
+     * @return Stock 
+     */
+    public function setArticle(ClicSape\Bundle\ClotheBundle\Entity\Article $article)
+    {
+        $this->article = $article;
+        
+        return $this;
+    }
+    
+    /**
+     *
+     * @return Stock 
+     */
+     public function getArticle()
+    {
+        return $this->article;
     }
 }

@@ -39,9 +39,16 @@ class Category
     /**
      * @var ArrayCollection Article
      *
-     * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Article", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Article", inversedBy="categories")
      */
     private $articles;
+    
+    /**
+     * @var ArrayCollection Size
+     *
+     * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Size", inversedBy="categories")
+     */
+    private $sizes;
     
     /**
      * 
@@ -113,7 +120,7 @@ class Category
      *
      * @return Category 
      */
-     public function addArticle(Article $article)
+     public function addArticle(ClicSape\Bundle\ClotheBundle\Entity\Article $article)
     {
         $this->articles[] = $article;
         
@@ -125,7 +132,7 @@ class Category
      *
      * @return Category 
      */
-    public function removeArticle(Article $article)
+    public function removeArticle(ClicSape\Bundle\ClotheBundle\Entity\Article $article)
     {
         $this->articles->removeElement($article);
         
@@ -139,5 +146,38 @@ class Category
     public function getArticles()
     {
         return $this->articles;
+    }
+    
+    /**
+     * @param Size $size
+     *
+     * @return Category 
+     */
+     public function addSize(ClicSape\Bundle\ClotheBundle\Entity\Size $size)
+    {
+        $this->sizes[] = $size;
+        
+        return $this;
+    }
+    
+    /**
+     * @param Size $size
+     *
+     * @return Category 
+     */
+    public function removeSize(ClicSape\Bundle\ClotheBundle\Entity\Size $size)
+    {
+        $this->sizes->removeElement($size);
+        
+        return $this;
+    }
+
+    /**
+     *
+     * @return ArrayCollection 
+     */
+    public function getSizes()
+    {
+        return $this->sizes;
     }
 }
