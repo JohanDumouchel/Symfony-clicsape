@@ -64,6 +64,8 @@ class Category
     public function __construct()
     {
         $this->articles = new ArrayCollection();
+        $this->infoTypes = new ArrayCollection();
+        $this->sizes = new ArrayCollection();
     }
     
     /**
@@ -120,6 +122,39 @@ class Category
     public function getDescription()
     {
         return $this->description;
+    }
+    
+    /**
+     * @param InfoType $infoType
+     *
+     * @return Category 
+     */
+     public function addInfoType(ClicSape\Bundle\ClotheBundle\Entity\InfoType $infoType)
+    {
+        $this->infoTypes[] = $infoType;
+        
+        return $this;
+    }
+    
+    /**
+     * @param InfoType $infoType
+     *
+     * @return Category 
+     */
+    public function removeInfoType(ClicSape\Bundle\ClotheBundle\Entity\InfoType $infoType)
+    {
+        $this->infoTypes->removeElement($infoType);
+        
+        return $this;
+    }
+
+    /**
+     *
+     * @return ArrayCollection InfoType
+     */
+    public function getInfoTypes()
+    {
+        return $this->infoTypes;
     }
     
     /**
@@ -188,36 +223,4 @@ class Category
         return $this->sizes;
     }
     
-    /**
-     * @param InfoType $infoType
-     *
-     * @return Category 
-     */
-     public function addInfoType(ClicSape\Bundle\ClotheBundle\Entity\InfoType $infoType)
-    {
-        $this->infoTypes[] = $infoType;
-        
-        return $this;
-    }
-    
-    /**
-     * @param InfoType $infoType
-     *
-     * @return Category 
-     */
-    public function removeInfoType(ClicSape\Bundle\ClotheBundle\Entity\InfoType $infoType)
-    {
-        $this->infoTypes->removeElement($infoType);
-        
-        return $this;
-    }
-
-    /**
-     *
-     * @return ArrayCollection InfoType
-     */
-    public function getInfoTypes()
-    {
-        return $this->infoTypes;
-    }
 }
