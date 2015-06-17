@@ -34,6 +34,13 @@ class InfoType
      * @ORM\OneToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\ArticleInfo", mappedBy="infoType")
      */
     private $articleInfos;
+    
+    /**
+     * @var Category
+     *
+     * @ORM\ManyToOne(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Category", inversedBy="infoTypes")
+     */
+    private $category;
 
 
     /**
@@ -100,5 +107,28 @@ class InfoType
     public function getArticleInfos()
     {
         return $this->articleInfos;
+    }
+    
+    /**
+     * Set category
+     *
+     * @param Category $category
+     * @return InfoType
+     */
+    public function setCategory(ClicSape\Bundle\ClotheBundle\Entity\Category $category)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return Category 
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 }

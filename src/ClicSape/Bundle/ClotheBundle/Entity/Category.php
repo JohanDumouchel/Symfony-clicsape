@@ -35,6 +35,13 @@ class Category
      * @ORM\Column(name="description", type="text")
      */
     private $description;
+    
+    /**
+     * @var ArrayCollection InfoType
+     *
+     * @ORM\OneToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\InfoType", mappedBy="category")
+     */
+    private $infoTypes;
 
     /**
      * @var ArrayCollection Article
@@ -179,5 +186,38 @@ class Category
     public function getSizes()
     {
         return $this->sizes;
+    }
+    
+    /**
+     * @param InfoType $infoType
+     *
+     * @return Category 
+     */
+     public function addInfoType(ClicSape\Bundle\ClotheBundle\Entity\InfoType $infoType)
+    {
+        $this->infoTypes[] = $infoType;
+        
+        return $this;
+    }
+    
+    /**
+     * @param InfoType $infoType
+     *
+     * @return Category 
+     */
+    public function removeInfoType(ClicSape\Bundle\ClotheBundle\Entity\InfoType $infoType)
+    {
+        $this->infoTypes->removeElement($infoType);
+        
+        return $this;
+    }
+
+    /**
+     *
+     * @return ArrayCollection InfoType
+     */
+    public function getInfoTypes()
+    {
+        return $this->infoTypes;
     }
 }

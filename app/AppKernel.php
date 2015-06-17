@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new ClicSape\Bundle\ClotheBundle\ClicSapeClotheBundle(),
             new ClicSape\Bundle\CoreBundle\ClicSapeCoreBundle(),
             new ClicSape\Bundle\OrderBundle\ClicSapeOrderBundle(),
+            new ClicSape\Bundle\AdminBundle\ClicSapeAdminBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
