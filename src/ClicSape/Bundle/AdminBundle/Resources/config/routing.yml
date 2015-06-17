@@ -1,3 +1,7 @@
-clic_sape_admin_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: ClicSapeAdminBundle:Default:index }
+clic_sape_admin_article:
+    resource: "@ClicSapeAdminBundle/Resources/config/routing/article.yml"
+    prefix:     /article
+
+clic_sape_admin_category:
+    resource: "@ClicSapeAdminBundle/Resources/config/routing/category.yml"
+    prefix:     /category

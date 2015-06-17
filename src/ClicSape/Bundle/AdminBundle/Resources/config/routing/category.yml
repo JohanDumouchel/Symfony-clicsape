@@ -1,0 +1,13 @@
+list:
+    path:     /list
+    defaults: { _controller: ClicSapeAdminBundle:Category:list }
+
+add:
+    path:     /add
+    defaults: { _controller: ClicSapeAdminBundle:Category:add }
+
+edit:
+    path:     /edit/{id}
+    defaults: { _controller: ClicSapeAdminBundle:Category:edit }
+    requirements:
+        id: \d+

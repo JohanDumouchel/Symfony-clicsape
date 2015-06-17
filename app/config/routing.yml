@@ -4,17 +4,17 @@ clic_sape_admin:
 
 clic_sape_order:
     resource: "@ClicSapeOrderBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /order
 
-clic_sape_core:
-    resource: "@ClicSapeCoreBundle/Resources/config/routing.yml"
-    prefix:   /
+#clic_sape_core:
+#    resource: "@ClicSapeCoreBundle/Resources/config/routing.yml"
+#    prefix:   /core
 
-clic_sape_clothe:
-    resource: "@ClicSapeClotheBundle/Resources/config/routing.yml"
-    prefix:   /
+#clic_sape_clothe:
+#    resource: "@ClicSapeClotheBundle/Resources/config/routing.yml"
+#    prefix:   /
 
-clic_sape_user:
-    resource: "@ClicSapeUserBundle/Resources/config/routing.yml"
-    prefix:   /
+#clic_sape_user:
+#    resource: "@ClicSapeUserBundle/Resources/config/routing.yml"
+#    prefix:   /
 
