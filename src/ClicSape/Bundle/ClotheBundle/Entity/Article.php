@@ -84,6 +84,11 @@ class Article
      */
     public function __construct()
     {
+        $this->prices = new ArrayCollection();
+        $this->stocks = new ArrayCollection();
+        $this->pictures = new ArrayCollection();
+        $this->articleInfos = new ArrayCollection();
+        $this->sizes = new ArrayCollection();
         $this->categories = new ArrayCollection();
     }
     

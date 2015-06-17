@@ -42,7 +42,15 @@ class InfoType
      */
     private $category;
 
-
+    /**
+     * 
+     * Constructeur
+     */
+    public function __construct()
+    {
+        $this->articleInfos = new ArrayCollection();
+    }
+    
     /**
      * Get id
      *
