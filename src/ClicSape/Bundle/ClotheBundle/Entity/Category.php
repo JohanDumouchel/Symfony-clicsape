@@ -56,7 +56,6 @@ class Category
     private $articles;
     
     /**
-     * @var ArrayCollection Size
      * 
      * 
      * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Size", inversedBy="categories")
@@ -64,7 +63,6 @@ class Category
     private $sizes;
     
     /**
-     * @var ArrayCollection Gamme
      * 
      * 
      * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Gamme", mappedBy="categories")
@@ -72,7 +70,6 @@ class Category
     private $gammes;
     
     /**
-     * @var ArrayCollection Gender
      * 
      * 
      * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Gender", mappedBy="categories")
@@ -247,38 +244,7 @@ class Category
         return $this->sizes;
     }
     
-    /**
-     * @param Gamme $gamme
-     *
-     * @return Category 
-     */
-     public function addGamme(Gamme $gamme)
-    {
-        $this->gammes[] = $gamme;
-        
-        return $this;
-    }
-    
-    /**
-     * @param Gamme $gamme
-     *
-     * @return Category 
-     */
-    public function removeGamme(Gamme $gamme)
-    {
-        $this->gammes->removeElement($gamme);
-        
-        return $this;
-    }
-
-    /**
-     *
-     * @return ArrayCollection 
-     */
-    public function getGammes()
-    {
-        return $this->gammes;
-    }
+   
     
     /**
      * @param Gender $gender
@@ -313,4 +279,37 @@ class Category
         return $this->genders;
     }
     
+
+    /**
+     * Add gammes
+     *
+     * @param \ClicSape\Bundle\ClotheBundle\Entity\Gamme $gammes
+     * @return Category
+     */
+    public function addGamme(\ClicSape\Bundle\ClotheBundle\Entity\Gamme $gammes)
+    {
+        $this->gammes[] = $gammes;
+
+        return $this;
+    }
+
+    /**
+     * Remove gammes
+     *
+     * @param \ClicSape\Bundle\ClotheBundle\Entity\Gamme $gammes
+     */
+    public function removeGamme(\ClicSape\Bundle\ClotheBundle\Entity\Gamme $gammes)
+    {
+        $this->gammes->removeElement($gammes);
+    }
+    
+    /**
+     * Get gammes
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getGammes()
+    {
+        return $this->gammes;
+    }
 }

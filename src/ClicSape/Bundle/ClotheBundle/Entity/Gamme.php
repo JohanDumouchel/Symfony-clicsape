@@ -113,33 +113,35 @@ class Gamme
         return $this->description;
     }
     
-    /**
-     * @param Category $category
-     *
-     * @return Gamme 
-     */
-     public function addCategory(ClicSape\Bundle\ClotheBundle\Entity\Category $category)
-    {
-        $this->categories[] = $category;
-        
-        return $this;
-    }
     
+
     /**
-     * @param Category $category
+     * Add categories
      *
-     * @return Gamme 
+     * @param \ClicSape\Bundle\ClotheBundle\Entity\Category $categories
+     * @return Gamme
      */
-    public function removeCategory(ClicSape\Bundle\ClotheBundle\Entity\Category $category)
+    public function addCategory(\ClicSape\Bundle\ClotheBundle\Entity\Category $categories)
     {
-        $this->categories->removeElement($category);
-        
+        $this->categories[] = $categories;
+
         return $this;
     }
 
     /**
+     * Remove categories
      *
-     * @return ArrayCollection 
+     * @param \ClicSape\Bundle\ClotheBundle\Entity\Category $categories
+     */
+    public function removeCategory(\ClicSape\Bundle\ClotheBundle\Entity\Category $categories)
+    {
+        $this->categories->removeElement($categories);
+    }
+
+    /**
+     * Get categories
+     *
+     * @return \Doctrine\Common\Collections\Collection 
      */
     public function getCategories()
     {

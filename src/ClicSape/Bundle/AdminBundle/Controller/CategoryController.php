@@ -31,11 +31,9 @@ class CategoryController extends Controller
     public function addAction(Request $request)
     {
         $category = new Category();
-        $form = $this->createForm(new CategoryType(), $category);
+        $form = $this->createForm('category_type', $category);
        
-        $form->handleRequest($request);
-
-        if ($form->isValid()) {
+        if ($form->handleRequest($request)->isValid()) {
             return new Response('le formulaire est cool');
         }
         

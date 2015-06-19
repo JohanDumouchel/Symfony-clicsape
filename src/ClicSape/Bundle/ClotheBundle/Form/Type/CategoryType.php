@@ -26,13 +26,15 @@ class CategoryType extends AbstractType
             ->add('gammes','entity',array(
                 'class' => 'ClicSapeClotheBundle:Gamme',
                 'choice_label' => 'title',
-                'required' => true,
+                'by_reference' => false,
+                'required' => true
             ))
             ->add('genders','entity',array(
                 'class' => 'ClicSapeClotheBundle:Gender',
                 'choice_label' => 'title',
-                'required' => true,
+                'required' => true
             ))
+            ->add('ajouter','submit')
         ;
     }
     
@@ -51,6 +53,6 @@ class CategoryType extends AbstractType
      */
     public function getName()
     {
-        return 'clicsape_bundle_clothebundle_category';
+        return 'category_type';
     }
 }

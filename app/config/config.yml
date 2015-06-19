@@ -93,3 +93,7 @@ services:
         class: ClicSape\Bundle\ClotheBundle\Form\Type\GammeType
         tags:
             - { name: form.type, alias: gamme_type}
+    clic_sape_clothe.form.type.category:
+        class: ClicSape\Bundle\ClotheBundle\Form\Type\CategoryType
+        tags:
+            - { name: form.type, alias: category_type}

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 $(document).ready(function() {
-    var $container = $('div#clicsape_bundle_clothebundle_category_sizes');
+    var $container = $('div#category_type_sizes');
     var $lienAjout = $('<a href="#" id="ajout_size" class="btn">Ajouter une taille</a>');
     
     $container.append($lienAjout);
