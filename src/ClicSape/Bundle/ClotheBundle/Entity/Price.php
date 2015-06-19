@@ -3,6 +3,7 @@
 namespace ClicSape\Bundle\ClotheBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Price
@@ -23,6 +24,7 @@ class Price
 
     /**
      * @var float
+     * @Assert\Type(type="float")
      *
      * @ORM\Column(name="value", type="float")
      */
@@ -30,6 +32,7 @@ class Price
     
     /**
      * @var Article
+     * @Assert\Type(type="ArticleType")
      *
      * @ORM\ManyToOne(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Article", inversedBy="prices")
      */

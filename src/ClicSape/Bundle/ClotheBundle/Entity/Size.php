@@ -3,6 +3,8 @@
 namespace ClicSape\Bundle\ClotheBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -24,6 +26,7 @@ class Size
 
     /**
      * @var integer
+     * @Assert\Type(type="integer")
      *
      * @ORM\Column(name="level", type="integer")
      */
@@ -31,6 +34,7 @@ class Size
 
     /**
      * @var string
+     * @Assert\Type(type="string")
      *
      * @ORM\Column(name="wording", type="string", length=20)
      */
@@ -38,6 +42,7 @@ class Size
 
     /**
      * @var Article
+     * @Assert\Type(type="ArticleType")
      *
      * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Article", mappedBy="sizes")
      */
@@ -45,6 +50,7 @@ class Size
     
     /**
      * @var ArrayCollection Category
+     * @Assert\Type(type="CategoryType")
      * 
      * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Category", mappedBy="sizes")
      */

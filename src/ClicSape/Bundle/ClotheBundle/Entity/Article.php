@@ -4,6 +4,7 @@ namespace ClicSape\Bundle\ClotheBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Article
@@ -24,13 +25,15 @@ class Article
 
     /**
      * @var string
-     *
+     * @Assert\Type(type="string")
+     * 
      * @ORM\Column(name="title", type="string", length=255)
      */
     private $title;
 
     /**
      * @var string
+     * @Assert\Type(type="string")
      *
      * @ORM\Column(name="descritpion", type="text")
      */
@@ -38,6 +41,7 @@ class Article
 
     /**
      * @var ArrayCollection Price
+     * @Assert\Type(type="PriceType")
      *
      * @ORM\OneToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Price", mappedBy="article")
      */
@@ -45,13 +49,15 @@ class Article
     
     /**
      * @var ArrayCollection Stock
-     *
+     * @Assert\Type(type="StockType")
+     * 
      * @ORM\OneToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Stock", mappedBy="article")
      */
     private $stocks;
     
     /**
      * @var ArrayCollection Picture
+     * @Assert\Type(type="PictureType")
      *
      * @ORM\OneToMany(targetEntity="ClicSape\Bundle\CoreBundle\Entity\Picture", mappedBy="article")
      */
@@ -59,6 +65,7 @@ class Article
     
     /**
      * @var ArrayCollection ArticleInfo
+     * @Assert\Type(type="ArticleInfoType")
      *
      * @ORM\OneToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\ArticleInfo", mappedBy="article")
      */
@@ -66,6 +73,7 @@ class Article
     
     /**
      * @var ArrayCollection Price
+     * @Assert\Type(type="SizeType")
      *
      * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Size", inversedBy="articles")
      */
@@ -73,6 +81,7 @@ class Article
     
     /**
      * @var ArrayCollection Article
+     * @Assert\Type(type="CategoryType")
      * 
      * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Category", mappedBy="articles")
      */

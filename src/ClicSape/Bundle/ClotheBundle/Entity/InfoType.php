@@ -3,6 +3,7 @@
 namespace ClicSape\Bundle\ClotheBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * InfoType
@@ -23,6 +24,7 @@ class InfoType
 
     /**
      * @var string
+     * @Assert\Type(type="string")
      *
      * @ORM\Column(name="title", type="string", length=255)
      */
@@ -30,6 +32,7 @@ class InfoType
     
     /**
      * @var ArrayCollection ArticleInfo
+     * @Assert\Type(type="ArticleInfoType")
      *
      * @ORM\OneToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\ArticleInfo", mappedBy="infoType")
      */
@@ -37,7 +40,8 @@ class InfoType
     
     /**
      * @var Category
-     *
+     * @Assert\Type(type="CategoryType")
+     * 
      * @ORM\ManyToOne(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Category", inversedBy="infoTypes")
      */
     private $category;

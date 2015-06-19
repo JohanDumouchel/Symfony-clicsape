@@ -3,6 +3,8 @@
 namespace ClicSape\Bundle\ClotheBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -24,6 +26,7 @@ class Gamme
 
     /**
      * @var string
+     * @Assert\Type(type="string")
      *
      * @ORM\Column(name="title", type="string", length=255)
      */
@@ -31,15 +34,16 @@ class Gamme
 
     /**
      * @var string
+     * @Assert\Type(type="string")
      *
      * @ORM\Column(name="description", type="text")
      */
     private $description;
     
     /**
+     * @Assert\Type(type="CategoryType")
      * 
-     * 
-     * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Category", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Category", inversedBy="gammes", cascade={"persist"})
      */
     private $categories;
     
