@@ -41,9 +41,8 @@ class Gamme
     private $description;
     
     /**
-     * @Assert\Type(type="CategoryType")
      * 
-     * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Category", inversedBy="gammes", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Category", mappedBy="gammes")
      */
     private $categories;
     

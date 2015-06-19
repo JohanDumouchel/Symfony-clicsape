@@ -40,39 +40,49 @@ class Category
     private $description;
     
     /**
-     * @var ArrayCollection InfoType
-     * @Assert\Type(type="InfoTypeType")
+     * @var date
      * 
-     * @ORM\OneToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\InfoType", mappedBy="category")
+     * @ORM\Column(name="date_created", type="text")
+     */
+    private $dateCreated;
+    
+    /**
+     * @var ArrayCollection InfoType
+     * 
+     * 
+     * @ORM\OneToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\InfoType", mappedBy="category", cascade="persist")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $infoTypes;
 
     /**
      * @var ArrayCollection Article
-     * @Assert\Type(type="ArticleType")
      * 
-     * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Article", inversedBy="categories")
+     * 
+     * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Article", inversedBy="categories", cascade="persist")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $articles;
     
     /**
      * 
      * 
-     * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Size", inversedBy="categories")
+     * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Size", inversedBy="categories", cascade="persist")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $sizes;
     
     /**
      * 
      * 
-     * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Gamme", mappedBy="categories")
+     * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Gamme", inversedBy="categories", cascade="persist")
      */
     private $gammes;
     
     /**
      * 
      * 
-     * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Gender", mappedBy="categories")
+     * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Gender", inversedBy="categories", cascade="persist")
      */
     private $genders;
     
@@ -82,6 +92,7 @@ class Category
      */
     public function __construct()
     {
+        $this->dateCreated = date('Y-m-d H:i:s');
         $this->articles = new ArrayCollection();
         $this->infoTypes = new ArrayCollection();
         $this->sizes = new ArrayCollection();
@@ -283,12 +294,12 @@ class Category
     /**
      * Add gammes
      *
-     * @param \ClicSape\Bundle\ClotheBundle\Entity\Gamme $gammes
+     * @param \ClicSape\Bundle\ClotheBundle\Entity\Gamme $gamme
      * @return Category
      */
-    public function addGamme(\ClicSape\Bundle\ClotheBundle\Entity\Gamme $gammes)
+    public function addGamme(\ClicSape\Bundle\ClotheBundle\Entity\Gamme $gamme)
     {
-        $this->gammes[] = $gammes;
+        $this->gammes[] = $gamme;
 
         return $this;
     }
@@ -296,11 +307,11 @@ class Category
     /**
      * Remove gammes
      *
-     * @param \ClicSape\Bundle\ClotheBundle\Entity\Gamme $gammes
+     * @param \ClicSape\Bundle\ClotheBundle\Entity\Gamme $gamme
      */
-    public function removeGamme(\ClicSape\Bundle\ClotheBundle\Entity\Gamme $gammes)
+    public function removeGamme(\ClicSape\Bundle\ClotheBundle\Entity\Gamme $gamme)
     {
-        $this->gammes->removeElement($gammes);
+        $this->gammes->removeElement($gamme);
     }
     
     /**

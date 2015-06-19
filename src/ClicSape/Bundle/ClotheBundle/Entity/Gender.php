@@ -41,10 +41,9 @@ class Gender
     private $picture;
     
     /**
-     * @var Categories
-     * @Assert\Type(type="CategoryType")
+     * @var Categories     
      * 
-     * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Category", inversedBy="genders", cascade={"persist"})
+     * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Category", mappedBy="genders")
      */
     private $categories;
     

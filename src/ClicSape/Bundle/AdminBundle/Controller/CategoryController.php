@@ -7,7 +7,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use ClicSape\Bundle\ClotheBundle\Entity\Category;
 use ClicSape\Bundle\ClotheBundle\Entity\Size;
-use ClicSape\Bundle\ClotheBundle\Form\Type\CategoryType;
 use ClicSape\Bundle\ClotheBundle\Form\Type\SizeType;
     
 class CategoryController extends Controller
@@ -34,7 +33,12 @@ class CategoryController extends Controller
         $form = $this->createForm('category_type', $category);
        
         if ($form->handleRequest($request)->isValid()) {
-            return new Response('le formulaire est cool');
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($form->getData());
+            $em->flush();
+            
+            return $this->render('ClicSapeAdminBundle:Category:list.html.twig'
+            );
         }
         
         return $this->render('ClicSapeAdminBundle:Category:add.html.twig', array(
