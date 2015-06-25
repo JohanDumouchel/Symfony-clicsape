@@ -4,28 +4,20 @@ namespace ClicSape\Bundle\AdminBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use ClicSape\Bundle\ClotheBundle\Entity\Category;
-use ClicSape\Bundle\ClotheBundle\Entity\Size;
-use ClicSape\Bundle\ClotheBundle\Form\Type\SizeType;
     
 class CategoryController extends Controller
 {
     public function listAction(Request $request)
     {
-        $size = new Size();
-        $form = $this->createForm(new SizeType(), $size);
-        
-        $form->handleRequest($request);
-        
-        if ($form->isValid()) {
-            return new Response('le formulaire est cool');
-        }
-        
+        $em = $this->getDoctrine()->getManager();
+        $repoCat = $em->getRepository('ClicSapeClotheBundle:Category');
+        $listCat = $repoCat->findAll();
+                
         return $this->render('ClicSapeAdminBundle:Category:list.html.twig', array(
-                "form" => $form->createView()
+                "listCat" => $listCat
             ));
-        }
+    }
 
     public function addAction(Request $request)
     {
@@ -37,8 +29,7 @@ class CategoryController extends Controller
             $em->persist($form->getData());
             $em->flush();
             
-            return $this->render('ClicSapeAdminBundle:Category:list.html.twig'
-            );
+            return $this->forward('ClicSapeAdminBundle:Category:list');
         }
         
         return $this->render('ClicSapeAdminBundle:Category:add.html.twig', array(
@@ -46,10 +37,26 @@ class CategoryController extends Controller
             ));    
     }
 
-    public function editAction()
+    public function editAction($id)
     {
+        $em = $this->getDoctrine()->getManager();
+        $repoCat = $em->getRepository('ClicSapeClotheBundle:Category');
+        $category = $repoCat->find($id);
+        
+        $form = $this->createForm('category_type', $category);
+        $request = Request::createFromGlobals();
+        if ($form->handleRequest($request)->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($form->getData());
+            $em->flush();
+            
+            return $this->forward('ClicSapeAdminBundle:Category:list');
+        }
+        
         return $this->render('ClicSapeAdminBundle:Category:edit.html.twig', array(
-                // ...
-            ));    }
+                'category' => $category,
+                'form' => $form->createView()
+            ));    
+    }
 
 }

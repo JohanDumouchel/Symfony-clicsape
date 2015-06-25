@@ -10,30 +10,9 @@ $(document).ready(function() {
     $container.append($lienAjout);
      // On ajoute un nouveau champ à chaque clic sur le lien d'ajout.
     $lienAjout.click(function(e) {
-      ajouterSize($container);
+      ajouterPrototype($container,'Size');
       e.preventDefault(); 
       return false;
     });
-
-    var index = $container.find(':input').length;
-
-    function ajouterSize($container) {
-      var $prototype = $($container.attr('data-prototype').replace(/__name__label__/g, 'Size' + (index+1))
-                                                          .replace(/__name__/g, index));
-      ajouterLienSuppression($prototype);
-      $container.append($prototype);
-      index++;
-    }
-
-    // La fonction qui ajoute un lien de suppression d'une catégorie
-    function ajouterLienSuppression($prototype) {
-      $lienSuppression = $('<a href="#" class="btn btn-danger">Supprimer</a>');
-      $prototype.append($lienSuppression);
-      $lienSuppression.click(function(e) {
-        $prototype.remove();
-        e.preventDefault(); 
-        return false;
-      });
-    }
 });
 

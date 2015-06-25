@@ -17,7 +17,7 @@ var env = process.env.GULP_ENV;
 gulp.task('js', function () {
     return gulp.src(['bower_components/jquery/dist/jquery.js',
         'bower_components/bootstrap/dist/js/bootstrap.js',
-        'app/Resources/public/js/**/*.js'])
+        'app/Resources/js/**/*.js'])
         .pipe(concat('javascript.js'))
         .pipe(gulpif(env === 'prod', uglify()))
         .pipe(sourcemaps.write('./'))
@@ -51,5 +51,11 @@ gulp.task('img', function() {
         .pipe(gulp.dest('web/img'));
 });
 
+//IMAGE TASK: Just pipe images from project folder to public web folder
+gulp.task('fonts', function() {
+    return gulp.src('bower_components/bootstrap/dist/fonts/**/*.*')
+        .pipe(gulp.dest('web/fonts'));
+});
+
 //define executable tasks when running "gulp" command
-gulp.task('default', ['js','admin_js', 'css', 'img']);
+gulp.task('default', ['js','admin_js', 'css', 'img','fonts']);
