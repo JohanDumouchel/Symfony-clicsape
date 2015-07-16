@@ -4,15 +4,18 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
-        <script src="{{ asset('js/javascript.js') }}"></script>
-        <script src="{{ asset('js/admin.js') }}"></script>
         <link rel="stylesheet" href="{{ asset('css/styles.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('css/admin.css') }}"/>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
         <h1> Admin </h1>
-        {% block body %}{% endblock %}
+        {% block body %}
+        {% endblock %}
+        <div class="loader"></div>
+        <script src="{{ asset('js/javascript.js') }}"></script>
+        <script src="{{ asset('js/admin.js') }}"></script>
         {% block javascripts %}{% endblock %}
     </body>
 </html>

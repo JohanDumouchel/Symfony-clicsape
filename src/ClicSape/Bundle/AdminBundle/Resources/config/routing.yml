@@ -5,3 +5,13 @@ clic_sape_admin_article:
 clic_sape_admin_category:
     resource: "@ClicSapeAdminBundle/Resources/config/routing/category.yml"
     prefix:     /category
+    
+clic_sape_admin_groupsize:
+    resource: "@ClicSapeAdminBundle/Resources/config/routing/groupsize.yml"
+    prefix:     /groupsize
+
+clic_sape_admin_country:
+    resource: "@ClicSapeAdminBundle/Resources/config/routing/country.yml"
+    prefix:     /country
+
+

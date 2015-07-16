@@ -1,12 +1,12 @@
-list:
+category_list:
     path:     /list
     defaults: { _controller: ClicSapeAdminBundle:Category:list }
 
-add:
+category_add:
     path:     /add
     defaults: { _controller: ClicSapeAdminBundle:Category:add }
 
-edit:
+category_edit:
     path:     /edit/{id}
     defaults: { _controller: ClicSapeAdminBundle:Category:edit }
     requirements:

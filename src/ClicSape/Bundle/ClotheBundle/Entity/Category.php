@@ -65,12 +65,13 @@ class Category
     private $articles;
     
     /**
+     * @var ArrayCollection GroupSize
      * 
      * 
-     * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Size", inversedBy="categories", cascade="persist")
+     * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\GroupSize", inversedBy="categories", cascade="persist")
      * @ORM\JoinColumn(nullable=true)
      */
-    private $sizes;
+    private $groupSizes;
     
     /**
      * 
@@ -223,25 +224,25 @@ class Category
     }
     
     /**
-     * @param Size $size
+     * @param GroupSize $groupSize
      *
      * @return Category 
      */
-     public function addSize(Size $size)
+     public function addGroupSize(GroupSize $groupSize)
     {
-        $this->sizes[] = $size;
+        $this->groupSizes[] = $groupSize;
         
         return $this;
     }
     
     /**
-     * @param Size $size
+     * @param GroupSize $groupSize
      *
      * @return Category 
      */
-    public function removeSize(Size $size)
+    public function removeGroupSize(GroupSize $groupSize)
     {
-        $this->sizes->removeElement($size);
+        $this->groupSizes->removeElement($groupSize);
         
         return $this;
     }
@@ -250,9 +251,9 @@ class Category
      *
      * @return ArrayCollection 
      */
-    public function getSizes()
+    public function getGroupSizes()
     {
-        return $this->sizes;
+        return $this->groupSizes;
     }
     
    

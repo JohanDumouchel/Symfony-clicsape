@@ -1,0 +1,19 @@
+country_add:
+    path:     /add
+    defaults: { _controller: ClicSapeAdminBundle:Country:add }
+
+country_list:
+    path:     /list
+    defaults: { _controller: ClicSapeAdminBundle:Country:list }
+
+country_edit:
+    path:     /edit/{id}
+    defaults: { _controller: ClicSapeAdminBundle:Country:edit }
+    requirements:
+        id: \d+
+        
+country_delete:
+    path: /delete
+    defaults: { _controller: ClicSapeAdminBundle:Country:delete }
+    requirements:
+        _method:  POST

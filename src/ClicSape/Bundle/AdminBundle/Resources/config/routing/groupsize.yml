@@ -1,0 +1,11 @@
+groupsize_list:
+    path:     /list
+    defaults: { _controller: ClicSapeAdminBundle:GroupSize:list }
+
+groupsize_add:
+    path:     /add
+    defaults: { _controller: ClicSapeAdminBundle:GroupSize:add }
+
+groupsize_edit:
+    path:     /edit
+    defaults: { _controller: ClicSapeAdminBundle:GroupSize:edit }

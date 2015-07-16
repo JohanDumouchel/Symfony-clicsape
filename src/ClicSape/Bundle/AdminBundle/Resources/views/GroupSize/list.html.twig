@@ -1,11 +1,9 @@
 {% extends "::admin/base_admin.html.twig" %}
 
-{% block title %}ClicSapeAdminBundle:Category:list{% endblock %}
+{% block title %}ClicSapeAdminBundle:GroupSize:list{% endblock %}
 
 {% block body %}
-<script src="{{ asset('js/javascript.js') }}"></script>
-<link rel="stylesheet" href="{{ asset('css/styles.css') }}"/>
-<h1>Welcome to the Category:list page</h1>
+<h1>Welcome to the GroupSize:list page</h1>
 
 <div>
     <table class="table table-hover">
@@ -13,26 +11,26 @@
             <tr>
                 <th>id</th>
                 <th>titre</th>
-                <th>description</th>
-                <th>gamme</th>
-                <th>genre</th>
+                <th>désactivé</th>
+                <th>tailles</th>
+                <th>pays</th>
                 <th>action</th>
             </tr>
         </thead>
         <tbody>
-        {% for category in listCat  %}
+        {% for groupSize in listGroupSize  %}
             <tr>
-                <td>{{category.id}}</td>
-                <td>{{category.title}}</td>
-                <td>{{category.description}}</td>
+                <td>{{groupSize.id}}</td>
+                <td>{{groupSize.title}}</td>
+                <td>{{groupSize.disabled}}</td>
                 <td>
-                    {% for gamme in category.gammes %}
-                        {{gamme.title}}<br/>
+                    {% for size in groupSize.sizes %}
+                        {{size.wording}}<br/>
                     {% endfor %}
                 </td>
                 <td>
-                    {% for gender in category.genders %}
-                        {{gender.title}}<br/>
+                    {% for country in groupSize.countries %}
+                        {{country.wording}}<br/>
                     {% endfor %}
                 </td>
                 <td>

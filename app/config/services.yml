@@ -4,6 +4,27 @@ parameters:
 #    parameter_name: value
 
 services:
-#    service_name:
-#        class: AppBundle\Directory\ClassName
-#        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+    clic_sape_clothe.form.type.gender:
+        class: ClicSape\Bundle\ClotheBundle\Form\Type\GenderType
+        tags:
+            - { name: form.type, alias: gender_type}
+    clic_sape_clothe.form.type.size:
+        class: ClicSape\Bundle\ClotheBundle\Form\Type\SizeType
+        tags:
+            - { name: form.type, alias: size_type}
+    clic_sape_clothe.form.type.gamme:
+        class: ClicSape\Bundle\ClotheBundle\Form\Type\GammeType
+        tags:
+            - { name: form.type, alias: gamme_type}
+    clic_sape_clothe.form.type.category:
+        class: ClicSape\Bundle\ClotheBundle\Form\Type\CategoryType
+        tags:
+            - { name: form.type, alias: category_type}
+    clic_sape_clothe.form.type.grousize:
+        class: ClicSape\Bundle\ClotheBundle\Form\Type\GroupSizeType
+        tags:
+            - { name: form.type, alias: groupsize_type}
+    clic_sape_core.form.type.country:
+        class: ClicSape\Bundle\CoreBundle\Form\Type\CountryType
+        tags:
+            - { name: form.type, alias: country_type}

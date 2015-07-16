@@ -72,14 +72,6 @@ class Article
     private $articleInfos;
     
     /**
-     * @var ArrayCollection Price
-     * @Assert\Type(type="SizeType")
-     *
-     * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Size", inversedBy="articles")
-     */
-    private $sizes;
-    
-    /**
      * @var ArrayCollection Article
      * @Assert\Type(type="CategoryType")
      * 
@@ -289,39 +281,6 @@ class Article
     public function getArticleInfos()
     {
         return $this->articleInfos;
-    }
-    
-    /**
-     * @param Size $size
-     *
-     * @return Article 
-     */
-     public function addSize(ClicSape\Bundle\ClotheBundle\Entity\Size $size)
-    {
-        $this->sizes[] = $size;
-        
-        return $this;
-    }
-    
-    /**
-     * @param Size $size
-     *
-     * @return Article 
-     */
-    public function removeSize(ClicSape\Bundle\ClotheBundle\Entity\Size $size)
-    {
-        $this->sizes->removeElement($size);
-        
-        return $this;
-    }
-
-    /**
-     *
-     * @return ArrayCollection Size
-     */
-    public function getSizes()
-    {
-        return $this->sizes;
     }
     
     /**

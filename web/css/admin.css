@@ -1,0 +1,14 @@
+/* 
+    Created on : 15 juil. 2015, 13:44:45
+    Author     : johan
+*/
+.loader {
+  position: fixed;
+  z-index: 9999;
+  background: url('../img/loader.gif') 50% 50% no-repeat;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  cursor: wait;
+}

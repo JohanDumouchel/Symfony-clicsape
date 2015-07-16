@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class CategoryType extends AbstractType
+class GroupSizeType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,25 +15,24 @@ class CategoryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('disabled','checkbox')
             ->add('title','text')
-            ->add('description','textarea')
-            ->add('groupSizes','entity',array(
-                'class' => 'ClicSapeClotheBundle:GroupSize',
+            ->add('sizes','collection',array(
+                'type' => 'size_type',
+                'allow_add' => true,
+                'by_reference' => false,
+                'required' => true
+            ))
+            ->add('categories','entity',array(
+                'class' => 'ClicSapeClotheBundle:Category',
                 'choice_label' => 'title',
                 'multiple' => true,
                 'by_reference' => false,
                 'required' => true
             ))
-            ->add('gammes','entity',array(
-                'class' => 'ClicSapeClotheBundle:Gamme',
-                'choice_label' => 'title',
-                'multiple' => true,
-                'by_reference' => false,
-                'required' => true
-            ))
-            ->add('genders','entity',array(
-                'class' => 'ClicSapeClotheBundle:Gender',
-                'choice_label' => 'title',
+            ->add('countries','entity',array(
+                'class' => 'ClicSapeCoreBundle:Country',
+                'choice_label' => 'wording',
                 'multiple' => true,
                 'by_reference' => false,
                 'required' => true
@@ -48,7 +47,7 @@ class CategoryType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'ClicSape\Bundle\ClotheBundle\Entity\Category'
+            'data_class' => 'ClicSape\Bundle\ClotheBundle\Entity\GroupSize'
         ));
     }
 
@@ -57,6 +56,6 @@ class CategoryType extends AbstractType
      */
     public function getName()
     {
-        return 'category_type';
+        return 'groupsize_type';
     }
 }

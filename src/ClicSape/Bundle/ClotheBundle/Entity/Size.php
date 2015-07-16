@@ -41,20 +41,11 @@ class Size
     private $wording;
 
     /**
-     * @var Article
-     * @Assert\Type(type="ArticleType")
+     * @var ArrayCollection GroupSize
      *
-     * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Article", mappedBy="sizes")
+     * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\GroupSize", mappedBy="sizes")
      */
-    private $articles;
-    
-    /**
-     * @var ArrayCollection Category
-     * @Assert\Type(type="CategoryType")
-     * 
-     * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Category", mappedBy="sizes")
-     */
-    private $categories;
+    private $groupSizes;
     
     /**
      * 

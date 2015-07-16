@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+var tabEntity = ['country','category','groupSize',];
 var gulp = require('gulp');
 var gulpif = require('gulp-if');
 var uglify = require('gulp-uglify');
@@ -26,11 +26,52 @@ gulp.task('js', function () {
 
 //JAVASCRIPT TASK: write one minified js file out of my global custom js files for admin Bundle
 gulp.task('admin_js', function () {
-    return gulp.src(['src/ClicSape/Bundle/AdminBundle/Resources/js/**/*.js'])
+    return gulp.src(['src/ClicSape/Bundle/AdminBundle/Resources/js/global/*.js'])
         .pipe(concat('admin.js'))
         .pipe(gulpif(env === 'prod', uglify()))
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest('web/js'));
+});
+
+//JAVASCRIPT TASK: write one minified js file out of my global custom js files for admin Bundle
+gulp.task('admin_entity_js', function () {
+    for (i = 0; i < tabEntity.length; i++) {
+        var src = 'src/ClicSape/Bundle/AdminBundle/Resources/js/'+tabEntity[i]+'/*.js';
+        var name = tabEntity[i]+'.js';
+        var dir = 'web/js/admin/'+tabEntity[i];
+        
+        gulp.src([src])
+        .pipe(concat(name))
+        .pipe(gulpif(env === 'prod', uglify()))
+        .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest(dir));
+    }
+});
+
+//JAVASCRIPT TASK: write one minified css file out of each custom less files for admin Bundle
+gulp.task('admin_entity_less', function () {
+    for (i = 0; i < tabEntity.length; i++) {
+        var src = 'src/ClicSape/Bundle/AdminBundle/Resources/less/'+tabEntity[i]+'/*.less';
+        var name = tabEntity[i]+'.css';
+        var dir = 'web/css/admin/'+tabEntity[i];
+        
+        gulp.src([src])
+        .pipe(gulpif(/[.]less/, less()))
+        .pipe(concat(name))
+        .pipe(gulpif(env === 'prod', uglifycss()))
+        .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest(dir));
+    }
+});
+//CSS TASK: write one minified css file out of bootstrap.less and all of my custom less files
+gulp.task('admin_less', function () {
+    return gulp.src([
+        'src/ClicSape/Bundle/AdminBundle/Resources/less/global/*.less'])
+        .pipe(gulpif(/[.]less/, less()))
+        .pipe(concat('admin.css'))
+        .pipe(gulpif(env === 'prod', uglifycss()))
+        .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest('web/css'));
 });
 
 //CSS TASK: write one minified css file out of bootstrap.less and all of my custom less files
@@ -47,7 +88,7 @@ gulp.task('css', function () {
 
 //IMAGE TASK: Just pipe images from project folder to public web folder
 gulp.task('img', function() {
-    return gulp.src('app/Resources/public/img/**/*.*')
+    return gulp.src('app/Resources/img/**/*.*')
         .pipe(gulp.dest('web/img'));
 });
 
@@ -58,4 +99,4 @@ gulp.task('fonts', function() {
 });
 
 //define executable tasks when running "gulp" command
-gulp.task('default', ['js','admin_js', 'css', 'img','fonts']);
+gulp.task('default', ['js','admin_js', 'css', 'img','fonts','admin_entity_js','admin_entity_less','admin_less']);
