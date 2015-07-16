@@ -20,8 +20,7 @@ class GroupSizeType extends AbstractType
             ->add('sizes','collection',array(
                 'type' => 'size_type',
                 'allow_add' => true,
-                'by_reference' => false,
-                'required' => true
+                'by_reference' => false
             ))
             ->add('categories','entity',array(
                 'class' => 'ClicSapeClotheBundle:Category',

@@ -1,5 +1,5 @@
 groupsize_list:
-    path:     /list
+    path:     /
     defaults: { _controller: ClicSapeAdminBundle:GroupSize:list }
 
 groupsize_add:
@@ -7,5 +7,13 @@ groupsize_add:
     defaults: { _controller: ClicSapeAdminBundle:GroupSize:add }
 
 groupsize_edit:
-    path:     /edit
+    path:     /edit/{id}
     defaults: { _controller: ClicSapeAdminBundle:GroupSize:edit }
+    requirements:
+        id: \d+
+        
+groupsize_delete:
+    path: /delete
+    defaults: { _controller: ClicSapeAdminBundle:GroupSize:delete }
+    requirements:
+        _method:  POST

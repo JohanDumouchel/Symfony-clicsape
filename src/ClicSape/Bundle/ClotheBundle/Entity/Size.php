@@ -26,7 +26,6 @@ class Size
 
     /**
      * @var integer
-     * @Assert\Type(type="integer")
      *
      * @ORM\Column(name="level", type="integer")
      */
@@ -34,7 +33,6 @@ class Size
 
     /**
      * @var string
-     * @Assert\Type(type="string")
      *
      * @ORM\Column(name="wording", type="string", length=20)
      */

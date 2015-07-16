@@ -31,13 +31,10 @@ class CountryController extends Controller
         $em = $this->getDoctrine()->getManager();
         $repoCountry = $em->getRepository('ClicSapeCoreBundle:Country');
         $listCountry = $repoCountry->findAll();
-        if($listCountry !== null){            
-            return $this->render('ClicSapeAdminBundle:Country:list.html.twig', array(
+
+        return $this->render('ClicSapeAdminBundle:Country:list.html.twig', array(
                     'listCountry' => $listCountry
-                ));   
-        } else {
-            return $this->render($view);
-        }
+               ));   
     }
 
     public function editAction($id)
@@ -76,7 +73,7 @@ class CountryController extends Controller
             if($country !== null){
                 $em->remove($country);
                 $em->flush();
-                return new Response(json_encode($id));
+                return new Response(json_encode(true));
             }else{
                 throw $this->createNotFoundException('No country found for id : '.$id);
             }

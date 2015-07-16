@@ -4,4 +4,13 @@
 
 {% block body %}
 <h1>Welcome to the GroupSize:edit page</h1>
+
+<div class="well">
+  <form method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+  </form>
+</div>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('js/admin/groupSize.js') }}"></script>
 {% endblock %}

@@ -3,7 +3,7 @@ country_add:
     defaults: { _controller: ClicSapeAdminBundle:Country:add }
 
 country_list:
-    path:     /list
+    path:     /
     defaults: { _controller: ClicSapeAdminBundle:Country:list }
 
 country_edit:

@@ -53,11 +53,19 @@ gulp.task('img', function() {
 
 //JAVASCRIPT TASK: write one minified js file out of my global custom js files for admin Bundle
 gulp.task('admin_js', function () {
-    return gulp.src(['src/ClicSape/Bundle/AdminBundle/Resources/js/global/*.js'])
+    return gulp.src(['src/ClicSape/Bundle/AdminBundle/Resources/js/global/global_admin.js'])
         .pipe(concat('admin.js'))
         .pipe(gulpif(env === 'prod', uglify()))
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest('web/js'));
+});
+
+gulp.task('admin_ready_js', function () {
+    return gulp.src(['src/ClicSape/Bundle/AdminBundle/Resources/js/global/adminReady.js'])
+        .pipe(concat('ready.js'))
+        .pipe(gulpif(env === 'prod', uglify()))
+        .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest('web/js/admin'));
 });
 
 //JAVASCRIPT TASK: write one minified js file out of my global custom js files for admin Bundle
@@ -65,7 +73,7 @@ gulp.task('admin_entity_js', function () {
     for (i = 0; i < tabEntity.length; i++) {
         var src = 'src/ClicSape/Bundle/AdminBundle/Resources/js/'+tabEntity[i]+'/*.js';
         var name = tabEntity[i]+'.js';
-        var dir = 'web/js/admin/'+tabEntity[i];
+        var dir = 'web/js/admin';
         
         gulp.src([src])
         .pipe(concat(name))
@@ -80,7 +88,7 @@ gulp.task('admin_entity_less', function () {
     for (i = 0; i < tabEntity.length; i++) {
         var src = 'src/ClicSape/Bundle/AdminBundle/Resources/less/'+tabEntity[i]+'/*.less';
         var name = tabEntity[i]+'.css';
-        var dir = 'web/css/admin/'+tabEntity[i];
+        var dir = 'web/css/admin';
         
         gulp.src([src])
         .pipe(gulpif(/[.]less/, less()))
@@ -102,8 +110,8 @@ gulp.task('admin_less', function () {
 });
 
 //define executable tasks when running "gulp" command
-gulp.task('default', ['js','admin_js', 'css', 'img','fonts','admin_entity_js','admin_entity_less','admin_less']);
+gulp.task('default', ['js','admin_js', 'css', 'img','fonts','admin_entity_js','admin_ready_js','admin_entity_less','admin_less']);
 //define executable tasks when running "gulp admin" command
-gulp.task('admin', ['admin_js','admin_entity_js','admin_entity_less','admin_less']);
+gulp.task('admin', ['admin_js','admin_entity_js','admin_entity_less','admin_less','admin_ready_js']);
 //define executable tasks when running "gulp gen" command
 gulp.task('gen', ['js', 'css', 'img','fonts']);

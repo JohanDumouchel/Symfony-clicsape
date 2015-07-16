@@ -45,7 +45,7 @@ class GroupSize
     /**
      * @var ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Size", inversedBy="groupSizes", cascade="persist")
+     * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Size", inversedBy="groupSizes", cascade={"remove", "persist"})
      */
     private $sizes;
     
