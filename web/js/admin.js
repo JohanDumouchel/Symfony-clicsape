@@ -7,12 +7,27 @@ $(document).ready(function() {
     //Initialisation de la page :
     //On cache la div chargement
     $('.loader').hide();
-    //On ajoute la suppression d'une entity dans les list
+    //On ajoute la suppression d'une entity dans les list avec un dialog
     $('button#delete').on( "click",function(){
+        $this = $(this);
+        $.confirm({
+            text: "Etes-vous sûr de vouloir supprimer cette élément?",
+            confirm: function() {
+                deleteEntity($this);
+            },
+            cancel: function() {
+                // nothing to do
+            }
+        });
+    });
+    
+    //Fonction pour supprimer une entity et sa ligne dans le tableau 
+    function deleteEntity($button){
         $('.loader').show();
         var regex = new RegExp('(\\w+)?_(\\d+)');
-        var result = $(this).attr('data-entity').match(regex);
+        var result = $button.attr('data-entity').match(regex);
         var url = 'delete';
+        var $row = $button.closest("tr");
         console.log(url);
         $.ajax({
             url: url,
@@ -20,19 +35,17 @@ $(document).ready(function() {
             dataType : 'json',
             data: 'id='+result[2],
             success : function(result, statut){
-                console.log('success');
-                console.log(result);
+                //gérer la gestion des droit admin
             },
             error : function(resultat, statut, erreur){
-                console.log('error');
                 $('.loader').hide();
             },
             complete : function(resultat, statut){
-                console.log('ok');
                 $('.loader').hide();
+                $row.remove();
             }
         });
-    });
+    }
     
     function initMultiField($idContainer,idLinkAdd,entityWording){
         var $container = $('div#'+$idContainer);
