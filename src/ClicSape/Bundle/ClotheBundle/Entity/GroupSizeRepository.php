@@ -3,6 +3,7 @@
 namespace ClicSape\Bundle\ClotheBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
+use ClicSape\Bundle\ClotheBundle\Entity\GroupSize;
 
 /**
  * GroupSizeRepository
@@ -12,4 +13,16 @@ use Doctrine\ORM\EntityRepository;
  */
 class GroupSizeRepository extends EntityRepository
 {
+    public function saveSize(GroupSize $groupSize)
+    {
+        
+    }
+    public function removeSize($id)
+    {
+        
+    }
+    public function saveSizes(GroupSize $groupSize)
+    {
+        
+    }
 }

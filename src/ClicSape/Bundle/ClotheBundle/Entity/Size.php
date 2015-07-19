@@ -41,9 +41,9 @@ class Size
     /**
      * @var ArrayCollection GroupSize
      *
-     * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\GroupSize", mappedBy="sizes")
+     * @ORM\ManyToOne(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\GroupSize", inversedBy="sizes")
      */
-    private $groupSizes;
+    private $groupSize;
     
     /**
      * 
@@ -144,36 +144,27 @@ class Size
         return $this->articles;
     }
     
+
     /**
-     * @param Category $category
+     * Set groupSize
      *
-     * @return Size 
+     * @param \ClicSape\Bundle\ClotheBundle\Entity\GroupSize $groupSize
+     * @return Size
      */
-     public function addCategory(Category $category)
+    public function setGroupSize(GroupSize $groupSize = null)
     {
-        $this->categories[] = $category;
-        
-        return $this;
-    }
-    
-    /**
-     * @param Category $category
-     *
-     * @return Size 
-     */
-    public function removeCategory(Category $category)
-    {
-        $this->categories->removeElement($category);
-        
+        $this->groupSize = $groupSize;
+
         return $this;
     }
 
     /**
+     * Get groupSize
      *
-     * @return ArrayCollection Category
+     * @return \ClicSape\Bundle\ClotheBundle\Entity\GroupSize 
      */
-    public function getCategories()
+    public function getGroupSize()
     {
-        return $this->categories;
+        return $this->groupSize;
     }
 }

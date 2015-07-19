@@ -4,6 +4,8 @@ namespace ClicSape\Bundle\ClotheBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class GroupSizeType extends AbstractType
@@ -38,6 +40,7 @@ class GroupSizeType extends AbstractType
             ))
             ->add('ajouter','submit')
         ;
+//        $builder->addEventListener(FormEvents::PRE_SUBMIT, array($this, 'onPreSubmit'));
     }
     
     /**
@@ -57,4 +60,13 @@ class GroupSizeType extends AbstractType
     {
         return 'groupsize_type';
     }
+    
+    public function onPreSubmit(FormEvent $event) {
+        $form = $event->getForm();
+        $groupSize = $form->getData();
+        var_dump($groupSize);
+    die('ici');
+        
+    }
+    
 }

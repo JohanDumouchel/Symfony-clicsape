@@ -11,9 +11,9 @@ class GroupSizeController extends Controller
     public function listAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $repoCat = $em->getRepository('ClicSapeClotheBundle:GroupSize');
-        $listGroupSize = $repoCat->findAll();
-                
+        $repo = $em->getRepository('ClicSapeClotheBundle:GroupSize');
+        $listGroupSize = $repo->findAll();
+                               
         return $this->render('ClicSapeAdminBundle:GroupSize:list.html.twig', array(
                 'listGroupSize' => $listGroupSize
             ));
@@ -51,9 +51,23 @@ class GroupSizeController extends Controller
         $request = Request::createFromGlobals();
         
         if ($form->handleRequest($request)->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($form->getData());
+            $groupSize = $form->getData();
+            $sizes = $groupSize->getSizes();            
+            $removeSize = array();
+            
+            foreach($sizes as $size){
+                if($size->getId() == null){
+                    $size->setGroupSize($groupSize);
+                    $em->persist($size);
+                } elseif ($size->getLevel() == null){
+                    $groupSize->removeSize($size);
+                    $em->detach($size);
+                    $removeSize[] = $size->getId();
+                }
+            }
+            $em->persist($groupSize);
             $em->flush();
+            $em->getRepository('ClicSapeClotheBundle:Size')->disabledSizes($removeSize);
             return $this->forward('ClicSapeAdminBundle:GroupSize:list');
         }
         

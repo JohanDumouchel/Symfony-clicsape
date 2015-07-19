@@ -12,4 +12,21 @@ use Doctrine\ORM\EntityRepository;
  */
 class SizeRepository extends EntityRepository
 {
+    /**
+     * @param array of id
+     * 
+     * 
+     */
+    public function disabledSizes(array $ids){
+        foreach($ids as $id){
+            $size = $this->find($id);
+            $em = $this->getEntityManager();
+            if($size !== null){
+                $size->setGroupSize();
+                $em->flush($size);
+            } else {
+                throw $this->createNotFoundException('No Size found for id : '.$id);
+            }
+        }        
+    }
 }
