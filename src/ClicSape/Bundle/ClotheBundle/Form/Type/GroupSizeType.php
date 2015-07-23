@@ -17,19 +17,12 @@ class GroupSizeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('disabled','checkbox')
+            ->add('disabled','checkbox', array('required' => false))
             ->add('title','text')
             ->add('sizes','collection',array(
                 'type' => 'size_type',
                 'allow_add' => true,
                 'by_reference' => false
-            ))
-            ->add('categories','entity',array(
-                'class' => 'ClicSapeClotheBundle:Category',
-                'choice_label' => 'title',
-                'multiple' => true,
-                'by_reference' => false,
-                'required' => true
             ))
             ->add('countries','entity',array(
                 'class' => 'ClicSapeCoreBundle:Country',
@@ -40,7 +33,6 @@ class GroupSizeType extends AbstractType
             ))
             ->add('ajouter','submit')
         ;
-//        $builder->addEventListener(FormEvents::PRE_SUBMIT, array($this, 'onPreSubmit'));
     }
     
     /**
@@ -59,14 +51,6 @@ class GroupSizeType extends AbstractType
     public function getName()
     {
         return 'groupsize_type';
-    }
-    
-    public function onPreSubmit(FormEvent $event) {
-        $form = $event->getForm();
-        $groupSize = $form->getData();
-        var_dump($groupSize);
-    die('ici');
-        
     }
     
 }

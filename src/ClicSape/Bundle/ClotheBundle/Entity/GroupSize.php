@@ -38,7 +38,7 @@ class GroupSize
     /**
      * @var ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\CoreBundle\Entity\Country", inversedBy="groupSizes", cascade="persist")
+     * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\CoreBundle\Entity\Country", inversedBy="groupSizes", cascade={"persist","remove"})
      */
     private $countries;
     
@@ -52,7 +52,7 @@ class GroupSize
     /**
      * @var ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Category", mappedBy="groupSizes", cascade={"remove", "persist"})
+     * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Category", mappedBy="groupSizes")
      * @ORM\JoinColumn(nullable=true)
      */
     private $categories;
@@ -106,7 +106,7 @@ class GroupSize
      * @param boolean $disabled
      * @return GroupSize
      */
-    public function setDisabled($disabled)
+    public function setDisabled($disabled = null)
     {
         $this->disabled = $disabled;
 
@@ -163,7 +163,7 @@ class GroupSize
      * @param \ClicSape\Bundle\ClotheBundle\Entity\Category $categorie
      * @return GroupSize
      */
-    public function addCategory(Category $categorie)
+    public function addCategory(\ClicSape\Bundle\ClotheBundle\Entity\Category $categorie)
     {
         $this->categories[] = $categorie;
 
@@ -175,7 +175,7 @@ class GroupSize
      *
      * @param \ClicSape\Bundle\ClotheBundle\Entity\Category $categorie
      */
-    public function removeCategory(Category $categorie)
+    public function removeCategory(\ClicSape\Bundle\ClotheBundle\Entity\Category $categorie)
     {
         $this->categories->removeElement($categorie);
     }

@@ -14,13 +14,13 @@ function deleteEntity($button){
         data: 'id='+result[2],
         success : function(result, statut){
             //gérer la gestion des droit admin
+            $row.remove();
         },
         error : function(resultat, statut, erreur){
-            $('.loader').hide();
+            alert('une erreur est survenue!');
         },
         complete : function(resultat, statut){
             $('.loader').hide();
-            $row.remove();
         }
     });
 }
@@ -70,16 +70,7 @@ function addLinkRemove($prototype) {
         return false;
     });
 }
-// La fonction qui ajoute un lien de suppression d'une catégorie
-function addLinkHide($prototype) {
-    $lienSuppression = $('<button class="btn btn-danger">Supprimer</button>');
-    $prototype.append($lienSuppression);
-    $lienSuppression.click(function(e) {
-        $prototype.hide();
-        e.preventDefault(); 
-        return false;
-    });
-}
+
 function checkMultiField(idContainer){
         $divs = $('div[id^='+idContainer+'_]');
         for(i = 0; i < $divs.length; i++)

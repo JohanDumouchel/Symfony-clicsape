@@ -14,13 +14,13 @@ function deleteEntity($button){
         data: 'id='+result[2],
         success : function(result, statut){
             //gérer la gestion des droit admin
+            $row.remove();
         },
         error : function(resultat, statut, erreur){
-            $('.loader').hide();
+            alert('une erreur est survenue!');
         },
         complete : function(resultat, statut){
             $('.loader').hide();
-            $row.remove();
         }
     });
 }

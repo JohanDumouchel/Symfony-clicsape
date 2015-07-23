@@ -5,10 +5,10 @@
 {% block body %}
 <div class="container-fluid">
     <div class='row'>
-        <h2 class='col-lg-7 col-lg-offset-1'>Welcome to the Country:list page</h2>  
-        <a class="btn btn-info col-lg-1 col-lg-offset-1  " href="{{path('country_add') }}">
-                <span class="glyphicon glyphicon-plus-sign" aria-hidden="true" ></span>
-        </a>
+        <h2 class='col-lg-7 col-lg-offset-1'>Welcome to the Country:list page</h2>
+        <div class='col-lg-2 col-lg-offset-1'>
+            {{button.addEntity('country_add')}}
+        </div>
     </div>
     {% if listCountry is not null %}
         <div class='row'>
