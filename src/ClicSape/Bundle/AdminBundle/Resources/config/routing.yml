@@ -13,5 +13,6 @@ clic_sape_admin_groupsize:
 clic_sape_admin_country:
     resource: "@ClicSapeAdminBundle/Resources/config/routing/country.yml"
     prefix:     /country
+    
 
 

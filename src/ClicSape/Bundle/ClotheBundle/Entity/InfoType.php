@@ -93,7 +93,7 @@ class InfoType
      *
      * @return InfoType 
      */
-     public function addArticleInfo(ClicSape\Bundle\ClotheBundle\Entity\ArticleInfo $articleInfo)
+     public function addArticleInfo(\ClicSape\Bundle\ClotheBundle\Entity\ArticleInfo $articleInfo)
     {
         $this->articleInfos[] = $articleInfo;
         
@@ -105,7 +105,7 @@ class InfoType
      *
      * @return InfoType 
      */
-    public function removeArticleInfo(ClicSape\Bundle\ClotheBundle\Entity\ArticleInfo $articleInfo)
+    public function removeArticleInfo(\ClicSape\Bundle\ClotheBundle\Entity\ArticleInfo $articleInfo)
     {
         $this->articleInfos->removeElement($articleInfo);
         
@@ -127,7 +127,7 @@ class InfoType
      * @param Category $category
      * @return InfoType
      */
-    public function setCategory(ClicSape\Bundle\ClotheBundle\Entity\Category $category)
+    public function setCategory(\ClicSape\Bundle\ClotheBundle\Entity\Category $category)
     {
         $this->category = $category;
 

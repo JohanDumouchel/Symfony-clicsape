@@ -77,7 +77,7 @@ class Price
      *
      * @return Price 
      */
-    public function setArticle(ClicSape\Bundle\ClotheBundle\Entity\Article $article)
+    public function setArticle(\ClicSape\Bundle\ClotheBundle\Entity\Article $article)
     {
         $this->article = $article;
         

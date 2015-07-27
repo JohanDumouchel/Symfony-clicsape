@@ -95,7 +95,7 @@ class Gender
      * @param Picture $picture
      * @return Gender
      */
-    public function setPicture(ClicSape\Bundle\CoreBundle\Entity\Picture $picture)
+    public function setPicture(\ClicSape\Bundle\CoreBundle\Entity\Picture $picture)
     {
         $this->picture = $picture;
 
@@ -117,7 +117,7 @@ class Gender
      *
      * @return Gamme 
      */
-     public function addCategory(ClicSape\Bundle\ClotheBundle\Entity\Category $category)
+     public function addCategory(\ClicSape\Bundle\ClotheBundle\Entity\Category $category)
     {
         $this->categories[] = $category;
         
@@ -129,7 +129,7 @@ class Gender
      *
      * @return Gamme 
      */
-    public function removeCategory(ClicSape\Bundle\ClotheBundle\Entity\Category $category)
+    public function removeCategory(\ClicSape\Bundle\ClotheBundle\Entity\Category $category)
     {
         $this->categories->removeElement($category);
         

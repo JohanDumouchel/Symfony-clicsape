@@ -1,17 +1,15 @@
-{% extends "::admin/base_admin.html.twig" %}
+{% extends "ClicSapeAdminBundle::Layout/base_admin.html.twig" %}
 
 {% block title %}ClicSapeAdminBundle:Country:list{% endblock %}
 
-{% block body %}
-<div class="container-fluid">
-    <div class='row'>
-        <h2 class='col-lg-7 col-lg-offset-1'>Welcome to the Country:list page</h2>
-        <div class='col-lg-2 col-lg-offset-1'>
-            {{button.addEntity('country_add')}}
-        </div>
+{% block h1 %}
+    <h2 class='col-lg-7 col-lg-offset-1'>Welcome to the Country:list page</h2>
+    <div class='col-lg-2 col-lg-offset-1'>
+        {{button.addEntity('country_add')}}
     </div>
+{% endblock %}
+{% block body %}
     {% if listCountry is not null %}
-        <div class='row'>
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -40,11 +38,9 @@
                 {% endfor %}
                 </tbody>
             </table>
-        </div>
-    {% endif %}
-</div>  
+    {% endif %} 
 {% endblock %}
 
 {% block javascripts %}
-    <script src="{{ asset('js/admin/country/country.js') }}"></script>
+    <script src="{{ asset('js/admin/country.js') }}"></script>
 {% endblock %}

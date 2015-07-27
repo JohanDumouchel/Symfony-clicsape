@@ -41,7 +41,6 @@ class Article
 
     /**
      * @var ArrayCollection Price
-     * @Assert\Type(type="PriceType")
      *
      * @ORM\OneToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Price", mappedBy="article")
      */
@@ -156,7 +155,7 @@ class Article
      *
      * @return Article 
      */
-     public function addPrice(ClicSape\Bundle\ClotheBundle\Entity\Price $price)
+     public function addPrice(\ClicSape\Bundle\ClotheBundle\Entity\Price $price)
     {
         $this->prices[] = $price;
         
@@ -168,7 +167,7 @@ class Article
      *
      * @return Article 
      */
-    public function removePrice(ClicSape\Bundle\ClotheBundle\Entity\Price $price)
+    public function removePrice(\ClicSape\Bundle\ClotheBundle\Entity\Price $price)
     {
         $this->prices->removeElement($price);
         
@@ -189,7 +188,7 @@ class Article
      *
      * @return Article 
      */
-     public function addStock(ClicSape\Bundle\ClotheBundle\Entity\Stock $stock)
+     public function addStock(\ClicSape\Bundle\ClotheBundle\Entity\Stock $stock)
     {
         $this->stocks[] = $stock;
         
@@ -201,7 +200,7 @@ class Article
      *
      * @return Article 
      */
-    public function removeStock(ClicSape\Bundle\ClotheBundle\Entity\Stock $stock)
+    public function removeStock(\ClicSape\Bundle\ClotheBundle\Entity\Stock $stock)
     {
         $this->stocks->removeElement($stock);
         
@@ -210,7 +209,7 @@ class Article
 
     /**
      *
-     * @return ArrayCollection Stock
+     * @return ArrayCollection ClicSape\Bundle\ClotheBundle\Entity\Stock
      */
     public function getStocks()
     {
@@ -222,7 +221,7 @@ class Article
      *
      * @return Article 
      */
-     public function addPicture(ClicSape\Bundle\CoreBundle\Entity\Picture $picture)
+     public function addPicture(\ClicSape\Bundle\CoreBundle\Entity\Picture $picture)
     {
         $this->pictures[] = $picture;
         
@@ -234,7 +233,7 @@ class Article
      *
      * @return Article 
      */
-    public function removePicture(ClicSape\Bundle\CoreBundle\Entity\Picture $picture)
+    public function removePicture(\ClicSape\Bundle\CoreBundle\Entity\Picture $picture)
     {
         $this->pictures->removeElement($picture);
         
@@ -255,7 +254,7 @@ class Article
      *
      * @return Article 
      */
-     public function addArticleInfo(ClicSape\Bundle\ClotheBundle\Entity\ArticleInfo $articleInfo)
+     public function addArticleInfo(\ClicSape\Bundle\ClotheBundle\Entity\ArticleInfo $articleInfo)
     {
         $this->articleInfos[] = $articleInfo;
         
@@ -267,7 +266,7 @@ class Article
      *
      * @return Article 
      */
-    public function removeArticleInfo(ClicSape\Bundle\ClotheBundle\Entity\ArticleInfo $articleInfo)
+    public function removeArticleInfo(\ClicSape\Bundle\ClotheBundle\Entity\ArticleInfo $articleInfo)
     {
         $this->articleInfos->removeElement($articleInfo);
         
@@ -288,7 +287,7 @@ class Article
      *
      * @return Article 
      */
-    public function addCategory(ClicSape\Bundle\ClotheBundle\Entity\Category $category)
+    public function addCategory(\ClicSape\Bundle\ClotheBundle\Entity\Category $category)
     {
         $this->categories[] = $category;
         
@@ -300,7 +299,7 @@ class Article
      *
      * @return Article 
      */
-    public function removeCategory(ClicSape\Bundle\ClotheBundle\Entity\Category $category)
+    public function removeCategory(\ClicSape\Bundle\ClotheBundle\Entity\Category $category)
     {
         $this->categories->removeElement($category);
         

@@ -115,7 +115,7 @@ class ArticleInfo
      *
      * @return ArticleInfo 
      */
-    public function setInfoType(ClicSape\Bundle\ClotheBundle\Entity\InfoType $infoType)
+    public function setInfoType(\ClicSape\Bundle\ClotheBundle\Entity\InfoType $infoType)
     {
         $this->infoType = $infoType;
         
@@ -136,7 +136,7 @@ class ArticleInfo
      *
      * @return ArticleInfo 
      */
-    public function setArticle(ClicSape\Bundle\ClotheBundle\Entity\Article $article)
+    public function setArticle(\ClicSape\Bundle\ClotheBundle\Entity\Article $article)
     {
         $this->article = $article;
         

@@ -1,14 +1,13 @@
-{% extends "::admin/base_admin.html.twig" %}
+{% extends "ClicSapeAdminBundle::Layout/base_admin.html.twig" %}
 
 {% block title %}ClicSapeAdminBundle:Country:add{% endblock %}
 
+{% block h1 %}
+    <h1>Welcome to the GroupSize:add page</h1>
+{% endblock %}
 
 {% block body %}
-<h1>Welcome to the GroupSize:add page</h1>
-
-<div class="well">
-  <form method="post" {{ form_enctype(form) }}>
-    {{ form_widget(form) }}
-  </form>
-</div>
+    <form method="post" {{ form_enctype(form) }}>
+      {{ form_widget(form) }}
+    </form>
 {% endblock %}

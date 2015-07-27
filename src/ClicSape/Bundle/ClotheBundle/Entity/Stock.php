@@ -104,7 +104,7 @@ class Stock
      *
      * @return Stock 
      */
-    public function setArticle(ClicSape\Bundle\ClotheBundle\Entity\Article $article)
+    public function setArticle(\ClicSape\Bundle\ClotheBundle\Entity\Article $article)
     {
         $this->article = $article;
         

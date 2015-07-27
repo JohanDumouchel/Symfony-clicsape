@@ -4,11 +4,12 @@ namespace ClicSape\Bundle\AdminBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use ClicSape\Bundle\ClotheBundle\Entity\Category;
     
 class CategoryController extends Controller
 {
-    public function listAction(Request $request)
+    public function listAction()
     {
         $em = $this->getDoctrine()->getManager();
         $repoCat = $em->getRepository('ClicSapeClotheBundle:Category');
@@ -59,4 +60,22 @@ class CategoryController extends Controller
             ));    
     }
 
+    public function deleteAction(Request $request)
+    {
+        if($request->get('id') == null){
+            throw $this->createNotFoundException('parameter missing');
+        }
+        $id = $request->get('id');
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository('ClicSapeClotheBundle:Category');       
+        $category = $repo->find($id);
+        
+        if($category !== null){
+            $em->remove($category);
+            $em->flush();
+            return new Response(json_encode(true));
+        }else{
+            throw $this->createNotFoundException('No country found for id : '.$id);
+        }
+    }
 }

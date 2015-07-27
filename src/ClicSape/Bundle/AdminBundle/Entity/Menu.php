@@ -111,7 +111,7 @@ class Menu
      *
      * @return Category 
      */
-     public function addMenuContent(ClicSape\Bundle\AdminBundle\Entity\MenuContent $menuContent)
+     public function addMenuContent(\ClicSape\Bundle\AdminBundle\Entity\MenuContent $menuContent)
     {
         $this->menuContents[] = $menuContent;
         
@@ -123,7 +123,7 @@ class Menu
      *
      * @return Category 
      */
-    public function removeMenuContent(ClicSape\Bundle\AdminBundle\Entity\MenuContent $menuContent)
+    public function removeMenuContent(\ClicSape\Bundle\AdminBundle\Entity\MenuContent $menuContent)
     {
         $this->menuContents->removeElement($menuContent);
         

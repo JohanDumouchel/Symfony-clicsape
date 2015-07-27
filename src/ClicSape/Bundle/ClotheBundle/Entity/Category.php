@@ -162,7 +162,7 @@ class Category
      *
      * @return Category 
      */
-     public function addInfoType(ClicSape\Bundle\ClotheBundle\Entity\InfoType $infoType)
+     public function addInfoType(\ClicSape\Bundle\ClotheBundle\Entity\InfoType $infoType)
     {
         $this->infoTypes[] = $infoType;
         
@@ -174,7 +174,7 @@ class Category
      *
      * @return Category 
      */
-    public function removeInfoType(ClicSape\Bundle\ClotheBundle\Entity\InfoType $infoType)
+    public function removeInfoType(\ClicSape\Bundle\ClotheBundle\Entity\InfoType $infoType)
     {
         $this->infoTypes->removeElement($infoType);
         
@@ -195,7 +195,7 @@ class Category
      *
      * @return Category 
      */
-     public function addArticle(ClicSape\Bundle\ClotheBundle\Entity\Article $article)
+     public function addArticle(\ClicSape\Bundle\ClotheBundle\Entity\Article $article)
     {
         $this->articles[] = $article;
         
@@ -207,7 +207,7 @@ class Category
      *
      * @return Category 
      */
-    public function removeArticle(ClicSape\Bundle\ClotheBundle\Entity\Article $article)
+    public function removeArticle(\ClicSape\Bundle\ClotheBundle\Entity\Article $article)
     {
         $this->articles->removeElement($article);
         

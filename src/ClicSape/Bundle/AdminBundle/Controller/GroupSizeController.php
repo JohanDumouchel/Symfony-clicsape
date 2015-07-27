@@ -28,6 +28,12 @@ class GroupSizeController extends Controller
         if ($form->handleRequest($request)->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($form->getData());
+            $groupSize = $form->getData();
+            $sizes = $groupSize->getSizes();
+            foreach($sizes as $size){
+                $size->setGroupSize($groupSize);
+                $em->persist($size);
+            }
             $em->flush();
             
             return $this->forward('ClicSapeAdminBundle:GroupSize:list');
@@ -58,19 +64,21 @@ class GroupSizeController extends Controller
             
             //On enregistre les tailles manuellement
             foreach($sizes as $size){
-                if($size->getId() == null){
+                if($size->getId() === null){
                     $size->setGroupSize($groupSize);
                     $em->persist($size);
-                } elseif ($size->getLevel() == null){
+                } elseif ($size->getLevel() === null){
                     $groupSize->removeSize($size);
                     $em->detach($size);
-                    $removeSize[] = $size->getId();
+                    $removeSizes[] = $size->getId();
                 }
             }
             
             $em->persist($groupSize);
             $em->flush();
-            $em->getRepository('ClicSapeClotheBundle:Size')->disabledSizes($removeSize);
+            if(isset($removeSizes)){
+                $em->getRepository('ClicSapeClotheBundle:Size')->disabledSizes($removeSizes);
+            }
             return $this->forward('ClicSapeAdminBundle:GroupSize:list');
         }
         
@@ -82,24 +90,24 @@ class GroupSizeController extends Controller
     
     public function deleteAction(Request $request)
     {
-        if($request->get('id')){
-            $id = $request->get('id');
-            $em = $this->getDoctrine()->getManager();
-            $repo = $em->getRepository('ClicSapeClotheBundle:GroupSize');       
-            $groupSize = $repo->find($id);
-            if($groupSize !== null){
-                foreach($groupSize->getSizes() as $size){
-                    $groupSize->removeSize($size);
-                    $size->setGroupSize();
-                }
-                $em->remove($groupSize);
-                $em->flush();
-                return new Response(json_encode(true));
-            }else{
-                throw $this->createNotFoundException('No country found for id : '.$id);
-            }
-        }else {
+        if($request->get('id') == null){
             throw $this->createNotFoundException('parameter missing');
+        }
+        $id = $request->get('id');
+        $em = $this->getDoctrine()->getManager();
+        $repo = $em->getRepository('ClicSapeClotheBundle:GroupSize');       
+        $groupSize = $repo->find($id);
+        
+        if($groupSize !== null){
+            foreach($groupSize->getSizes() as $size){
+                $groupSize->removeSize($size);
+                $size->setGroupSize();
+            }
+            $em->remove($groupSize);
+            $em->flush();
+            return new Response(json_encode(true));
+        }else{
+            throw $this->createNotFoundException('No country found for id : '.$id);
         }
     }
 

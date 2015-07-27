@@ -1,5 +1,5 @@
 category_list:
-    path:     /list
+    path:     /
     defaults: { _controller: ClicSapeAdminBundle:Category:list }
 
 category_add:
@@ -11,3 +11,9 @@ category_edit:
     defaults: { _controller: ClicSapeAdminBundle:Category:edit }
     requirements:
         id: \d+
+
+category_delete:
+    path: /delete
+    defaults: { _controller: ClicSapeAdminBundle:Category:delete }
+    requirements:
+        _method:  POST

@@ -1,18 +1,18 @@
-{% extends "::admin/base_admin.html.twig" %}
+{% extends "ClicSapeAdminBundle::Layout/base_admin.html.twig" %}
 
 {% block title %}ClicSapeAdminBundle:Category:add{% endblock %}
 
 {% block stylesheets %}
 {% endblock %}
 
-{% block body %}
-<h1>Welcome to the Category:add page</h1>
+{% block h1 %}
+    <h1>Welcome to the Category:add page</h1>
+{% endblock %}
 
-<div class="well">
+{% block body %}
   <form method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
   </form>
-</div>
 {% endblock %}
 
 {% block javascripts %}

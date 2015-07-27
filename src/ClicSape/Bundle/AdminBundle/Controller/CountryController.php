@@ -65,20 +65,19 @@ class CountryController extends Controller
     
     public function deleteAction(Request $request)
     {
-        if($request->get('id')){
-            $id = $request->get('id');
-            $em = $this->getDoctrine()->getManager();
-            $repoCountry = $em->getRepository('ClicSapeCoreBundle:Country');
-            $country = $repoCountry->find($id);
-            if($country !== null){
-                $em->remove($country);
-                $em->flush();
-                return new Response(json_encode(true));
-            }else{
-                throw $this->createNotFoundException('No country found for id : '.$id);
-            }
-        }else {
+        if($request->get('id') == null){
             throw $this->createNotFoundException('parameter missing');
+        }
+        $id = $request->get('id');
+        $em = $this->getDoctrine()->getManager();
+        $repoCountry = $em->getRepository('ClicSapeCoreBundle:Country');
+        $country = $repoCountry->find($id);
+        if($country !== null){
+            $em->remove($country);
+            $em->flush();
+            return new Response(json_encode(true));
+        }else{
+            throw $this->createNotFoundException('No country found for id : '.$id);
         }
     }
 }

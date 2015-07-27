@@ -38,7 +38,8 @@ class GroupSize
     /**
      * @var ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\CoreBundle\Entity\Country", inversedBy="groupSizes", cascade={"persist","remove"})
+     * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\CoreBundle\Entity\Country", inversedBy="groupSizes", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true)
      */
     private $countries;
     
@@ -209,7 +210,7 @@ class GroupSize
      *
      * @param \ClicSape\Bundle\CoreBundle\Entity\Country $country
      */
-    public function removeCountry(Country $country)
+    public function removeCountry(\ClicSape\Bundle\CoreBundle\Entity\Country $country)
     {
         $this->countries->removeElement($country);
     }
