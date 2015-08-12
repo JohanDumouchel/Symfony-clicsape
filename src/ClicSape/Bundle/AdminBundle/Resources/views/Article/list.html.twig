@@ -1,7 +1,54 @@
-{% extends "::base.html.twig" %}
+{% extends "ClicSapeAdminBundle::Layout/base_admin.html.twig" %}
 
 {% block title %}ClicSapeAdminBundle:Article:list{% endblock %}
 
+{% block h1 %}
+    <h2 class='col-lg-7 col-lg-offset-1'>Welcome to the Article:list page</h2>
+    <div class='col-lg-2 col-lg-offset-1'>
+        {{button.addEntity('article_add')}}
+    </div>
+{% endblock %}
 {% block body %}
-<h1>Welcome to the Article:list page</h1>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>titre</th>
+                <th>description</th>
+                <th>categories</th>
+                <th>genre</th>
+                <th>photos</th>
+                <th>action</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for article in listArt  %}
+            <tr>
+                <td>{{article.id}}</td>
+                <td>{{article.title}}</td>
+                <td>{{article.description}}</td>
+                <td>
+                    {% for category in article.categories %}
+                        {{category.title}}<br/>
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for gender in article.genders %}
+                        {{gender.title}}<br/>
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for picture in article.pictures %}
+                        <img class="gallery-small" src="{{picture.getWebPath}}"<br/>
+                    {% endfor %}
+                </td>
+                <td>
+                    {{button.edit('article_edit',article.id)}}
+                    {{button.delete('article',article.id)}}
+                </td>
+            </tr>
+
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}

@@ -16,9 +16,27 @@ class ArticleType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('descritpion')
-            ->add('sizes')
-            ->add('categories')
+            ->add('description')
+            ->add('categories','entity',array(
+                'class' => 'ClicSapeClotheBundle:Category',
+                'choice_label' => 'title',
+                'multiple' => true,
+                'by_reference' => false,
+                'required' => true
+            ))
+            ->add('genders','entity',array(
+                'class' => 'ClicSapeClotheBundle:Gender',
+                'choice_label' => 'title',
+                'multiple' => true,
+                'by_reference' => false,
+                'required' => true
+            ))
+            ->add('pictures','collection',array(
+                'type' => 'picture_type',
+                'allow_add' => true,
+                'by_reference' => false
+            ))
+            ->add('ajouter','submit')
         ;
     }
     
@@ -37,6 +55,6 @@ class ArticleType extends AbstractType
      */
     public function getName()
     {
-        return 'clicsape_bundle_clothebundle_article';
+        return 'article_type';
     }
 }

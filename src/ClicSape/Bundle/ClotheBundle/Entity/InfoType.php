@@ -32,7 +32,6 @@ class InfoType
     
     /**
      * @var ArrayCollection ArticleInfo
-     * @Assert\Type(type="ArticleInfoType")
      *
      * @ORM\OneToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\ArticleInfo", mappedBy="infoType")
      */
@@ -40,7 +39,6 @@ class InfoType
     
     /**
      * @var Category
-     * @Assert\Type(type="CategoryType")
      * 
      * @ORM\ManyToOne(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Category", inversedBy="infoTypes")
      */

@@ -12,10 +12,10 @@
         <script src="{{ asset('js/admin.js') }}"></script>
     </head>
     <body>
-        {% import 'ClicSapeAdminBundle::Default/button.html.twig' as button %}
+        {% import 'ClicSapeAdminBundle::Macro/button.html.twig' as button %}
         <div class="container-fluid">
             <div class="row">
-                <nav class="navbar navbar-default navbar-fixed-top">
+                <nav id="admin-nav" class="navbar navbar-inverse navbar-fixed-top">
                 <div class="container-fluid">
                     <div class="navbar-header">
                         <a class="navbar-brand" href="#">Admin</a>
@@ -28,6 +28,7 @@
                             <li><a href="{{path('article_list')}}">Article</a></li>
                     </div>
                 </div>
+                </nav>
             </div>
             <div class="row well">
                 {% block h1 %}

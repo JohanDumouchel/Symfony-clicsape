@@ -59,7 +59,7 @@ class Category
      * @var ArrayCollection Article
      * 
      * 
-     * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Article", inversedBy="categories", cascade="persist")
+     * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Article", mappedBy="categories", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
      */
     private $articles;
@@ -68,7 +68,7 @@ class Category
      * @var ArrayCollection GroupSize
      * 
      * 
-     * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\GroupSize", inversedBy="categories", cascade={"remove", "persist"})
+     * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\GroupSize", inversedBy="categories", cascade={"persist"})
      * @ORM\JoinColumn(nullable=true)
      */
     private $groupSizes;

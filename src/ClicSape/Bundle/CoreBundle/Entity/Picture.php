@@ -1,6 +1,10 @@
 <?php
 
 namespace ClicSape\Bundle\CoreBundle\Entity;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -9,6 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table()
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks
  */
 class Picture
 {
@@ -31,18 +36,24 @@ class Picture
     /**
      * @var string
      *
-     * @ORM\Column(name="url", type="string", length=255)
+     * @ORM\Column(name="path", type="string", length=255)
      */
-    private $url;
+    private $path;
+    
+    /**
+     * @var string
+     * 
+     * @Assert\File(maxSize="6000000") 
+     */
+    private $file;
     
     /**
      * @var Article
      *
-     * @ORM\ManyToOne(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Article", inversedBy="pictures")
+     * @ORM\ManyToOne(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Article", inversedBy="pictures",cascade={"persist"})
      */
     private $article;
-
-
+    
     /**
      * Get id
      *
@@ -77,29 +88,6 @@ class Picture
     }
 
     /**
-     * Set url
-     *
-     * @param string $url
-     * @return Picture
-     */
-    public function setUrl($url)
-    {
-        $this->url = $url;
-
-        return $this;
-    }
-
-    /**
-     * Get url
-     *
-     * @return string 
-     */
-    public function getUrl()
-    {
-        return $this->url;
-    }
-    
-    /**
      * Set level
      *
      * @param integer $level
@@ -121,25 +109,137 @@ class Picture
     {
         return $this->level;
     }
-    
+
     /**
-     * @param Article $article
+     * Set article
      *
-     * @return Picture 
+     * @param \ClicSape\Bundle\ClotheBundle\Entity\Article $article
+     * @return Picture
      */
-    public function setArticle(\ClicSape\Bundle\ClotheBundle\Entity\Article $article)
+    public function setArticle(\ClicSape\Bundle\ClotheBundle\Entity\Article $article = null)
     {
         $this->article = $article;
-        
+
         return $this;
+    }
+
+    /**
+     * Get article
+     *
+     * @return \ClicSape\Bundle\ClotheBundle\Entity\Article 
+     */
+    public function getArticle()
+    {
+        return $this->article;
+    }
+
+    /**
+     * Set path
+     *
+     * @param string $path
+     * @return Picture
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+
+        return $this;
+    }
+
+    /**
+     * Get path
+     *
+     * @return string 
+     */
+    public function getPath()
+    {
+        return $this->path;
+    }
+
+    /**
+     * Set file
+     *
+     * @param string $file
+     * @return Picture
+     */
+    public function setFile($file)
+    {
+        $this->file = $file;
+
+        return $this;
+    }
+
+    /**
+     * Get file
+     *
+     * @return string 
+     */
+    public function getFile()
+    {
+        return $this->file;
     }
     
     /**
-     *
-     * @return Picture 
+     * @ORM\PrePersist()
+     * @ORM\PreUpdate()
      */
-     public function getArticle()
+    public function preUpload()
     {
-        return $this->article;
+        if (null !== $this->file) {
+            // faites ce que vous voulez pour générer un nom unique
+            $this->path = sha1(uniqid(mt_rand(), true)).'.'.$this->file->guessExtension();
+        }
+    }
+    
+    /**
+     * @ORM\PostPersist()
+     * @ORM\PostUpdate()
+     */
+    public function upload()
+    {
+        if (null === $this->file) {
+            return;
+        }
+
+        // s'il y a une erreur lors du déplacement du fichier, une exception
+        // va automatiquement être lancée par la méthode move(). Cela va empêcher
+        // proprement l'entité d'être persistée dans la base de données si
+        // erreur il y a
+        $this->file->move($this->getUploadRootDir(), $this->path);
+
+        unset($this->file);
+    }
+
+    /**
+     * @ORM\PostRemove()
+     */
+    public function removeUpload()
+    {
+        if ($this->file) {
+            unlink($this->file);
+        }
+    }
+    
+    public function getAbsolutePath()
+    {
+        return null === $this->path ? null : $this->getUploadRootDir().'/'.$this->path;
+    }
+
+    public function getWebPath()
+    {
+        return null === $this->path ? null : $this->getUploadDir().'/'.$this->path;
+    }
+
+    protected function getUploadRootDir()
+    {
+        // le chemin absolu du répertoire où les documents uploadés doivent être sauvegardés
+        return __DIR__.'/../Resources'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        // on se débarrasse de « __DIR__ » afin de ne pas avoir de problème lorsqu'on affiche
+        // le document/image dans la vue.
+        return '/img/article';
     }
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-var tabEntity = ['country','category','groupSize',];
+var tabEntity = ['country','category','groupSize','article'];
 var gulp = require('gulp');
 var gulpif = require('gulp-if');
 var uglify = require('gulp-uglify');
@@ -49,6 +49,12 @@ gulp.task('fonts', function() {
 gulp.task('img', function() {
     return gulp.src('app/Resources/img/**/*.*')
         .pipe(gulp.dest('web/img'));
+});
+
+//IMAGE TASK: Just pipe images from project folder to public web folder
+gulp.task('img_article', function() {
+    return gulp.src('src/ClicSape/Bundle/CoreBundle/Resources/img/article/**/*.*')
+        .pipe(gulp.dest('web/img/article'));
 });
 
 //JAVASCRIPT TASK: write one minified js file out of my global custom js files for admin Bundle
@@ -110,8 +116,8 @@ gulp.task('admin_less', function () {
 });
 
 //define executable tasks when running "gulp" command
-gulp.task('default', ['js','admin_js', 'css', 'img','fonts','admin_entity_js','admin_ready_js','admin_entity_less','admin_less']);
+gulp.task('default', ['js','admin_js', 'css', 'img','fonts','admin_entity_js','admin_ready_js','admin_entity_less','admin_less','img_article']);
 //define executable tasks when running "gulp admin" command
-gulp.task('admin', ['admin_js','admin_entity_js','admin_entity_less','admin_less','admin_ready_js']);
+gulp.task('admin', ['admin_js','admin_entity_js','admin_entity_less','admin_less','admin_ready_js','img_article']);
 //define executable tasks when running "gulp gen" command
 gulp.task('gen', ['js', 'css', 'img','fonts']);

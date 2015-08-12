@@ -1,8 +1,17 @@
-{% extends "::base.html.twig" %}
+{% extends "ClicSapeAdminBundle::Layout/base_admin.html.twig" %}
 
 {% block title %}ClicSapeAdminBundle:Article:add{% endblock %}
 
+{% block h1 %}
+    <h1>Welcome to the Article:add page</h1>
+{% endblock %}
+
 {% block body %}
-<h1>Welcome to the Article:add page</h1>
-{{ form(form) }}
+  <form method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+  </form>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/admin/article.js') }}"></script>
 {% endblock %}

@@ -1,0 +1,16 @@
+{% extends "ClicSapeAdminBundle::Layout/base_admin.html.twig" %}
+
+{% block title %}ClicSapeAdminBundle:Picture:list{% endblock %}
+
+{% block h1 %}
+    <h2 class='col-lg-7 col-lg-offset-1'>Welcome to the Picture:list page</h2>
+    <div class='col-lg-2 col-lg-offset-1'>
+        {{button.addEntity('picture_add')}}
+    </div>
+{% endblock %}
+
+{% block body %}
+    {% for picture in pictures %}
+        <img class="gallery img-rounded" src="{{picture.getWebPath}}">
+    {% endfor %}
+{% endblock %}

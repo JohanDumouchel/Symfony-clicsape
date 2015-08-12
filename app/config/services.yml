@@ -28,3 +28,11 @@ services:
         class: ClicSape\Bundle\CoreBundle\Form\Type\CountryType
         tags:
             - { name: form.type, alias: country_type}
+    clic_sape_clothe.form.type.article:
+        class: ClicSape\Bundle\ClotheBundle\Form\Type\ArticleType
+        tags:
+            - { name: form.type, alias: article_type}
+    clic_sape_core.form.type.picture:
+        class: ClicSape\Bundle\CoreBundle\Form\Type\PictureType
+        tags:
+            - { name: form.type, alias: picture_type}

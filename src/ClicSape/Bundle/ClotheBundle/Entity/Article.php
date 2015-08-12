@@ -35,9 +35,9 @@ class Article
      * @var string
      * @Assert\Type(type="string")
      *
-     * @ORM\Column(name="descritpion", type="text")
+     * @ORM\Column(name="description", type="text")
      */
-    private $descritpion;
+    private $description;
 
     /**
      * @var ArrayCollection Price
@@ -48,7 +48,6 @@ class Article
     
     /**
      * @var ArrayCollection Stock
-     * @Assert\Type(type="StockType")
      * 
      * @ORM\OneToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Stock", mappedBy="article")
      */
@@ -56,27 +55,31 @@ class Article
     
     /**
      * @var ArrayCollection Picture
-     * @Assert\Type(type="PictureType")
      *
-     * @ORM\OneToMany(targetEntity="ClicSape\Bundle\CoreBundle\Entity\Picture", mappedBy="article")
+     * @ORM\OneToMany(targetEntity="ClicSape\Bundle\CoreBundle\Entity\Picture", mappedBy="article", cascade={"persist"})
      */
     private $pictures;
     
     /**
      * @var ArrayCollection ArticleInfo
-     * @Assert\Type(type="ArticleInfoType")
      *
      * @ORM\OneToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\ArticleInfo", mappedBy="article")
      */
     private $articleInfos;
     
     /**
-     * @var ArrayCollection Article
-     * @Assert\Type(type="CategoryType")
+     * @var ArrayCollection Category
      * 
-     * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Category", mappedBy="articles")
+     * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Category", inversedBy="articles", cascade={"persist"})
      */
     private $categories;
+    
+    /**
+     * @var ArrayCollection Gender
+     * 
+     * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Gender", inversedBy="articles", cascade={"persist"})
+     */
+    private $genders;
     
     /**
      * 
@@ -87,9 +90,9 @@ class Article
         $this->prices = new ArrayCollection();
         $this->stocks = new ArrayCollection();
         $this->pictures = new ArrayCollection();
-        $this->articleInfos = new ArrayCollection();
-        $this->sizes = new ArrayCollection();
+        $this->articleInfos = new ArrayCollection();    
         $this->categories = new ArrayCollection();
+        $this->genders = new ArrayCollection();
     }
     
     /**
@@ -126,26 +129,26 @@ class Article
     }
 
     /**
-     * Set descritpion
+     * Set description
      *
-     * @param string $descritpion
+     * @param string $description
      * @return Article
      */
-    public function setDescritpion($descritpion)
+    public function setDescription($description)
     {
-        $this->descritpion = $descritpion;
+        $this->description = $description;
 
         return $this;
     }
 
     /**
-     * Get descritpion
+     * Get description
      *
      * @return string 
      */
-    public function getDescritpion()
+    public function getDescription()
     {
-        return $this->descritpion;
+        return $this->description;
     }
 
     
@@ -313,5 +316,38 @@ class Article
     public function getCategories()
     {
         return $this->categories;
+    }
+
+    /**
+     * Add genders
+     *
+     * @param \ClicSape\Bundle\ClotheBundle\Entity\Gender $genders
+     * @return Article
+     */
+    public function addGender(\ClicSape\Bundle\ClotheBundle\Entity\Gender $genders)
+    {
+        $this->genders[] = $genders;
+
+        return $this;
+    }
+
+    /**
+     * Remove genders
+     *
+     * @param \ClicSape\Bundle\ClotheBundle\Entity\Gender $genders
+     */
+    public function removeGender(\ClicSape\Bundle\ClotheBundle\Entity\Gender $genders)
+    {
+        $this->genders->removeElement($genders);
+    }
+
+    /**
+     * Get genders
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getGenders()
+    {
+        return $this->genders;
     }
 }

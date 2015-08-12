@@ -41,11 +41,18 @@ class Gender
     private $picture;
     
     /**
-     * @var Categories     
+     * @var Category     
      * 
      * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Category", mappedBy="genders")
      */
     private $categories;
+    
+    /**
+     * @var Article     
+     * 
+     * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Article", mappedBy="genders" ,cascade={"persist"})
+     */
+    private $articles;
     
     /**
      * 
@@ -143,5 +150,38 @@ class Gender
     public function getCategories()
     {
         return $this->categories;
+    }
+
+    /**
+     * Add articles
+     *
+     * @param \ClicSape\Bundle\ClotheBundle\Entity\Article $articles
+     * @return Gender
+     */
+    public function addArticle(\ClicSape\Bundle\ClotheBundle\Entity\Article $articles)
+    {
+        $this->articles[] = $articles;
+
+        return $this;
+    }
+
+    /**
+     * Remove articles
+     *
+     * @param \ClicSape\Bundle\ClotheBundle\Entity\Article $articles
+     */
+    public function removeArticle(\ClicSape\Bundle\ClotheBundle\Entity\Article $articles)
+    {
+        $this->articles->removeElement($articles);
+    }
+
+    /**
+     * Get articles
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getArticles()
+    {
+        return $this->articles;
     }
 }

@@ -40,7 +40,6 @@ class ArticleInfo
 
     /**
      * @var InfoType
-     * @Assert\Type(type="InfoTypeType")
      *
      * @ORM\ManyToOne(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\InfoType", inversedBy="articleInfos")
      */
@@ -48,7 +47,6 @@ class ArticleInfo
     
     /**
      * @var Article
-     * @Assert\Type(type="ArticleType")
      *
      * @ORM\ManyToOne(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Article", inversedBy="articleInfos")
      */

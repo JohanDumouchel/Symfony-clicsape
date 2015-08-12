@@ -1,0 +1,19 @@
+picture_list:
+    path:     /
+    defaults: { _controller: ClicSapeAdminBundle:Picture:list }
+
+picture_add:
+    path:     /add
+    defaults: { _controller: ClicSapeAdminBundle:Picture:add }
+
+picture_edit:
+    path:     /edit/{id}
+    defaults: { _controller: ClicSapeAdminBundle:Picture:edit }
+    requirements:
+        id: \d+
+        
+picture_delete:
+    path: /delete
+    defaults: { _controller: ClicSapeAdminBundle:Picture:delete }
+    requirements:
+        _method:  POST

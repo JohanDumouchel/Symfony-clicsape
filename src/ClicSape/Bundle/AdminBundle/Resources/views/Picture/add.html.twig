@@ -1,0 +1,16 @@
+{% extends "ClicSapeAdminBundle::Layout/base_admin.html.twig" %}
+
+{% block title %}ClicSapeAdminBundle:Picture:add{% endblock %}
+
+{% block h1 %}
+    <h1>Welcome to the Picture:add page</h1>
+{% endblock %}
+
+{% block body %}
+    <form method="post" {{ form_enctype(form) }}>
+      {{ form_widget(form) }}
+        <div>
+            <button type="submit">Ajouter</button>
+        </div>
+    </form>
+{% endblock %}

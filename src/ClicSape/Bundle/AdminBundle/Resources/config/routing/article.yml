@@ -2,12 +2,18 @@ article_list:
     path:     /
     defaults: { _controller: ClicSapeAdminBundle:Article:list }
 
-add:
+article_add:
     path:     /add
     defaults: { _controller: ClicSapeAdminBundle:Article:add }
 
-edit:
+article_edit:
     path:     /edit/{id}
     defaults: { _controller: ClicSapeAdminBundle:Article:edit }
     requirements:
         id: \d+
+
+article_delete:
+    path: /delete
+    defaults: { _controller: ClicSapeAdminBundle:Article:delete }
+    requirements:
+        _method:  POST
