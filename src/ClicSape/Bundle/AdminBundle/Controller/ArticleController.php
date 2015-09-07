@@ -9,15 +9,28 @@ use Symfony\Component\HttpFoundation\Response;
 
 class ArticleController extends Controller
 {
-    public function listAction()
-    {
-        $em = $this->getDoctrine()->getManager();
-        $repoArt = $em->getRepository('ClicSapeClotheBundle:Article');
-        $listArt = $repoArt->findAll();
-        
-        return $this->render('ClicSapeAdminBundle:Article:list.html.twig', array(
+    public function listAction(Request $request)
+    {   
+        $filters = $request->get('filter');
+        if($filters !== null){            
+            $articleManager = $this->get('article_manager');
+            $listArt = $articleManager->findByFilter($filters);
+            
+            $content = $this->renderView('ClicSapeAdminBundle:Article:list_content.html.twig', array(
                 'listArt' => $listArt
             ));
+            
+            return new Response($content);
+        } else {
+            $em = $this->getDoctrine()->getManager();
+            $repoArt = $em->getRepository('ClicSapeClotheBundle:Article');
+            $listArt = $repoArt->findAll();
+            
+             return $this->render('ClicSapeAdminBundle:Article:list.html.twig', array(
+                'listArt' => $listArt
+            ));
+        }
+       
     }
 
     public function addAction(Request $request)

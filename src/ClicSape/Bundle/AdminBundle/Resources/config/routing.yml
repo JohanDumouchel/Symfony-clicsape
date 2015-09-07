@@ -18,21 +18,3 @@ clic_sape_admin_picture:
     resource: "@ClicSapeAdminBundle/Resources/config/routing/picture.yml"
     prefix:     /picture
     
-
-
-
-list:
-    path:     /
-    defaults: { _controller: ClicSapeAdminBundle:Picture:list }
-
-add:
-    path:     /add
-    defaults: { _controller: ClicSapeAdminBundle:Picture:add }
-
-delete:
-    path:     /delete
-    defaults: { _controller: ClicSapeAdminBundle:Picture:delete }
-
-edit:
-    path:     /edit
-    defaults: { _controller: ClicSapeAdminBundle:Picture:edit }

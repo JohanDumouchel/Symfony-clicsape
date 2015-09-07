@@ -3,6 +3,7 @@
 namespace ClicSape\Bundle\ClotheBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\QueryBuilder;
 
 /**
  * ArticleRepository
@@ -12,4 +13,17 @@ use Doctrine\ORM\EntityRepository;
  */
 class ArticleRepository extends EntityRepository
 {
+    public function findByFilter(QueryBuilder $queryBuilder = null, $filter, $value) {
+        if($queryBuilder === null){
+        $this->createQueryBuilder('a')
+            ->where('a.'.$filter.' LIKE :value')
+            ->setParameter('value', $value);
+        } else {
+            $queryBuilder->andWhere('a.'.$filter.' LIKE :value')
+            ->setParameter('value', $value);
+        }
+        
+        return $queryBuilder;
+    }
+    
 }

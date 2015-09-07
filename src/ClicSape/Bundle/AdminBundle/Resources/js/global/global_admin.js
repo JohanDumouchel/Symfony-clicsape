@@ -76,5 +76,19 @@ function checkMultiField(idContainer){
             addLinkRemove($($divs[i]).parent("div"));
 }
 
+function redirectFilter(url,filter,value){
+    param = jsonParamFilter(filter,value);
+    $.ajax({
+        url: url,
+        type: 'POST',
+        data: param
+    });
+}
 
+function jsonParamFilter(filter,value){
+    return param = $.parseJSON('{"filter" : {"'+filter+'" : "'+value+'"}}');
+}
 
+function getUrlFilter(entity){
+    return '/admin/criteria/'+entity;
+}

@@ -28,3 +28,10 @@
         <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
     </button>
 {% endmacro %}
+
+{% macro filter(url,class,filter) %}
+<input name="class" data-url="{{path(url)}}" data-class="{{class}}" data-filter="{{filter}}" hidden/>
+<button class="btn btn-default" id="filter">
+    <span class="glyphicon glyphicon-search"></span>
+</button>
+{% endmacro %}

@@ -76,5 +76,30 @@ function checkMultiField(idContainer){
             addLinkRemove($($divs[i]).parent("div"));
 }
 
+function redirectFilter(url,filter,value){
+    param = jsonParamFilter(filter,value);
+    $.ajax({
+        url: url,
+        type: 'POST',
+        data: param,
+        success: function(result, statut){
+            //gérer la gestion des droit admin
+            console.log('toto');
+            return result;
+        },
+        error: function(resultat, statut, erreur){
+            alert('une erreur est survenue!');
+        },
+        complete: function(resultat, statut){
+            $('.loader').hide();
+        }
+    });
+}
 
+function jsonParamFilter(filter,value){
+    return param = $.parseJSON('{"filter" : {"'+filter+'" : "'+value+'"}}');
+}
 
+function getUrlFilter(entity){
+    return '/admin/criteria/'+entity;
+}

@@ -36,3 +36,19 @@ services:
         class: ClicSape\Bundle\CoreBundle\Form\Type\PictureType
         tags:
             - { name: form.type, alias: picture_type}
+    clic_sape_Adin.twig.admin_extension:
+        class: ClicSape\Bundle\AdminBundle\Twig\AdminExtension
+        tags:
+            - { name: twig.extension }
+        
+    article_repository:
+        class: Doctrine\ORM\EntityRepository
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments:
+            - ClicSape\Bundle\ClotheBundle\Entity\Article
+            
+    article_manager:
+        class:   ClicSape\Bundle\ClotheBundle\Services\ArticleService
+        arguments:
+            - "@article_repository"

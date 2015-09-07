@@ -20,4 +20,33 @@ $(document).ready(function() {
             }
         });
     });
+    // Formulaire de recherche pour les list
+    $('button#filter').on("click",function(){
+        $input = $(this).prev();  
+        if($input.is(':hidden')){
+            $input.show();
+        } else {
+            if($input.val() !== ''){
+                url = $input.attr('data-url');
+                filter = $input.attr('data-filter');
+                value = $input.val();
+                $('.loader').show();
+                console.log(url);
+                $request = redirectFilter(url,filter,value);
+                console.log($request);
+//                $request.success(function(data){
+//                    
+//                });
+//                $request.complete(function(){
+//                    console.log('complet');
+//                    $('.loader').hide();
+//                });
+//                $table = $content.find('div#admin-body > tbody');
+//                console.log($table);
+            } else{
+                $input.hide();
+            }
+        }
+        
+    });
 });
