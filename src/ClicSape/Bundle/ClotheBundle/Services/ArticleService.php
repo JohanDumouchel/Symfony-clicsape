@@ -22,8 +22,8 @@ class ArticleService {
         foreach($filters as $filter => $value){
             $queryBuilder = $this->repository->findByFilter($queryBuilder,$filter,$value);
         }
-        var_dump($queryBuilder->getQuery()) ;
-        var_dump($queryBuilder->getQuery()->getResult()) ;
+        
+        return $queryBuilder->getQuery()->getResult();
         
     }    
     

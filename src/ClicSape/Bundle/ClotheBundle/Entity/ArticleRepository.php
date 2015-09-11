@@ -15,7 +15,7 @@ class ArticleRepository extends EntityRepository
 {
     public function findByFilter(QueryBuilder $queryBuilder = null, $filter, $value) {
         if($queryBuilder === null){
-        $this->createQueryBuilder('a')
+        $queryBuilder = $this->createQueryBuilder('a')
             ->where('a.'.$filter.' LIKE :value')
             ->setParameter('value', $value);
         } else {

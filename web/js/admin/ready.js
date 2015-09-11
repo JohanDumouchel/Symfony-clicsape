@@ -20,6 +20,8 @@ $(document).ready(function() {
             }
         });
     });
+    
+    
     // Formulaire de recherche pour les list
     $('button#filter').on("click",function(){
         $input = $(this).prev();  
@@ -32,17 +34,9 @@ $(document).ready(function() {
                 value = $input.val();
                 $('.loader').show();
                 console.log(url);
-                $request = redirectFilter(url,filter,value);
-                console.log($request);
-//                $request.success(function(data){
-//                    
-//                });
-//                $request.complete(function(){
-//                    console.log('complet');
-//                    $('.loader').hide();
-//                });
-//                $table = $content.find('div#admin-body > tbody');
-//                console.log($table);
+                $content = filterList(url,filter,value);
+                console.log($content);
+                $('body').append($content);
             } else{
                 $input.hide();
             }

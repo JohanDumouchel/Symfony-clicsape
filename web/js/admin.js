@@ -76,24 +76,26 @@ function checkMultiField(idContainer){
             addLinkRemove($($divs[i]).parent("div"));
 }
 
-function redirectFilter(url,filter,value){
+function filterList(url,filter,value){
     param = jsonParamFilter(filter,value);
-    $.ajax({
+    $content = '';
+    request = $.ajax({
         url: url,
         type: 'POST',
-        data: param,
-        success: function(result, statut){
-            //gérer la gestion des droit admin
-            console.log('toto');
-            return result;
-        },
-        error: function(resultat, statut, erreur){
-            alert('une erreur est survenue!');
-        },
-        complete: function(resultat, statut){
-            $('.loader').hide();
-        }
+        data: param
+    });    
+    $content = request.done(function(data){
+       return data;
     });
+    request.error(function(data){
+        $content = 'Problem';
+    });
+    request.complete(function(){
+        console.log('complet');
+        $('.loader').hide();
+    });
+    
+    return $content;
 }
 
 function jsonParamFilter(filter,value){

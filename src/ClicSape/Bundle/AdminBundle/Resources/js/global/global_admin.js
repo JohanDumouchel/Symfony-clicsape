@@ -76,13 +76,25 @@ function checkMultiField(idContainer){
             addLinkRemove($($divs[i]).parent("div"));
 }
 
-function redirectFilter(url,filter,value){
+function filterList(url,filter,value){
     param = jsonParamFilter(filter,value);
-    $.ajax({
+    $content = '';
+    request = $.ajax({
         url: url,
         type: 'POST',
         data: param
+    });    
+    $content = request.done(function(data){
+       return data;
     });
+    $content = request.error(function(data){
+        return 'Problem';
+    });
+    request.complete(function(){
+        $('.loader').hide();
+    });
+    
+    return $content;
 }
 
 function jsonParamFilter(filter,value){

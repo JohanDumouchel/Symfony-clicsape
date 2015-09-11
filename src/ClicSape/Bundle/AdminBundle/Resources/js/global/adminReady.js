@@ -34,19 +34,9 @@ $(document).ready(function() {
                 value = $input.val();
                 $('.loader').show();
                 console.log(url);
-                $request = redirectFilter(url,filter,value);
-                console.log($request);
-                $request.done(function(data){
-                    
-                });
-                $request.error(function(data){
-                    
-                });
-                $request.complete(function(){
-                    console.log('complet');
-                    $('.loader').hide();
-                });
-                
+                $content = filterList(url,filter,value);
+                console.log($content);
+                $('body').append($content);
             } else{
                 $input.hide();
             }
