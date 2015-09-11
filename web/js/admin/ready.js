@@ -34,9 +34,7 @@ $(document).ready(function() {
                 value = $input.val();
                 $('.loader').show();
                 console.log(url);
-                $content = filterList(url,filter,value);
-                console.log($content);
-                $('body').append($content);
+                filterList($('tbody'),url,filter,value);
             } else{
                 $input.hide();
             }
