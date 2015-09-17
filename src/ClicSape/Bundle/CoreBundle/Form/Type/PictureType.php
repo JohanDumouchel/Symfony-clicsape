@@ -16,7 +16,7 @@ class PictureType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('file')
+            ->add('file','file',array('required'=> true))
         ;
     }
     

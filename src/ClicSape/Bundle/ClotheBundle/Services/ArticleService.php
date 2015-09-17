@@ -17,14 +17,15 @@ class ArticleService {
     }
 
     public function findByFilter($filters){
-        
         $queryBuilder = null;
         foreach($filters as $filter => $value){
             $queryBuilder = $this->repository->findByFilter($queryBuilder,$filter,$value);
         }
-        
-        return $queryBuilder->getQuery()->getResult();
-        
+        $result = $queryBuilder->getQuery()->getResult();
+        if(empty($result)){
+            return $this->repository->findAll();
+        }
+        return $result;
     }    
     
     /**

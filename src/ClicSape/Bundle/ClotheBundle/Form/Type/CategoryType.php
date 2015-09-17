@@ -22,21 +22,21 @@ class CategoryType extends AbstractType
                 'choice_label' => 'title',
                 'multiple' => true,
                 'by_reference' => false,
-                'required' => true
+                'required' => false
             ))
             ->add('gammes','entity',array(
                 'class' => 'ClicSapeClotheBundle:Gamme',
                 'choice_label' => 'title',
                 'multiple' => true,
                 'by_reference' => false,
-                'required' => true
+                'required' => false
             ))
             ->add('genders','entity',array(
                 'class' => 'ClicSapeClotheBundle:Gender',
                 'choice_label' => 'title',
                 'multiple' => true,
                 'by_reference' => false,
-                'required' => true
+                'required' => false
             ))
             ->add('ajouter','submit')
         ;

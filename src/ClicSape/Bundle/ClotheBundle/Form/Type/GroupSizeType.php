@@ -29,7 +29,7 @@ class GroupSizeType extends AbstractType
                 'choice_label' => 'wording',
                 'multiple' => true,
                 'by_reference' => false,
-                'required' => true
+                'required' => false
             ))
             ->add('ajouter','submit')
         ;

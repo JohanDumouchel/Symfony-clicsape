@@ -43,7 +43,11 @@ class Picture
     /**
      * @var string
      * 
-     * @Assert\File(maxSize="6000000") 
+     * @Assert\File(
+     *      maxSize="6000000",
+     *      mimeTypes = {"image/jpeg", "image/gif", "image/png", "image/tiff"},
+     *      maxSizeMessage = "The maxmimum allowed file size is 6MB.",
+     *      mimeTypesMessage = "Only the filetypes image are allowed.") 
      */
     private $file;
     

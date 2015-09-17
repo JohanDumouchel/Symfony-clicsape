@@ -22,14 +22,14 @@ class ArticleType extends AbstractType
                 'choice_label' => 'title',
                 'multiple' => true,
                 'by_reference' => false,
-                'required' => true
+                'required' => false
             ))
             ->add('genders','entity',array(
                 'class' => 'ClicSapeClotheBundle:Gender',
                 'choice_label' => 'title',
                 'multiple' => true,
                 'by_reference' => false,
-                'required' => true
+                'required' => false
             ))
             ->add('pictures','collection',array(
                 'type' => 'picture_type',
