@@ -98,6 +98,7 @@ function jsonParamFilter(filter,value){
     return param = $.parseJSON('{"filter" : {"'+filter+'" : "'+value+'"}}');
 }
 
-function getUrlFilter(entity){
-    return '/admin/criteria/'+entity;
+function getSelectTable(url,entity,entityJoin){
+    var param = $.parseJSON('');
+
 }

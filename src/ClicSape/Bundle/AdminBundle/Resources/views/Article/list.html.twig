@@ -20,9 +20,9 @@
             <tr>
                 <th>id {{button.filter(articleUrl, articleClass,'id')}}</th>
                 <th>titre {{button.filter(articleUrl, articleClass,'title')}}</th>
-                <th>description</th>
-                <th>categories</th>
-                <th>genre</th>
+                <th>description {{button.filter(articleUrl, articleClass,'description')}}</th>
+                <th>categories {{button.filterSelect(articleUrl, articleClass,'Category')}}</th>
+                <th>genre {{button.filterSelect(articleUrl, articleClass,'Gender')}}</th>
                 <th>photos</th>
                 <th>action</th>
             </tr>

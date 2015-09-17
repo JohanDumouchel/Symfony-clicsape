@@ -19,7 +19,7 @@ var env = process.env.GULP_ENV;
 gulp.task('js', function () {
     return gulp.src(['bower_components/jquery/dist/jquery.js',
         'bower_components/bootstrap/dist/js/bootstrap.js',
-        'bower_components/jquery-confirm/jquery.confirm.js',
+        'bower_components/jquery-confirm2/dist/jquery-confirm.min.js',
         'app/Resources/js/**/*.js'])
         .pipe(concat('javascript.js'))
         .pipe(gulpif(env === 'prod', uglify()))
@@ -31,6 +31,7 @@ gulp.task('js', function () {
 gulp.task('css', function () {
     return gulp.src([
         'bower_components/bootstrap/dist/css/bootstrap.css',
+        'bower_components/jquery-confirm2/dist/jquery-confirm.min.css',
         'app/Resources/public/less/**/*.less'])
         .pipe(gulpif(/[.]less/, less()))
         .pipe(concat('styles.css'))

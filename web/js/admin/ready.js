@@ -11,7 +11,9 @@ $(document).ready(function() {
     $('button#delete').on( "click",function(){
         $this = $(this);
         $.confirm({
-            text: "Etes-vous sûr de vouloir supprimer cette élément?",
+            title: false,
+            keyboardEnabled: true,
+            content: "Etes-vous sûr de vouloir supprimer cette élément?",
             confirm: function() {
                 deleteEntity($this);
             },
@@ -39,6 +41,29 @@ $(document).ready(function() {
                 $input.hide();
             }
         }
+        
+    });
+    
+    // Formulaire de recherche pour les list
+    $('button#filterSelect').on("click",function(){
+        $.dialog({
+            title:'toto',
+            content: "Etes-vous sûr de vouloir supprimer cette élément?<br><button type=\"button\" class=\"examplebutton\">I'm alive!</button>",
+            onOpen: function(){
+        console.log('after the modal is opened');
+        // find the input element and attach events to it.
+        // NOTE: `this.$b` is the jquery-confirm's content DIV.
+        this.$b.find('button.examplebutton').click(function(){
+            console.log('action');
+        });
+    },
+    onClose: function(){
+        console.log('before the modal is closed');
+    },
+    onAction: function(){
+        console.log('Any of confirm or cancel was clicked');
+    }
+        });
         
     });
 });
