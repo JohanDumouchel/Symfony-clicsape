@@ -98,6 +98,45 @@ function jsonParamFilter(filter,value){
     return param = $.parseJSON('{"filter" : {"'+filter+'" : "'+value+'"}}');
 }
 
-function getUrlFilter(entity){
-    return '/admin/criteria/'+entity;
+function filterJoinList($content,entity,entityJoin,data){
+    $('.loader').show();
+    var param = $.parseJSON('{"entityJoin":"' + entityJoin + '",' + '"join" :' + data + '}');
+    url = 'filter';
+    console.log(param);
+    
+    request = $.ajax({
+        url: url,
+        type: 'POST',
+        dataType: 'html',
+        data: param
+    });    
+    request.done(function(data){
+       $content.html(data);
+    });
+    request.error(function(data){
+        $content.html('aucun contenu trouvé');
+    });
+    request.complete(function(){
+        $('.loader').hide();
+    });
+}
+
+function createSelectTable(url,$content){
+    $('.loader-dialog').show();
+    request = $.ajax({
+        url: url,
+        type: 'POST',
+        dataType: 'html'
+    });    
+    request.done(function(data){
+       // oncrée le tableau 
+       $content.html(data);
+    });
+    request.error(function(data){
+        $content.html('aucun contenu trouvé');
+    });
+    request.complete(function(){
+        $('.loader-dialog').hide();
+    });
+
 }

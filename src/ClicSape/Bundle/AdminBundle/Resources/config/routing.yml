@@ -17,7 +17,3 @@ clic_sape_admin_country:
 clic_sape_admin_picture:
     resource: "@ClicSapeAdminBundle/Resources/config/routing/picture.yml"
     prefix:     /picture
-    
-list:
-    path:     /list
-    defaults: { _controller: ClicSapeAdminBundle:Ajax:list }

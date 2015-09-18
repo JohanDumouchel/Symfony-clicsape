@@ -57,7 +57,7 @@ class CategoryController extends Controller
         return $this->render('ClicSapeAdminBundle:Category:edit.html.twig', array(
                 'category' => $category,
                 'form' => $form->createView()
-            ));    
+            ));            return new Response($content);
     }
 
     public function deleteAction(Request $request)
@@ -77,5 +77,17 @@ class CategoryController extends Controller
         }else{
             throw $this->createNotFoundException('No country found for id : '.$id);
         }
+    }
+    
+    public function allAction(){
+        $em = $this->getDoctrine()->getManager();
+        $repoCat = $em->getRepository('ClicSapeClotheBundle:Category');
+        $listCat = $repoCat->findAll();
+        
+        $content = $this->renderView('ClicSapeAdminBundle:Global:table.html.twig', array(
+           'entities' => $listCat
+        ));
+        
+        return new Response($content);
     }
 }

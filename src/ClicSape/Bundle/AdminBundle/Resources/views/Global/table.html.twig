@@ -1,0 +1,19 @@
+{# empty Twig template #}
+<thead data-entity-name="{{getClassInArray(entities)}}">
+    <tr>
+        <th> Id </th>
+        <th> Titre </th>
+        <th></th>
+    </tr>
+</thead>
+<tbody>
+    {% for entity in entities  %}
+        {% if(entity.title) %}
+            <tr>
+                <td> {{entity.id}} </td>
+                <td> {{entity.title}} </td>
+                <td> <input type="checkbox" value="{{entity.id}}"/> </td>
+            </tr>
+        {% endif %}
+    {% endfor %}
+</tbody>

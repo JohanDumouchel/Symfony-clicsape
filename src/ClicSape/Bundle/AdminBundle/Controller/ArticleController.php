@@ -11,22 +11,12 @@ class ArticleController extends Controller
 {
     public function listAction(Request $request)
     {   
-        $filters = $request->get('filter');
-        if($filters !== null){            
-            $articleManager = $this->get('article_manager');
-            $listArt = $articleManager->findByFilter($filters);
-            $content = $this->renderView('ClicSapeAdminBundle:Article:list_content.html.twig', array(
-                'listArt' => $listArt
-            ));
-            return new Response($content);
-        } else {
-            $em = $this->getDoctrine()->getManager();
-            $repoArt = $em->getRepository('ClicSapeClotheBundle:Article');
-            $listArt = $repoArt->findAll();
-            return $this->render('ClicSapeAdminBundle:Article:list.html.twig', array(
-                'listArt' => $listArt
-            ));
-        }
+        $em = $this->getDoctrine()->getManager();
+        $repoArt = $em->getRepository('ClicSapeClotheBundle:Article');
+        $listArt = $repoArt->findAll();
+        return $this->render('ClicSapeAdminBundle:Article:list.html.twig', array(
+            'listArt' => $listArt
+        ));
     }
 
     public function addAction(Request $request)
@@ -104,6 +94,26 @@ class ArticleController extends Controller
         }else{
             throw $this->createNotFoundException('No country found for id : '.$id);
         }
-        
+    }
+    
+    public function filterAction(Request $request)
+    {   
+        $filters = $request->get('filter');
+        $filtersJoin = $request->get('entityJoin');
+        $listArt = '';
+        if($filters !== null){            
+            $articleManager = $this->get('article_manager');
+            $listArt = $articleManager->findByFilter($filters);            
+        }
+        if($filtersJoin !== null){   
+            $entityJoin = $request->get('entityJoin');
+            $articleManager = $this->get('article_manager');
+            $listArt = $articleManager->findByFilterJoin($entityJoin,$filtersJoin);
+        }
+                
+        $content = $this->renderView('ClicSapeAdminBundle:Article:list_content.html.twig', array(
+                'listArt' => $listArt
+            ));
+        return new Response($content);
     }
 }

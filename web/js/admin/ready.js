@@ -46,23 +46,42 @@ $(document).ready(function() {
     
     // Formulaire de recherche pour les list
     $('button#filterSelect').on("click",function(){
-        $.dialog({
-            title:'toto',
-            content: "Etes-vous sûr de vouloir supprimer cette élément?<br><button type=\"button\" class=\"examplebutton\">I'm alive!</button>",
+        url = $(this).attr('data-url');
+        entity = $(this).attr('data-entity');
+        entityJoin = $(this).attr('data-entity-join');
+        $.alert({
+            title:'Filtre',
+            content: '<div class="loader-dialog"></div><table class="table table-hover table-select" ></table>',
             onOpen: function(){
-        console.log('after the modal is opened');
-        // find the input element and attach events to it.
-        // NOTE: `this.$b` is the jquery-confirm's content DIV.
-        this.$b.find('button.examplebutton').click(function(){
-            console.log('action');
-        });
-    },
-    onClose: function(){
-        console.log('before the modal is closed');
-    },
-    onAction: function(){
-        console.log('Any of confirm or cancel was clicked');
-    }
+                $table = this.$b.find('.table');
+                createSelectTable(url,$table);
+            },
+            onClose: function(){
+                
+            },
+            onAction: function(){
+                
+            },
+            confirmButton: 'Recherche',
+            confirm: function(){
+                console.log('confirm');
+                $inputs = this.$b.find('input:selected');
+                if($inputs){
+                    var data = '[';
+                    $inputs.each(function(index,element){
+                        console.log(index);
+                        val = element.attr('value');
+                        if(index === 0){
+                            data +='"'+ val+'"';
+                        } else {
+                            data += ',"'+ val+'"' ;
+                        }
+                    });
+                    data += ']';
+                    console.log(data);
+                    filterJoinList($('tbody'),entity,entityJoin,data);
+                }
+            }
         });
         
     });

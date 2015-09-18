@@ -2,7 +2,8 @@
     Created on : 15 juil. 2015, 13:44:45
     Author     : johan
 */
-.loader {
+.loader,
+.loader-dialog {
   position: fixed;
   z-index: 9999;
   background: url('../img/loader.gif') 50% 50% no-repeat;

@@ -26,7 +26,14 @@ class ArticleService {
             return $this->repository->findAll();
         }
         return $result;
-    }    
+    }
+    
+    public function findByFilterJoin($entityJoin,$filtersJoin){        
+        $queryBuilder = null;
+        $queryBuilder = $this->repository->findByFilterJoin($queryBuilder,$entityJoin,json_decode($filtersJoin));
+        $result = $queryBuilder->getQuery()->getResult();
+        return $result;
+    }
     
     /**
      * @return string

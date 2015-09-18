@@ -39,8 +39,8 @@
 {% macro filterSelect(url, class, classJoin) %}
 <button class="btn btn-default" 
         data-url="{{path(url)}}" 
-        data-class="{{class}}" 
-        data-class-join="{{classJoin}}" 
+        data-entity="{{class}}"
+        data-entity-join="{{classJoin}}"
         id="filterSelect">
     <span class="glyphicon glyphicon-search"></span>
 </button>

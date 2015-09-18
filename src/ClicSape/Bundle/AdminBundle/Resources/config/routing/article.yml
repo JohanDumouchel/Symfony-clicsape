@@ -17,3 +17,7 @@ article_delete:
     defaults: { _controller: ClicSapeAdminBundle:Article:delete }
     requirements:
         _method:  POST
+
+article_filter:
+    path: /filter
+    defaults: { _controller: ClicSapeAdminBundle:Article:filter }
