@@ -32,6 +32,8 @@ gulp.task('css', function () {
     return gulp.src([
         'bower_components/bootstrap/dist/css/bootstrap.css',
         'bower_components/jquery-confirm2/dist/jquery-confirm.min.css',
+        'bower_components/font-awesome/css/font-awesome.min.css',
+        'bower_components/bootstrap-social/bootstrap-social.css',
         'app/Resources/public/less/**/*.less'])
         .pipe(gulpif(/[.]less/, less()))
         .pipe(concat('styles.css'))
@@ -42,7 +44,8 @@ gulp.task('css', function () {
 
 //IMAGE TASK: Just pipe images from project folder to public web folder
 gulp.task('fonts', function() {
-    return gulp.src('bower_components/bootstrap/dist/fonts/**/*.*')
+    return gulp.src(['bower_components/bootstrap/dist/fonts/**/*.*',
+                    'bower_components/font-awesome/fonts/**/*.*'])
         .pipe(gulp.dest('web/fonts'));
 });
 
@@ -90,21 +93,6 @@ gulp.task('admin_entity_js', function () {
     }
 });
 
-//JAVASCRIPT TASK: write one minified css file out of each custom less files for admin Bundle
-gulp.task('admin_entity_less', function () {
-    for (i = 0; i < tabEntity.length; i++) {
-        var src = 'src/ClicSape/Bundle/AdminBundle/Resources/less/'+tabEntity[i]+'/*.less';
-        var name = tabEntity[i]+'.css';
-        var dir = 'web/css/admin';
-        
-        gulp.src([src])
-        .pipe(gulpif(/[.]less/, less()))
-        .pipe(concat(name))
-        .pipe(gulpif(env === 'prod', uglifycss()))
-        .pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest(dir));
-    }
-});
 //CSS TASK: write one minified css file out of bootstrap.less and all of my custom less files
 gulp.task('admin_less', function () {
     return gulp.src([
@@ -116,9 +104,22 @@ gulp.task('admin_less', function () {
         .pipe(gulp.dest('web/css'));
 });
 
+//CSS TASK: write one minified css file out of bootstrap.less and all of my custom less files
+gulp.task('home_less', function () {
+    return gulp.src([
+        'src/ClicSape/Bundle/ClotheBundle/Resources/less/*.less'])
+        .pipe(gulpif(/[.]less/, less()))
+        .pipe(concat('home.css'))
+        .pipe(gulpif(env === 'prod', uglifycss()))
+        .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest('web/css'));
+});
+
 //define executable tasks when running "gulp" command
-gulp.task('default', ['js','admin_js', 'css', 'img','fonts','admin_entity_js','admin_ready_js','admin_entity_less','admin_less','img_article']);
+gulp.task('default', ['js','admin_js', 'css', 'img','fonts','admin_entity_js','admin_ready_js','admin_less','img_article']);
 //define executable tasks when running "gulp admin" command
-gulp.task('admin', ['admin_js','admin_entity_js','admin_entity_less','admin_less','admin_ready_js','img_article']);
+gulp.task('admin', ['admin_js','admin_entity_js','admin_less','admin_ready_js','img_article']);
 //define executable tasks when running "gulp gen" command
 gulp.task('gen', ['js', 'css', 'img','fonts']);
+//define executable tasks when running "gulp shop" command
+gulp.task('home', ['js', 'css', 'home_less', 'img','fonts']);

@@ -1,0 +1,83 @@
+{# Admin base Twig template #}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="stylesheet" href="{{ asset('css/styles.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('css/home.css') }}"/>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <script src="{{ asset('js/javascript.js') }}"></script>
+        {#<script src="{{ asset('js/admin.js') }}"></script>#}
+    </head>
+    <body>
+        {% block nav %}
+        <div class="container-fluid">
+        <div class="text-center row" id="header">
+                <nav class="navbar navbar-default col-xs-6 col-sm-2 col-md-2 col-lg-2 " >
+                    <div class="navbar-header ">
+                    <button class="navbar-toggle collapsed header-nav-button" type="button" data-toggle="collapse" data-target="#navbar1" aria-expanded="false">
+                        <span class="glyphicon glyphicon-thumbs-up"> </span>
+                    </button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="navbar1">
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <a class="btn btn-social-icon btn-twitter">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="btn btn-social-icon btn-facebook">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="btn btn-social-icon btn-instagram">
+                                    <i class="fa fa-instagram"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="btn btn-social-icon btn-pinterest">
+                                    <i class="fa fa-pinterest"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <nav class="col-xs-6 col-sm-2  col-sm-2 col-sm-push-8 col-md-2 col-md-push-8 col-lg-2 col-lg-push-8 navbar navbar-default">
+                <div class="navbar-header">
+                    <button class="navbar-toggle collapsed header-nav-button" type="button" data-toggle="collapse" data-target="#navbar2" aria-expanded="false">
+                        <span class="glyphicon glyphicon-list"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse" id="navbar2">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <button class="btn btn-default btn-login">
+                                <span class="glyphicon glyphicon-shopping-cart"></span>
+                            </button>
+                        </li>
+                        <li>
+                            <button class="btn btn-default btn-cart">
+                                <span class="glyphicon glyphicon-user"></span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                </nav>
+                <div class="col-xs-12 col-sm-8 col-sm-pull-2 col-md-8 col-md-pull-2 col-lg-8 col-lg-pull-2">
+                        <h1>Example page header <small>Subtext for header</small></h1>
+                </div>
+            </div>
+        </div>
+        {% endblock %}
+        {% block body %}
+            <h2> toto </h2> 
+            {% block carousel %}
+                
+            {% endblock %}
+        {% endblock %}
+    </body>
+</html>

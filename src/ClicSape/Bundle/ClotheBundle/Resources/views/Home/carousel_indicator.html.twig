@@ -1,0 +1,8 @@
+{% for picture in listPic  %}
+<li data-target="#myCarouse{{loop.index}}" 
+    data-slide-to="{{loop.index}}"
+    {% if loop.index == 1 %}
+        class="active"
+    {% endif %}
+    ></li>
+{% endfor %}

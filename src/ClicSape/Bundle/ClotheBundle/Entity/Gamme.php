@@ -11,7 +11,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * Gamme
  *
  * @ORM\Table(name="gamme")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="ClicSape\Bundle\ClotheBundle\Entity\GammeRepository")
  */
 class Gamme
 {
@@ -46,7 +46,13 @@ class Gamme
      */
     private $categories;
     
-
+    /**
+     * @var ArrayCollection Picture
+     *
+     * @ORM\OneToMany(targetEntity="ClicSape\Bundle\CoreBundle\Entity\Picture", mappedBy="gamme", cascade={"persist"})
+     */
+    private $pictures;
+    
     /**
      * 
      * Constructeur
@@ -113,7 +119,6 @@ class Gamme
     }
     
     
-
     /**
      * Add categories
      *
@@ -145,5 +150,38 @@ class Gamme
     public function getCategories()
     {
         return $this->categories;
+    }
+    
+    /**
+     * @param Picture $picture
+     *
+     * @return Article 
+     */
+     public function addPicture(\ClicSape\Bundle\CoreBundle\Entity\Picture $picture)
+    {
+        $this->pictures[] = $picture;
+        
+        return $this;
+    }
+    
+    /**
+     * @param Picture $picture
+     *
+     * @return Article 
+     */
+    public function removePicture(\ClicSape\Bundle\CoreBundle\Entity\Picture $picture)
+    {
+        $this->pictures->removeElement($picture);
+        
+        return $this;
+    }
+
+    /**
+     *
+     * @return ArrayCollection Picture
+     */
+    public function getPictures()
+    {
+        return $this->pictures;
     }
 }

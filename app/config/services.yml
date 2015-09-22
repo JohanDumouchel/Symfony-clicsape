@@ -52,3 +52,15 @@ services:
         class:   ClicSape\Bundle\ClotheBundle\Services\ArticleService
         arguments:
             - "@article_repository"
+            
+    picture_repository:
+        class: Doctrine\ORM\EntityRepository
+        factory_service: doctrine.orm.entity_manager
+        factory_method: getRepository
+        arguments:
+            - ClicSape\Bundle\CoreBundle\Entity\Picture
+            
+    picture_manager:
+        class:   ClicSape\Bundle\CoreBundle\Services\PictureService
+        arguments:
+            - "@picture_repository"
