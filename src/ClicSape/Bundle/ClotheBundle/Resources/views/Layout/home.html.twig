@@ -12,8 +12,8 @@
         {#<script src="{{ asset('js/admin.js') }}"></script>#}
     </head>
     <body>
-        {% block nav %}
         <div class="container-fluid">
+        {% block nav %}        
         <div class="text-center row" id="header">
                 <nav class="navbar navbar-default col-xs-6 col-sm-2 col-md-2 col-lg-2 " >
                     <div class="navbar-header ">
@@ -71,13 +71,19 @@
                         <h1>Example page header <small>Subtext for header</small></h1>
                 </div>
             </div>
-        </div>
         {% endblock %}
         {% block body %}
-            <h2> toto </h2> 
-            {% block carousel %}
-                
-            {% endblock %}
+            <div class="row">
+                {#<div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                {% block menu %}
+                {% endblock %}
+                </div>#}
+                <div class="col-xs-12 col-sm-7 col-md-7 col-lg-8 col-lg-offset-2">
+                {% block carousel %}
+                {% endblock %}
+                </div>
+            </div>
         {% endblock %}
+        </div>
     </body>
 </html>

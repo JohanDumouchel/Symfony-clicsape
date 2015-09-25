@@ -39,7 +39,7 @@
   background-color: white;
   color: #777777;
 }
-.gallery-carousel {
+#myCarousel .gallery-carousel {
   height: 200px;
   width: auto;
 }
