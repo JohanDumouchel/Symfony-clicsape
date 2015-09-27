@@ -16,4 +16,4 @@ picture_delete:
     path: /delete
     defaults: { _controller: ClicSapeAdminBundle:Picture:delete }
     requirements:
-        _method:  POST
+        methods:  POST

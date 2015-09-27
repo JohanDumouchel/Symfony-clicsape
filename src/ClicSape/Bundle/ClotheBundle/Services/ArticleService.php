@@ -15,6 +15,10 @@ class ArticleService {
     public function __construct(EntityRepository $repository) {
         $this->repository = $repository;
     }
+    
+    public function findAll(){
+        return $this->repository->findAll();
+    }
 
     public function findByFilter($filters){
         $queryBuilder = null;
@@ -28,10 +32,10 @@ class ArticleService {
         return $result;
     }
     
-    public function findByFilterJoin($entityJoin,$filtersJoin){        
-        $queryBuilder = null;
-        $queryBuilder = $this->repository->findByFilterJoin($queryBuilder,$entityJoin,json_decode($filtersJoin));
+    public function findByFilterJoin($entityJoin,$data){        
+        $queryBuilder = $this->repository->findByFilterJoin($entityJoin,$data);
         $result = $queryBuilder->getQuery()->getResult();
+        
         return $result;
     }
     

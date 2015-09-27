@@ -6,6 +6,7 @@
     <h2 class='col-lg-7 col-lg-offset-1'>Welcome to the Article:list page</h2>
     <div class='col-lg-2 col-lg-offset-1'>
         {{button.addEntity('article_add')}}
+        {{button.refreshContent('article_filter')}}
     </div>
 {% endblock %}
 
@@ -18,13 +19,13 @@
         {% set articleUrl = 'article_filter' %}
         <thead>
             <tr>
-                <th>id {{button.filter(articleUrl, articleClass,'id')}}</th>
-                <th>titre {{button.filter(articleUrl, articleClass,'title')}}</th>
-                <th>description {{button.filter(articleUrl, articleClass,'description')}}</th>
-                <th>categories {{button.filterSelect('category_all',articleClass,'Category')}}</th>
-                <th>genre {#{{button.filterSelect('gender_all')}}#}</th>
-                <th>photos</th>
-                <th>action</th>
+                <th class="col-lg-1">id {{button.filter(articleUrl, articleClass,'id')}}</th>
+                <th class="col-lg-1">titre {{button.filter(articleUrl, articleClass,'title')}}</th>
+                <th class="col-lg-2">description {{button.filter(articleUrl, articleClass,'description')}}</th>
+                <th class="col-lg-2">categories {{button.filterSelect('category_all',articleClass,'categories')}}</th>
+                <th class="col-lg-1">genre {{button.filterSelect('gender_all',articleClass,'genders')}}</th>
+                <th class="col-lg-2">photos</th>
+                <th class="col-lg-1">action</th>
             </tr>
         </thead>
         {% include "ClicSapeAdminBundle:Article:list_content.html.twig" %}

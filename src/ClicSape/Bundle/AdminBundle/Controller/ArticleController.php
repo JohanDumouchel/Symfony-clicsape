@@ -99,18 +99,20 @@ class ArticleController extends Controller
     public function filterAction(Request $request)
     {   
         $filters = $request->get('filter');
-        $filtersJoin = $request->get('entityJoin');
+        $entityJoin = $request->get('entityJoin');
         $listArt = '';
         if($filters !== null){            
             $articleManager = $this->get('article_manager');
             $listArt = $articleManager->findByFilter($filters);            
         }
-        if($filtersJoin !== null){   
-            $entityJoin = $request->get('entityJoin');
+        elseif($entityJoin !== null){   
+            $data = $request->get('data');
             $articleManager = $this->get('article_manager');
-            $listArt = $articleManager->findByFilterJoin($entityJoin,$filtersJoin);
+            $listArt = $articleManager->findByFilterJoin($entityJoin, $data);
         }
-                
+        else{
+            $listArt = $this->get('article_manager')->findAll();
+        }
         $content = $this->renderView('ClicSapeAdminBundle:Article:list_content.html.twig', array(
                 'listArt' => $listArt
             ));

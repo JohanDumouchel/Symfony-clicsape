@@ -16,4 +16,4 @@ country_delete:
     path: /delete
     defaults: { _controller: ClicSapeAdminBundle:Country:delete }
     requirements:
-        _method:  POST
+        methods:  POST

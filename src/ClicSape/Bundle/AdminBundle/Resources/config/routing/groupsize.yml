@@ -16,4 +16,4 @@ groupsize_delete:
     path: /delete
     defaults: { _controller: ClicSapeAdminBundle:GroupSize:delete }
     requirements:
-        _method:  POST
+        methods:  POST

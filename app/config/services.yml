@@ -48,7 +48,19 @@ services:
         arguments:
             - ClicSape\Bundle\ClotheBundle\Entity\Article
             
+    category_repository:
+            class: Doctrine\ORM\EntityRepository
+            factory_service: doctrine.orm.entity_manager
+            factory_method: getRepository
+            arguments:
+                - ClicSape\Bundle\ClotheBundle\Entity\Category
+            
     article_manager:
         class:   ClicSape\Bundle\ClotheBundle\Services\ArticleService
         arguments:
             - "@article_repository"
+            
+    category_manager:
+        class:   ClicSape\Bundle\ClotheBundle\Services\CategoryService
+        arguments:
+            - "@category_repository"

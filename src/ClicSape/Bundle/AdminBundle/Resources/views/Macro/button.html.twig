@@ -1,10 +1,19 @@
-{# empty Twig template #}
-{% macro edit(rout,id) %}
-    <a class="btn btn-primary" href="{{path(rout, {'id':id})}}">
+{# 
+    button to modify entity
+    {routing} url page 
+    {id} entity's id to modify
+#}
+{% macro edit(routing,id) %}
+    <a class="btn btn-primary" href="{{path(routing, {'id':id})}}">
         <span class="glyphicon glyphicon-pencil" aria-hidden="true" ></span>
     </a>
 {% endmacro %}
 
+{#
+    button delete entity
+    {entity} entity deleted
+    {id} id of {entity}
+#}
 {% macro delete(entity,id) %}
     <button  id="delete" 
              type="button" 
@@ -15,20 +24,39 @@
     </button>
 {% endmacro %}
 
-{% macro addEntity(rout)%}
+{#
+    button add entity
+    {routing}  url page 
+#}
+{% macro addEntity(routing)%}
     <a class="btn btn-info" 
-       href="{{path(rout)}}">
-                <span class="glyphicon glyphicon-plus-sign" 
-                      aria-hidden="true" ></span>
+       href="{{path(routing)}}">
+        <span class="glyphicon glyphicon-plus-sign" 
+              aria-hidden="true" ></span>
     </a>
 {% endmacro%}
 
-{% macro headerTab() %}
-    <button type="button" class="btn btn-default" aria-label="Left Align">
-        <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+{#
+    button refresh table content
+    {routing}  url page 
+#}
+{% macro refreshContent(routing)%}
+    <button class="btn btn-info" 
+       data-url="{{path(routing)}}"
+       id="refresh">
+        <span class="glyphicon glyphicon-refresh" 
+              aria-hidden="true" ></span>
     </button>
-{% endmacro %}
+{% endmacro%}
 
+{#
+    button for show an input text to declare a
+    filter.
+    {url} use for ajax function who get 
+    entity to show after research
+    {class} entity to show
+    {filter} property and value use forresearch
+#}
 {% macro filter(url,class,filter) %}
 <input name="class" data-url="{{path(url)}}" data-class="{{class}}" data-filter="{{filter}}" hidden/>
 <button class="btn btn-default" id="filter">
@@ -36,6 +64,13 @@
 </button>
 {% endmacro %}
 
+{#
+    button for show a dialog with entities selection.
+    {url} use for ajax function who get 
+    all entities to show
+    {class} entities we want to get back
+    {classJoin} entities or property use in parameter to get back {class}
+#}
 {% macro filterSelect(url, class, classJoin) %}
 <button class="btn btn-default" 
         data-url="{{path(url)}}" 
