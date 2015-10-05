@@ -34,7 +34,8 @@ class ArticleType extends AbstractType
             ->add('pictures','collection',array(
                 'type' => 'picture_type',
                 'allow_add' => true,
-                'by_reference' => false
+                'by_reference' => false,
+                'required' => false
             ))
             ->add('ajouter','submit')
         ;

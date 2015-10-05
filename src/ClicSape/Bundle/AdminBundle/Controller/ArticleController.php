@@ -56,13 +56,18 @@ class ArticleController extends Controller
         $request = Request::createFromGlobals();
         
         if ($form->handleRequest($request)->isValid()) {
-            $em->persist($form->getData());
             $article = $form->getData();
             $pictures = $article->getPictures();
             foreach($pictures as $picture){
-                $picture->setArticle($article);
+                if($picture->getFile() === null && $picture->getTitle() === null){
+                    $article->removePicture($picture);
+                    $picture->setArticle();
+                } else {
+                    $picture->setArticle($article);
+                }
                 $em->persist($picture);
             }
+            $em->persist($article);
             $em->flush();
             
             return $this->forward('ClicSapeAdminBundle:Article:list');

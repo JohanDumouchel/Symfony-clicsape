@@ -1,30 +1,30 @@
 {% from "ClicSapeAdminBundle::Macro/button.html.twig" import edit,delete %}
-    {% if listArt is null %}
+    {% if listCat is null %}
         <p > Aucun article n'a été trouvé </p>
     {% endif %}
-    {% for article in listArt  %}
-        <tr >
-            <td>{{article.id}}</td>
-            <td>{{article.title}}</td>
-            <td>{{article.description}}</td>
+    {% for category in listCat  %}
+        <tr>
+            <td>{{category.id}}</td>
+            <td>{{category.title}}</td>
+            <td>{{category.description}}</td>
             <td>
-                {% for category in article.categories %}
-                    {{category.title}}<br/>
+                {% for gamme in category.gammes %}
+                    {{gamme.title}}<br/>
                 {% endfor %}
             </td>
             <td>
-                {% for gender in article.genders %}
+                {% for gender in category.genders %}
                     {{gender.title}}<br/>
                 {% endfor %}
             </td>
             <td>
-                {% for picture in article.pictures %}
-                    <img class="gallery-small" src="{{picture.getWebPath}}"<br/>
+                {% for groupSize in category.groupSizes %}
+                    {{groupSize.title}}<br/>
                 {% endfor %}
             </td>
             <td>
-                {{edit('article_edit',article.id)}}
-                {{delete('article',article.id)}}
+                {{edit('category_edit',category.id)}}
+                {{delete('category',category.id)}}
             </td>
         </tr>
 

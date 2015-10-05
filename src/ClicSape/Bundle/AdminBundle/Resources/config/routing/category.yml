@@ -22,3 +22,7 @@ category_all:
     path: /all
     defaults: { _controller: ClicSapeAdminBundle:Category:all }
     
+category_filter:
+    path: /filter
+    defaults: { _controller: ClicSapeAdminBundle:Category:filter }
+    

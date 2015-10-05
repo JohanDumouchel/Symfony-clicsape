@@ -6,49 +6,26 @@
     <h2 class='col-lg-7 col-lg-offset-1'>Welcome to the Category:list page</h2>
     <div class='col-lg-2 col-lg-offset-1'>
         {{button.addEntity('category_add')}}
+        {{button.refreshContent('category_filter')}}
     </div>
 {% endblock %}
 {% block body %}
+    {% set categoryClass = getClassInArray(listCat) %}
+    {% set categoryUrl = 'category_filter' %}
     <table class="table table-hover">
         <thead>
             <tr>
-                <th>id</th>
-                <th>titre</th>
-                <th>description</th>
-                <th>gamme</th>
-                <th>genre</th>
+                <th>id {{button.filter(categoryUrl, categoryClass,'id')}}</th>
+                <th>titre {{button.filter(categoryUrl, categoryClass,'title')}}</th>
+                <th>description {{button.filter(categoryUrl, categoryClass,'description')}}</th>
+                <th>gamme {#{{button.filterSelect('gamme_all',categoryClass,'gammes')}}#}</th>
+                <th>genre {{button.filterSelect('gender_all',categoryClass,'genders')}}</th>
                 <th>group de taille</th>
                 <th>action</th>
             </tr>
         </thead>
         <tbody>
-        {% for category in listCat  %}
-            <tr>
-                <td>{{category.id}}</td>
-                <td>{{category.title}}</td>
-                <td>{{category.description}}</td>
-                <td>
-                    {% for gamme in category.gammes %}
-                        {{gamme.title}}<br/>
-                    {% endfor %}
-                </td>
-                <td>
-                    {% for gender in category.genders %}
-                        {{gender.title}}<br/>
-                    {% endfor %}
-                </td>
-                <td>
-                    {% for groupSize in category.groupSizes %}
-                        {{groupSize.title}}<br/>
-                    {% endfor %}
-                </td>
-                <td>
-                    {{button.edit('category_edit',category.id)}}
-                    {{button.delete('category',category.id)}}
-                </td>
-            </tr>
-
-        {% endfor %}
+        {% include "ClicSapeAdminBundle:Category:list_content.html.twig" %}
         </tbody>
     </table>
 {% endblock %}

@@ -8,7 +8,7 @@ use Doctrine\ORM\EntityRepository;
  *
  * @author johan
  */
-class CategoryService {
+class CategoryService extends ManagerService{
      
     protected $repository ;
     
@@ -16,10 +16,11 @@ class CategoryService {
         $this->repository = $repository;
     }
     
-    public function findByFilterJoin($entityJoin,$filtersJoin){        
-        $queryBuilder = null;
-        
-        return $result;
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return 'category_manager';
     }
-    //put your code here
 }

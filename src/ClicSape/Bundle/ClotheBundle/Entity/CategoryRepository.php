@@ -12,4 +12,31 @@ use Doctrine\ORM\EntityRepository;
  */
 class CategoryRepository extends EntityRepository
 {
+    public function findByFilter(QueryBuilder $queryBuilder = null, $filter, $value) {
+        if($queryBuilder === null){
+        $queryBuilder = $this->createQueryBuilder('c')
+            ->where('c.'.$filter.' LIKE :value')
+            ->setParameter('value', $value);
+        } else {
+            $queryBuilder->andWhere('a.'.$filter.' LIKE :value')
+            ->setParameter('value', $value);
+        }
+        
+        return $queryBuilder;
+    }
+    
+    public function findByFilterJoin($entity, $param,QueryBuilder $queryBuilder = null) {
+        if($queryBuilder === null){
+        $queryBuilder = $this->createQueryBuilder('c')
+            ->innerJoin('c.'.$entity,'b')
+            ->where('b.id IN (:values)')
+            ->setParameter('values', $param);
+        } else {
+            $queryBuilder->innerJoin('c.'.$entity,'b')
+            ->where('b.id IN (:values)')
+            ->setParameter('values', $param);
+        }
+        
+        return $queryBuilder;
+    }
 }
