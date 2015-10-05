@@ -1,0 +1,8 @@
+{% for picture in listPic  %}
+    <div class="item 
+    {% if loop.index == 1 %}
+        active
+    {% endif %}">
+     <img class="gallery-carousel" src="{{picture.url}}" alt="{{picture.title}}"/>
+</div>
+{% endfor %}

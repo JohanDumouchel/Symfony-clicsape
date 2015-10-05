@@ -12,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Picture
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="ClicSape\Bundle\CoreBundle\Entity\PictureRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class Picture
@@ -57,6 +57,14 @@ class Picture
      * @ORM\ManyToOne(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Article", inversedBy="pictures",cascade={"persist"})
      */
     private $article;
+    
+    /**
+     * @var Gamme
+     *
+     * @ORM\ManyToOne(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Gamme", inversedBy="pictures",cascade={"persist"})
+     * @ORM\JoinColumn(referencedColumnName="id", nullable=true)
+     */
+    private $gamme;
     
     /**
      * Get id
@@ -135,6 +143,29 @@ class Picture
     public function getArticle()
     {
         return $this->article;
+    }
+    
+    /**
+     * Set gamme
+     *
+     * @param \ClicSape\Bundle\ClotheBundle\Entity\Gamme $gamme
+     * @return Picture
+     */
+    public function setGamme(\ClicSape\Bundle\ClotheBundle\Entity\Gamme $gamme = null)
+    {
+        $this->gamme = $gamme;
+
+        return $this;
+    }
+
+    /**
+     * Get gamme
+     *
+     * @return \ClicSape\Bundle\ClotheBundle\Entity\Gamme 
+     */
+    public function getGamme()
+    {
+        return $this->gamme;
     }
 
     /**

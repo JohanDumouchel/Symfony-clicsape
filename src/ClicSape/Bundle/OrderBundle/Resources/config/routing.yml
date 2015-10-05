@@ -1,3 +1,0 @@
-clic_sape_order_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: ClicSapeOrderBundle:Default:index }

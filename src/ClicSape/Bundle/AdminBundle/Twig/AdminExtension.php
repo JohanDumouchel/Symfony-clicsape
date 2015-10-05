@@ -15,8 +15,8 @@ class AdminExtension extends \Twig_Extension {
     public function getFunctions()
     {
         return array(
-            'getClass' => new \Twig_Function_Method($this, 'getClass'),
-            'getClassInArray' => new \Twig_Function_Method($this, 'getClassInArray')
+            new \Twig_SimpleFunction('getClass',array($this, 'getClass')),
+            new \Twig_SimpleFunction('getClassInArray',array($this,'getClassInArray'))
         );
     }
     

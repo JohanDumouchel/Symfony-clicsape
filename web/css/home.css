@@ -1,0 +1,45 @@
+/* 
+    Created on : 21 sept. 2015, 14:24:41
+    Author     : jdumouchel
+*/
+#header {
+  height: 80px;
+  padding: 20px 0px;
+  background-color: #777777;
+  color: white;
+}
+#header h1 {
+  margin: 0;
+}
+#header h1 small {
+  color: #d9f1ff;
+}
+#header .btn-social-icon {
+  color: white;
+}
+#header nav {
+  height: 60px;
+  border: 0px;
+  background: none;
+}
+#header .btn-cart,
+#header .btn-login {
+  background-color: white;
+  color: #777777;
+}
+#header .btn-cart:hover,
+#header .btn-login:hover {
+  background-color: #777777;
+  color: white;
+}
+#header .header-nav-button {
+  float: none;
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  color: #777777;
+}
+#myCarousel .gallery-carousel {
+  height: 200px;
+  width: auto;
+}
