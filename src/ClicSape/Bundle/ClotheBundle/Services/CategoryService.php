@@ -4,12 +4,12 @@ namespace ClicSape\Bundle\ClotheBundle\Services;
 
 use Doctrine\ORM\EntityRepository;
 /**
- * Description of ArticleService
+ * Description of CategoryService
  *
  * @author johan
  */
-class ArticleService extends ManagerService {
-    
+class CategoryService extends ManagerService{
+     
     protected $repository ;
     
     public function __construct(EntityRepository $repository) {
@@ -21,6 +21,6 @@ class ArticleService extends ManagerService {
      */
     public function getName()
     {
-        return 'article_manager';
+        return 'category_manager';
     }
 }

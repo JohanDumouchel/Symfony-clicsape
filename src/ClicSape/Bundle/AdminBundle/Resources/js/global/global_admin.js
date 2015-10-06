@@ -77,6 +77,7 @@ function checkMultiField(idContainer){
 }
 
 function filterList($content,url,filter,value){
+    $('.loader').show();
     param = jsonParamFilter(filter,value);
     request = $.ajax({
         url: url,
@@ -94,13 +95,30 @@ function filterList($content,url,filter,value){
     });
 }
 
+function refresh($content,url){
+    $('.loader').show();
+    request = $.ajax({
+        url: url,
+        type: 'POST'
+    });    
+    request.done(function(data){
+       $content.html(data);
+    });
+    request.error(function(data){
+        $content.html('aucun contenu trouvé');
+    });
+    request.complete(function(){
+        $('.loader').hide();
+    });
+}
+
 function jsonParamFilter(filter,value){
     return param = $.parseJSON('{"filter" : {"'+filter+'" : "'+value+'"}}');
 }
 
 function filterJoinList($content,entity,entityJoin,data){
     $('.loader').show();
-    var param = $.parseJSON('{"entityJoin":"' + entityJoin + '",' + '"join" :' + data + '}');
+    var param = $.parseJSON('{"entityJoin":"' + entityJoin + '",' + '"data" :' + data + '}');
     url = 'filter';
     console.log(param);
     

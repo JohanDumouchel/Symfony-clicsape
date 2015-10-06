@@ -1,9 +1,9 @@
 {% from "ClicSapeAdminBundle::Macro/button.html.twig" import edit,delete %}
     {% if listArt is null %}
-        <p> Aucun article n'a été trouvé </p>
+        <p > Aucun article n'a été trouvé </p>
     {% endif %}
     {% for article in listArt  %}
-        <tr>
+        <tr >
             <td>{{article.id}}</td>
             <td>{{article.title}}</td>
             <td>{{article.description}}</td>

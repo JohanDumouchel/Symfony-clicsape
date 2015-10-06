@@ -1,0 +1,3 @@
+gender_all:
+    path: /all
+    defaults: { _controller: ClicSapeAdminBundle:Gender:all }

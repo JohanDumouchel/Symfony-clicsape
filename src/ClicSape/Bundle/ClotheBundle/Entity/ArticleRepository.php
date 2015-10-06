@@ -26,15 +26,15 @@ class ArticleRepository extends EntityRepository
         return $queryBuilder;
     }
     
-    public function findByFilterJoin(QueryBuilder $queryBuilder = null, $entity, $param) {
+    public function findByFilterJoin($entity, $param,QueryBuilder $queryBuilder = null) {
         if($queryBuilder === null){
         $queryBuilder = $this->createQueryBuilder('a')
             ->innerJoin('a.'.$entity,'b')
-            ->where('b IN (:values)')
+            ->where('b.id IN (:values)')
             ->setParameter('values', $param);
         } else {
             $queryBuilder->innerJoin('a.'.$entity,'b')
-            ->where('b IN (:values)')
+            ->where('b.id IN (:values)')
             ->setParameter('values', $param);
         }
         

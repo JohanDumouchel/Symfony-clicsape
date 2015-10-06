@@ -16,9 +16,13 @@ category_delete:
     path: /delete
     defaults: { _controller: ClicSapeAdminBundle:Category:delete }
     requirements:
-        _method:  POST
+        methods:  POST
         
 category_all:
     path: /all
     defaults: { _controller: ClicSapeAdminBundle:Category:all }
+    
+category_filter:
+    path: /filter
+    defaults: { _controller: ClicSapeAdminBundle:Category:filter }
     

@@ -23,6 +23,20 @@ $(document).ready(function() {
         });
     });
     
+    $('button#delete').on( "click",function(){
+        $this = $(this);
+        $.confirm({
+            title: false,
+            keyboardEnabled: true,
+            content: "Etes-vous sûr de vouloir supprimer cette élément?",
+            confirm: function() {
+                deleteEntity($this);
+            },
+            cancel: function() {
+                // nothing to do
+            }
+        });
+    });
     
     // Formulaire de recherche pour les list
     $('button#filter').on("click",function(){
@@ -34,14 +48,17 @@ $(document).ready(function() {
                 url = $input.attr('data-url');
                 filter = $input.attr('data-filter');
                 value = $input.val();
-                $('.loader').show();
-                console.log(url);
                 filterList($('tbody'),url,filter,value);
             } else{
                 $input.hide();
             }
         }
         
+    });
+    
+    // Formulaire de recherche pour les list
+    $('button#refresh').on("click",function(){
+        refresh($('tbody'),$(this).attr('data-url'));        
     });
     
     // Formulaire de recherche pour les list
@@ -65,12 +82,13 @@ $(document).ready(function() {
             confirmButton: 'Recherche',
             confirm: function(){
                 console.log('confirm');
-                $inputs = this.$b.find('input:selected');
+                $inputs = this.$b.find('input:checked');
                 if($inputs){
                     var data = '[';
                     $inputs.each(function(index,element){
                         console.log(index);
-                        val = element.attr('value');
+                        console.log(element);
+                        val = $(element).attr('value');
                         if(index === 0){
                             data +='"'+ val+'"';
                         } else {

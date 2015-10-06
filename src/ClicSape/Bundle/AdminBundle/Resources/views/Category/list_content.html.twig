@@ -1,0 +1,31 @@
+{% from "ClicSapeAdminBundle::Macro/button.html.twig" import edit,delete %}
+    {% if listCat is null %}
+        <p > Aucun article n'a été trouvé </p>
+    {% endif %}
+    {% for category in listCat  %}
+        <tr>
+            <td>{{category.id}}</td>
+            <td>{{category.title}}</td>
+            <td>{{category.description}}</td>
+            <td>
+                {% for gamme in category.gammes %}
+                    {{gamme.title}}<br/>
+                {% endfor %}
+            </td>
+            <td>
+                {% for gender in category.genders %}
+                    {{gender.title}}<br/>
+                {% endfor %}
+            </td>
+            <td>
+                {% for groupSize in category.groupSizes %}
+                    {{groupSize.title}}<br/>
+                {% endfor %}
+            </td>
+            <td>
+                {{edit('category_edit',category.id)}}
+                {{delete('category',category.id)}}
+            </td>
+        </tr>
+
+    {% endfor %}

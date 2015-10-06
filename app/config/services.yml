@@ -1,7 +1,7 @@
 # Learn more about services, parameters and containers at
 # http://symfony.com/doc/current/book/service_container.html
 parameters:
-#    parameter_name: value
+    
 
 services:
     clic_sape_clothe.form.type.gender:
@@ -47,12 +47,24 @@ services:
         factory_method: getRepository
         arguments:
             - ClicSape\Bundle\ClotheBundle\Entity\Article
-            
+    
     article_manager:
         class:   ClicSape\Bundle\ClotheBundle\Services\ArticleService
         arguments:
             - "@article_repository"
             
+    category_repository:
+            class: Doctrine\ORM\EntityRepository
+            factory_service: doctrine.orm.entity_manager
+            factory_method: getRepository
+            arguments:
+                - ClicSape\Bundle\ClotheBundle\Entity\Category
+            
+    category_manager:
+        class:   ClicSape\Bundle\ClotheBundle\Services\CategoryService
+        arguments:
+            - "@category_repository"
+
     picture_repository:
         class: Doctrine\ORM\EntityRepository
         factory_service: doctrine.orm.entity_manager

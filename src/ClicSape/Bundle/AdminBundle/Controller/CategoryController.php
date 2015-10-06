@@ -90,4 +90,26 @@ class CategoryController extends Controller
         
         return new Response($content);
     }
+    
+    public function filterAction(Request $request)
+    {   
+        $filters = $request->get('filter');
+        $entityJoin = $request->get('entityJoin');
+        $categoryManager = $this->get('category_manager');
+        $listCat = '';
+        if($filters !== null){            
+            $listCat = $categoryManager->findByFilter($filters);            
+        }
+        elseif($entityJoin !== null){   
+            $data = $request->get('data');
+            $listCat = $categoryManager->findByFilterJoin($entityJoin, $data);
+        }
+        else{
+            $listCat = $categoryManager->findAll();
+        }
+        $content = $this->renderView('ClicSapeAdminBundle:Category:list_content.html.twig', array(
+                'listCat' => $listCat
+            ));
+        return new Response($content);
+    }
 }
