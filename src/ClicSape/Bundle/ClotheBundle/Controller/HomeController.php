@@ -12,8 +12,16 @@ class HomeController extends Controller
         $repoGam = $em->getRepository('ClicSapeClotheBundle:Gamme');
         $listPic = $repoGam->getAllPictures();
         
-        return $this->render('ClicSapeClotheBundle:Home:carousel.html.twig', array(
-                'listPic' => $listPic
+        $repoCat = $em->getRepository('ClicSapeClotheBundle:Category');
+        $menuCat = $repoCat->findAll();
+        
+        $repoGen = $em->getRepository('ClicSapeClotheBundle:Gender');
+        $menuGen = $repoGen->findAll();
+        
+        return $this->render('ClicSapeClotheBundle:Home:index.html.twig', array(
+                'listPic' => $listPic,
+                'menuCat' => $menuCat,
+                'menuGen' => $menuGen
             ));    
     }
 }

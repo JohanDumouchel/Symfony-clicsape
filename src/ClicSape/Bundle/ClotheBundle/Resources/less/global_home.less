@@ -2,56 +2,36 @@
     Created on : 21 sept. 2015, 14:24:41
     Author     : jdumouchel
 */
-
-@header-color-blue: #d9f1ff;
-@header-color-grey: #777777;
-@header-color-blue-dark: #5f7fa4;
-@header-text-h1: white;
-
-#header {
-    height: 80px;
-    padding: 20px 0px;
-    background-color: @header-color-grey;
-    color: @header-text-h1;
-    
-    h1 {
-        margin: 0;
-        
-        small{
-            color: @header-color-blue;
-        }
-    }
-    .btn-social-icon{
-        color: white;
-    }
-    nav{
-        height: 60px;
-        border:0px;
-        background: none;
-        
-    }
-    .btn-cart, .btn-login{
-        background-color: white;
-        color: @header-color-grey;
-    }
-    .btn-cart:hover, .btn-login:hover{
-        background-color: @header-color-grey ;
-        color: white;
-    }
-    .header-nav-button{
-        float: none;
-        width: 40px;
-        height: 40px;
-        background-color: white;
-        color: @header-color-grey;
-    }
-}
+@smartphones: "only screen and (max-width: 479px)";
 
 #myCarousel {
-    
     .gallery-carousel{
         height: 200px;
         width: auto;
 
     }
+}
+
+
+#menu {
+    .img-menu{
+        height: auto;
+        width: 50px;
+    }
+    
+    #menu-icon{
+        position: fixed;
+        top: 10px;
+        left: 10px;
+    }
+}
+
+@media @smartphones{
+    #menu-icon{
+        position: fixed;
+        top: 100px;
+        left: 100px;
+    }
+    .body {
+        background-color: black ;    }
 }
