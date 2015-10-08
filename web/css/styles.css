@@ -1,3 +1,23 @@
+@font-face {
+    font-family: 'glyphyxonenf';
+    src: url('../fonts/glyphyxonenf/GlyphyxOneNF.otf');
+    src: url('../fonts/glyphyxonenf/GlyphyxOneNF.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/glyphyxonenf/GlyphyxOneNF.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'icon-worksregular';
+    src: url('../fonts/icon-works/icon-works-webfont.eot');
+    src: url('../fonts/icon-works/icon-works-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/icon-works/icon-works-webfont.woff') format('woff'),
+         url('../fonts/icon-works/icon-works-webfont.ttf') format('truetype'),
+         url('../fonts/icon-works/icon-works-webfont.svg#icon-worksregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
 /*!
  * Bootstrap v3.3.5 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.

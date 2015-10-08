@@ -60,6 +60,7 @@ class Gamme
     public function __construct()
     {
         $this->categories = new ArrayCollection();
+        $this->pictures = new ArrayCollection();
     }
     
     /**

@@ -3,19 +3,22 @@
 <html>
     <head>
         <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="stylesheet" href="{{ asset('css/styles.css') }}"/>
         <link rel="stylesheet" href="{{ asset('css/home.css') }}"/>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <script src="{{ asset('js/javascript.js') }}"></script>
-        {#<script src="{{ asset('js/admin.js') }}"></script>#}
+        <script src="{{ asset('js/home.js') }}"></script>
     </head>
     <body>
-        <div class="container-fluid">
+    <div class="site-container">
+        <div class="container-fluid site-pusher">
         {% block nav %}        
-        <nav class="navbar navbar-default col-xs-12 col-sm-12 col-md-12 col-lg-12" >
+        <nav id="header" class="navbar navbar-default row" >
             <div class="navbar-header">
+                <img id="logo" class="navbar-brand" src="{{ asset('img/logo.jpg') }}"/>
             <button class="navbar-toggle collapsed" 
                     type="button" 
                     data-toggle="collapse" 
@@ -59,34 +62,48 @@
                     </ul>
                     </li>
                 </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <button class="btn btn-default btn-login">
-                        <span class="glyphicon glyphicon-shopping-cart"></span>
-                    </button>
-                </li>
-                <li>
-                    <button class="btn btn-default btn-cart">
-                        <span class="glyphicon glyphicon-user"></span>
-                    </button>
-                </li>
-            </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <button class="btn btn-default btn-login">
+                            <span class="glyphicon glyphicon-shopping-cart"> </span>
+                        </button>
+                    </li>
+                    <li>
+                        <button class="btn btn-default btn-cart">
+                            <span class="glyphicon glyphicon-user"></span>
+                        </button>
+                    </li>
+                </ul>
         </div>
         </nav>
-        <div class="row">
-                <h1 class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">Example page header <small>Subtext for header</small></h1>
+        {% endblock %}
+        {% block h1 %}
+        <div class="row body">
+                <h1 class="col-xs-12 col-sm-8 col-sm-offset-3 col-md-8 col-md-offset-3 col-lg-8 col-lg-offset-3">Example page header <small>Subtext for header</small></h1>
         </div>
         {% endblock %}
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+        {% block banner %}
+        <div class="row body">
+                <ol class="breadcrumb col-xs-12 col-sm-8 col-sm-offset-3 col-md-8 col-md-offset-3 col-lg-8 col-lg-offset-3">
+                    <li><a href="{{ path('index')}}">Home</a></li>
+                </ol>
+        </div>
+        {% endblock %}
+        {% block content %}
+        <div class="row body">
+            <div class=" col-sm-3 col-md-3 col-lg-2 col-lg-offset-1">
             {% block menu %}
             {% endblock %}
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+            <div class="col-xs-12 col-sm-9 col-md-9 col-lg-8">
             {% block carousel %}
             {% endblock %}
             </div>
         </div>
+        {% endblock %}
         </div>
+        <div class="hide-site" id="hide-site">
+        </div>
+    </div>
     </body>
 </html>

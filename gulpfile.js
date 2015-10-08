@@ -30,6 +30,7 @@ gulp.task('js', function () {
 //CSS TASK: write one minified css file out of bootstrap.less and all of my custom less files
 gulp.task('css', function () {
     return gulp.src([
+        'app/Resources/fonts/**/*.css',
         'bower_components/bootstrap/dist/css/bootstrap.css',
         'bower_components/jquery-confirm2/dist/jquery-confirm.min.css',
         'bower_components/font-awesome/css/font-awesome.min.css',
@@ -44,7 +45,8 @@ gulp.task('css', function () {
 
 //IMAGE TASK: Just pipe images from project folder to public web folder
 gulp.task('fonts', function() {
-    return gulp.src(['bower_components/bootstrap/dist/fonts/**/*.*',
+    return gulp.src(['app/Resources/fonts/**/*.*',
+                    'bower_components/bootstrap/dist/fonts/**/*.*',
                     'bower_components/font-awesome/fonts/**/*.*'])
         .pipe(gulp.dest('web/fonts'));
 });
@@ -113,6 +115,15 @@ gulp.task('home_less', function () {
         .pipe(gulpif(env === 'prod', uglifycss()))
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest('web/css'));
+});
+
+//JAVASCRIPT TASK: write one minified js file out of jquery.js, bootstrap.js and all of my global custom js files
+gulp.task('js', function () {
+    return gulp.src(['src/ClicSape/Bundle/ClotheBundle/Resources/js/*.js'])
+        .pipe(concat('home.js'))
+        .pipe(gulpif(env === 'prod', uglify()))
+        .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest('web/js'));
 });
 
 //define executable tasks when running "gulp" command

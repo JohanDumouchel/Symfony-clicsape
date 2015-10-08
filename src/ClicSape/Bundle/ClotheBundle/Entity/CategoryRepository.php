@@ -39,4 +39,5 @@ class CategoryRepository extends EntityRepository
         
         return $queryBuilder;
     }
+    
 }

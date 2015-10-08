@@ -2,9 +2,50 @@
     Created on : 21 sept. 2015, 14:24:41
     Author     : jdumouchel
 */
-#myCarousel .gallery-carousel {
-  height: 200px;
+/*  
+    Variables   
+*/
+/*
+    Header
+*/
+#header {
+  height: 60px;
+}
+#header #logo {
+  height: 60px;
   width: auto;
+  padding: 0px;
+}
+/*  
+    Menu
+*/
+#menu {
+  background-color: #11ccd3;
+}
+#menu ul,
+#menu li {
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  padding: 0;
+  margin: auto;
+  line-height: 32px;
+  font-size: 16px;
+  color: white;
+}
+#menu li {
+  border-bottom: solid #29e7ee 2px;
+}
+#menu li:hover {
+  background-color: #29e7ee;
+  color: #808080;
+}
+#menu #title {
+  background-color: #11ccd3;
+  border-bottom: solid #29e7ee 2px;
+}
+#menu #content-list {
+  padding: 0;
 }
 #menu .img-menu {
   height: auto;
@@ -12,16 +53,117 @@
 }
 #menu #menu-icon {
   position: fixed;
-  top: 10px;
-  left: 10px;
+  display: none;
+  text-decoration: none;
+  border: none;
+  color: white;
+  background: #11ccd3;
+  padding: 0px 20px;
+  margin: 0;
+  line-height: 60px;
+  width: auto;
+  top: 0px;
+  left: 51px;
+  font-family: "icon-worksregular";
+  font-size: 2em;
 }
-@media "only screen and (max-width: 479px)" {
-  #menu-icon {
+#menu #menu-icon:hover {
+  background-color: #29e7ee;
+  border: solid #29e7ee 0px;
+}
+#menu #menu-icon:focus {
+  background-color: #29e7ee;
+  border: solid #29e7ee 0px;
+  color: #808080;
+}
+#menu .navbar-header {
+  padding: 0px;
+  margin: 0px;
+}
+#menu .button-menu {
+  font-family: "glyphyxonenf";
+  font-size: 2em;
+  color: white;
+  background-color: #11ccd3;
+  border: solid #11ccd3 2px;
+}
+#menu .button-menu:hover {
+  background-color: #29e7ee;
+  border: solid #29e7ee 2px;
+}
+#menu .button-menu.active {
+  background-color: #29e7ee;
+  border: solid #29e7ee 2px;
+  color: #808080;
+}
+#menu .input-search {
+  display: inline-block;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  vertical-align: middle;
+  height: 30px;
+  line-height: 30px;
+}
+#menu button.input-search {
+  font-family: "icon-worksregular";
+  font-size: 1.5em;
+  padding: 0;
+  color: #808080;
+}
+@media only screen and (max-width: 767px) {
+  .site-container {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    position: absolute;
+  }
+  .site-pusher {
+    transition-duration: 0.4s;
+  }
+  #menu {
     position: fixed;
-    top: 100px;
-    left: 100px;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    width: 250px;
+    /*display: none;*/
+    transform: translateX(-250px);
+    /*        #content {
+            height: 100%;
+        } */
   }
-  .body {
-    background-color: black !important;
+  #menu #menu-icon {
+    display: block;
+    transform: translateX(250px);
   }
+  /* Toujours dans le @media */
+  .with-menu .site-pusher {
+    transform: translateX(250px);
+  }
+  /* On met un cache par dessus le site-content pour bloquer le scroll et permettre le retour au site */
+  .with-menu .hide-site {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    transform: translateX(250px);
+    transition-duration: 0.4s;
+  }
+}
+/*  
+    Carousel    
+*/
+#myCarousel .gallery-carousel {
+  height: 300px;
+  width: auto;
+  margin: auto;
+}
+#myCarousel h2 {
+  width: 100%;
+  text-align: center;
 }

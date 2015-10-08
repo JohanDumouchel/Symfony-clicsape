@@ -2,36 +2,192 @@
     Created on : 21 sept. 2015, 14:24:41
     Author     : jdumouchel
 */
-@smartphones: "only screen and (max-width: 479px)";
 
-#myCarousel {
-    .gallery-carousel{
-        height: 200px;
+
+/*  
+    Variables   
+*/
+@blue : #11ccd3;
+@white : white;
+@grey : #808080;
+@menuwidthXS: 250px;
+
+.fontGlyph(@em) { 
+    font-family: "glyphyxonenf";
+    font-size: unit(@em,em);
+}
+.fontIwork(@em) { 
+    font-family: "icon-worksregular";
+    font-size: unit(@em,em);
+}
+.buttonMenu(@px){
+    background-color: lighten(@blue,10);
+    border: solid lighten(@blue,10) unit(@px,px);
+}
+/*
+    Header
+*/
+#header {
+    height: 60px;
+    #logo {
+        height: 60px;
         width: auto;
-
+        padding:0px;
     }
 }
 
-
+/*  
+    Menu
+*/
 #menu {
+    
+    background-color: @blue;
+    ul,li {
+        text-decoration: none;
+        display: block;
+        text-align: center;
+        padding: 0;
+        margin: auto;
+        line-height: 32px;
+        font-size: 16px;
+        color: @white;
+    }
+    li {
+        border-bottom: solid lighten(@blue,10) 2px;
+        &:hover {
+            background-color: lighten(@blue,10);
+            color: @grey;
+        }
+    }
+    #title {
+        background-color: @blue;
+        border-bottom: solid lighten(@blue,10) 2px;
+    }
+    #content-list { padding: 0; }
     .img-menu{
         height: auto;
         width: 50px;
     }
-    
     #menu-icon{
         position: fixed;
-        top: 10px;
-        left: 10px;
+        display: none;
+        text-decoration: none;
+        border: none;
+        color: @white;
+        background: @blue;
+        padding:0px 20px;
+        margin:0;
+        line-height: 60px;
+        width:auto;
+        top: 0px;
+        left: 51px;
+        .fontIwork(2.0);
+        &:hover {
+            .buttonMenu(0);
+        }
+        &:focus {
+            .buttonMenu(0);
+            color: @grey;
+        }
+    }
+    
+    .navbar-header{
+        padding: 0px;
+        margin: 0px;
+    }
+    
+    .button-menu {
+        .fontGlyph(2.0);
+        color: @white;
+        background-color: @blue;
+        border: solid @blue 2px;
+        &:hover {
+            .buttonMenu(2);
+        }
+        &.active {
+            .buttonMenu(2);
+            color: @grey;
+        }
+    }
+    .input-search{
+        display: inline-block;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        vertical-align: middle;
+        height: 30px;
+        line-height: 30px; 
+    }
+    button.input-search{
+        .fontIwork(1.5);
+        padding: 0;
+        color: @grey;
     }
 }
 
-@media @smartphones{
-    #menu-icon{
-        position: fixed;
-        top: 100px;
-        left: 100px;
+@media only screen and (max-width: 767px){
+    
+    .site-container{
+        height:100%;
+        width: 100%;
+        overflow: hidden;
+        position: absolute;
     }
-    .body {
-        background-color: black ;    }
+    
+    .site-pusher {
+        transition-duration: 0.4s;
+    }
+    
+    #menu{
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom:0;
+        height: 100%;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
+        width: @menuwidthXS;
+        /*display: none;*/
+        transform: translateX(-@menuwidthXS);
+/*        #content {
+            height: 100%;
+        } */
+        #menu-icon{
+            display: block;
+            transform: translateX(@menuwidthXS);
+            
+        }
+    }
+    
+    /* Toujours dans le @media */
+    .with-menu .site-pusher {
+        transform: translateX(@menuwidthXS); 
+    }
+    /* On met un cache par dessus le site-content pour bloquer le scroll et permettre le retour au site */
+    .with-menu .hide-site {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.6);
+        transform: translateX(@menuwidthXS); 
+        transition-duration: 0.4s;
+    }
+}
+
+/*  
+    Carousel    
+*/
+#myCarousel {
+    
+    .gallery-carousel{
+        height: 300px;
+        width: auto;
+        margin: auto;
+    }
+    
+    h2 {
+        width:100%;
+        text-align: center;
+    }
 }

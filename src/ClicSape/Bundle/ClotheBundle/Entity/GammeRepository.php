@@ -12,24 +12,37 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class GammeRepository extends EntityRepository{
     
-    public function getAllPictures(){
-        $listGam = $this->findAll();
-        if($listGam == null){
-            return null;
-        }
-        $listPic = array();
-        foreach($listGam as $key => $gamme){
-            $pictures = $gamme->getPictures();
-            if($pictures !== null ){
-                foreach( $pictures as $key => $picture){
-                    $listPic[$picture->getId()] = 
-                        array(
-                            'url' =>$picture->getWebPath(),
-                            'title' => $picture->getTitle()
-                        );
+    public function getAllPictures($idGamme = null)
+    {
+        $listPict = new ArrayCollection();
+        if( $idGamme !== null && $this->find($idGamme) !== null){
+            $gamme = $this->find($idGamme);
+            $listPict = $gamme->getPictures();
+        } else {
+            $listGam = $this->findAll();
+            foreach($listGam as $key => $gamme){
+                $pictures = $gamme->getPictures();
+                if($pictures !== null ){
+                    foreach( $pictures as $key => $picture){
+                        $listPict[] = $picture;
+                    }
                 }
             }
         }
-        return $listPic; 
+        return $listPict; 
     }
+    
+    public function getAllCat($idGamme = null)
+    {
+        $listCat = new ArrayCollection;
+        if($idGamme !== null && $this->find($idGamme) !== null){
+            $gamme = $this->find($idGamme);
+            $listCat = $gamme->getCategories();
+        } else {
+            $repoCat = $this->getEntityManager()->getRepository('ClicSapeClotheBundle:Category');
+            $listCat = $repoCat->findAll();
+        }
+        return $listCat;
+    }
+    
 }

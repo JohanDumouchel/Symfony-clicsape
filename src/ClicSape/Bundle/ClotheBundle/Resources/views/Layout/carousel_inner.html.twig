@@ -1,8 +1,9 @@
-{% for picture in listPic  %}
+{% for key,picture in listPic  %}
     <div class="item 
     {% if loop.index == 1 %}
         active
     {% endif %}">
-     <img class="gallery-carousel" src="{{picture.url}}" alt="{{picture.title}}"/>
-</div>
+     <img class="gallery-carousel" src="{{picture.getWebPath}}" alt="{{picture.title}}"/>
+     <h2><a href="{{path('index',{"idGamme":picture.gamme.id})}}">{{picture.gamme.title}}</a></h2>
+    </div>
 {% endfor %}

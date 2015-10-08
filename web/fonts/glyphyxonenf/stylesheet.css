@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'glyphyxonenf';
+    src: url('../fonts/glyphyxonenf/GlyphyxOneNF.otf');
+    src: url('../fonts/glyphyxonenf/GlyphyxOneNF.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/glyphyxonenf/GlyphyxOneNF.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
