@@ -4,6 +4,7 @@ parameters:
     
 
 services:
+    
     clic_sape_clothe.form.type.gender:
         class: ClicSape\Bundle\ClotheBundle\Form\Type\GenderType
         tags:
