@@ -25,42 +25,42 @@ class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="first_name", type="string", length=55)
+     * @ORM\Column(name="first_name", type="string", length=55, nullable=true)
      */
     protected $firstName;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="last_name", type="string", length=55)
+     * @ORM\Column(name="last_name", type="string", length=55, nullable=true)
      */
     protected $lastName;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="phone", type="string", length=20)
+     * @ORM\Column(name="phone", type="string", length=20, nullable=true)
      */
     protected $phone;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="disabled", type="boolean")
+     * @ORM\Column(name="disabled", type="boolean", nullable=true)
      */
     protected $disabled;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date_created", type="date")
+     * @ORM\Column(name="date_created", type="date", nullable=true)
      */
     protected $dateCreated;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="age", type="integer")
+     * @ORM\Column(name="age", type="integer", nullable=true)
      */
     protected $age;
 

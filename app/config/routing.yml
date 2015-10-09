@@ -5,19 +5,11 @@ clic_sape_admin:
 clic_sape:
     resource: "@ClicSapeClotheBundle/Resources/config/routing.yml"
     prefix:   /
+
+clic_sape_log:
+    resource: "@ClicSapeUserBundle/Resources/config/routing.yml"
+    prefix:   /log
     
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
-
-#clic_sape_core:
-#    resource: "@ClicSapeCoreBundle/Resources/config/routing.yml"
-#    prefix:   /core
-
-#clic_sape_clothe:
-#    resource: "@ClicSapeClotheBundle/Resources/config/routing.yml"
-#    prefix:   /
-
-#clic_sape_user:
-#    resource: "@ClicSapeUserBundle/Resources/config/routing.yml"
-#    prefix:   /
-
+    

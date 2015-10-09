@@ -3,11 +3,21 @@
 namespace ClicSape\Bundle\UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
-    public function indexAction($name)
+    public function loginAction(Request $request)
     {
-        return $this->render('ClicSapeUserBundle:Default:index.html.twig', array('name' => $name));
+        
+        $registerView = $this->forward('ClicSapeUserBundle:Registration:register');
+        
+        $loginView = $this->forward('ClicSapeUserBundle:Security:login');
+        
+        return $this->render('ClicSapeUserBundle:Test:loginReg.html.twig', 
+                array(
+                    'loginView' => $loginView->getContent(),
+                    'registrationView' => $registerView->getContent())
+                ) ;      
     }
 }
