@@ -110,6 +110,73 @@
   padding: 0;
   color: #808080;
 }
+/*  
+    Carousel    
+*/
+#myCarousel .gallery-carousel {
+  height: 300px;
+  width: auto;
+  margin: auto;
+}
+#myCarousel h2 {
+  width: 100%;
+  text-align: center;
+}
+/*  
+    Login
+*/
+div#login div {
+  padding-bottom: 10px ;
+  padding-top: 10px ;
+  text-align: left;
+}
+div#login div input {
+  width: 45%;
+}
+div#login div label {
+  width: 20%;
+  min-width: 130px;
+  max-width: 200px;
+  text-align: left;
+  padding-right: 10px;
+}
+div#login div input#remember_me {
+  width: 20%;
+  min-width: 130px;
+  max-width: 200px;
+  text-align: left;
+  padding-right: 10px;
+}
+div#login div input#remember_me + label {
+  width: 45%;
+}
+div#login div input#_submit {
+  width: 20%;
+}
+/*
+    Register
+*/
+div#register div > div {
+  padding-bottom: 10px ;
+  padding-top: 10px ;
+  text-align: left;
+}
+div#register div > div input {
+  width: 45%;
+}
+div#register div > div label {
+  width: 20%;
+  min-width: 130px;
+  max-width: 200px;
+  text-align: left;
+  padding-right: 10px;
+}
+/*  
+    Account    
+*/
+/*
+    Pour ecran smartphone
+*/
 @media only screen and (max-width: 767px) {
   .site-container {
     height: 100%;
@@ -154,16 +221,4 @@
     transform: translateX(250px);
     transition-duration: 0.4s;
   }
-}
-/*  
-    Carousel    
-*/
-#myCarousel .gallery-carousel {
-  height: 300px;
-  width: auto;
-  margin: auto;
-}
-#myCarousel h2 {
-  width: 100%;
-  text-align: center;
 }

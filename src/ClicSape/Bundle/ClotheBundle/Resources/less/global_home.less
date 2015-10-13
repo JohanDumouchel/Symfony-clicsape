@@ -24,6 +24,18 @@
     background-color: lighten(@blue,10);
     border: solid lighten(@blue,10) unit(@px,px);
 }
+.formAjust(){
+    input {
+            width: 45%;
+        }
+    label {
+        width: 20%;
+        min-width: 130px;
+        max-width: 200px;
+        text-align:left;
+        padding-right: 10px;
+    }
+}
 /*
     Header
 */
@@ -123,7 +135,70 @@
         color: @grey;
     }
 }
+/*  
+    Carousel    
+*/
+#myCarousel {
+    
+    .gallery-carousel{
+        height: 300px;
+        width: auto;
+        margin: auto;
+    }
+    
+    h2 {
+        width:100%;
+        text-align: center;
+    }
+}
 
+/*  
+    Login
+*/
+div#login {
+    div{
+        padding-bottom: 10px ; 
+        padding-top: 10px ; 
+        text-align: left;
+        .formAjust();
+        
+        input#remember_me {
+            width: 20%;
+            min-width: 130px;
+            max-width: 200px;
+            text-align:left;
+            padding-right: 10px;
+        }
+        input#remember_me + label {
+            width: 45%;
+        }
+        input#_submit{
+            width:20%;
+        }
+    }
+}
+/*
+    Register
+*/
+div#register {
+    div > div{
+        padding-bottom: 10px ; 
+        padding-top: 10px ; 
+        text-align:left;
+        .formAjust();
+    }
+}
+/*  
+    Account    
+*/
+
+
+
+
+
+/*
+    Pour ecran smartphone
+*/
 @media only screen and (max-width: 767px){
     
     .site-container{
@@ -154,7 +229,6 @@
         #menu-icon{
             display: block;
             transform: translateX(@menuwidthXS);
-            
         }
     }
     
@@ -172,22 +246,5 @@
         background-color: rgba(0, 0, 0, 0.6);
         transform: translateX(@menuwidthXS); 
         transition-duration: 0.4s;
-    }
-}
-
-/*  
-    Carousel    
-*/
-#myCarousel {
-    
-    .gallery-carousel{
-        height: 300px;
-        width: auto;
-        margin: auto;
-    }
-    
-    h2 {
-        width:100%;
-        text-align: center;
     }
 }

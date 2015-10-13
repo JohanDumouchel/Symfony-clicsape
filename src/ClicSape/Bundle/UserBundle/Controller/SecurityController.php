@@ -33,7 +33,6 @@ class SecurityController extends BaseController
             $authErrorKey = SecurityContextInterface::AUTHENTICATION_ERROR;
             $lastUsernameKey = SecurityContextInterface::LAST_USERNAME;
         }
-
         // get the error if any (works with forward and redirect -- see below)
         if ($request->attributes->has($authErrorKey)) {
             $error = $request->attributes->get($authErrorKey);
@@ -59,7 +58,6 @@ class SecurityController extends BaseController
                 ? $this->get('form.csrf_provider')->generateCsrfToken('authenticate')
                 : null;
         }
-
         return $this->renderLogin(array(
             'last_username' => $lastUsername,
             'error' => $error,

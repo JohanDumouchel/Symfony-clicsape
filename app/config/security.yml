@@ -21,10 +21,23 @@ security:
             pattern: ^/
             form_login:
                 provider: fos_userbundle
-                csrf_provider: security.csrf.token_manager 
+                csrf_provider: security.csrf.token_manager
+                remember_me:  true
+                check_path: /login_check
+                login_path: /login
+                #login success
+                always_use_default_target_path: false
+                default_target_path:            /
+                target_path_parameter:          _target_path
+                use_referer:                    false
+                # login failure redirecting options (read further below)
+                failure_path:    /log/
+                failure_forward: false
+                failure_path_parameter: _failure_path
 
             logout:       true
             anonymous:    true
+        
             
     access_control:
         - { path: ^/login, role: IS_AUTHENTICATED_ANONYMOUSLY }

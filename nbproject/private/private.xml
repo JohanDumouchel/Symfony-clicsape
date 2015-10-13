@@ -3,14 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/clicsape/src/ClicSape/Bundle/UserBundle/Entity/User.php</file>
-            <file>file:/C:/xampp/htdocs/clicsape/app/config/config.yml</file>
-            <file>file:/C:/xampp/htdocs/clicsape/composer.json</file>
-            <file>file:/C:/xampp/htdocs/clicsape/vendor/friendsofsymfony/user-bundle/Model/User.php</file>
-            <file>file:/C:/xampp/htdocs/clicsape/app/config/routing.yml</file>
-            <file>file:/C:/xampp/htdocs/clicsape/app/AppKernel.php</file>
-            <file>file:/C:/xampp/htdocs/clicsape/app/config/services.yml</file>
+            <file>file:/C:/xampp/htdocs/clicsape/src/ClicSape/Bundle/UserBundle/Resources/views/Registration/register_content.html.twig</file>
+            <file>file:/C:/xampp/htdocs/clicsape/app/Resources/views/Layout/home.html.twig</file>
+            <file>file:/C:/xampp/htdocs/clicsape/vendor/friendsofsymfony/user-bundle/Controller/SecurityController.php</file>
+            <file>file:/C:/xampp/htdocs/clicsape/src/ClicSape/Bundle/UserBundle/Resources/config/routing.yml</file>
+            <file>file:/C:/xampp/htdocs/clicsape/vendor/friendsofsymfony/user-bundle/Resources/config/routing/all.xml</file>
+            <file>file:/C:/xampp/htdocs/clicsape/src/ClicSape/Bundle/UserBundle/Resources/views/Registration/register.html.twig</file>
+            <file>file:/C:/xampp/htdocs/clicsape/src/ClicSape/Bundle/UserBundle/Resources/views/Security/login.html.twig</file>
             <file>file:/C:/xampp/htdocs/clicsape/app/config/security.yml</file>
+            <file>file:/C:/xampp/htdocs/clicsape/vendor/friendsofsymfony/user-bundle/Controller/RegistrationController.php</file>
+            <file>file:/C:/xampp/htdocs/clicsape/src/ClicSape/Bundle/UserBundle/Resources/views/Test/loginReg.html.twig</file>
+            <file>file:/C:/xampp/htdocs/clicsape/src/ClicSape/Bundle/UserBundle/Controller/RegistrationController.php</file>
+            <file>file:/C:/xampp/htdocs/clicsape/src/ClicSape/Bundle/UserBundle/Controller/DefaultController.php</file>
+            <file>file:/C:/xampp/htdocs/clicsape/src/ClicSape/Bundle/UserBundle/Controller/SecurityController.php</file>
         </group>
     </open-files>
 </project-private>

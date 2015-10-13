@@ -9,10 +9,9 @@ class DefaultController extends Controller
 {
     public function loginAction(Request $request)
     {
+        $loginView = $this->forward('ClicSapeUserBundle:Security:login', array($request));
         
-        $registerView = $this->forward('ClicSapeUserBundle:Registration:register');
-        
-        $loginView = $this->forward('ClicSapeUserBundle:Security:login');
+        $registerView = $this->forward('ClicSapeUserBundle:Registration:register', array($request));
         
         return $this->render('ClicSapeUserBundle:Test:loginReg.html.twig', 
                 array(

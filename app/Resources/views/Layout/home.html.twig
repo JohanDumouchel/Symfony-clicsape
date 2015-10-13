@@ -75,24 +75,25 @@
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li>
+                        <li><a>
                             <button class="btn btn-default btn-cart">
                                 <span class="glyphicon glyphicon-shopping-cart"> </span>
                             </button>
+                            </a>
                         </li>
                         <li>
                             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                <a href="{{ path('fos_user_security_logout') }}">
                                 <button class="btn btn-default btn-login">
-                                    <a href="{{ path('fos_user_security_logout') }}">
                                         <span class="glyphicon glyphicon-user"> Logout</span>
-                                    </a>
                                 </button>
+                                </a>
                             {% else %}
+                                <a href="{{ path('clic_sape_user_login') }}">
                                     <button class="btn btn-default btn-login">
-                                        <a href="{{ path('clic_sape_user_login') }}">
-                                            <span class="glyphicon glyphicon-user"> Login</span>
-                                        </a>
+                                        <span class="glyphicon glyphicon-user"> Login</span>
                                     </button>
+                                </a>
                             {% endif %}
                         </li>
                     </ul>
@@ -129,6 +130,5 @@
             <div class="hide-site" id="hide-site">
             </div>
         </div>
-    
     </body>
 </html>
