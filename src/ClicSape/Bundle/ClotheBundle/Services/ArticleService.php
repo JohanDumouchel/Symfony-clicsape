@@ -3,6 +3,7 @@
 namespace ClicSape\Bundle\ClotheBundle\Services;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Description of ArticleService
  *
@@ -14,6 +15,23 @@ class ArticleService extends ManagerService {
     
     public function __construct(EntityRepository $repository) {
         $this->repository = $repository;
+    }
+    
+    public function getRandomArticle( $listCat = null, $limit = 5 ){
+        $listArt = new ArrayCollection;
+        $listArtTmp = new ArrayCollection;
+        if($listCat !== null){
+            $listArtTmp = $this->repository->findFromCat($listCat);
+        } else {
+            $listArtTmp = $this->repository->findAll();
+        }
+        $listArtKeys = array_rand($listArtTmp->toArray(), $limit);
+        
+        foreach($listArtKeys as $key ){
+            $listArt[] = $listArtTmp[$key];
+        }
+        
+        return $listArt;
     }
     
     /**

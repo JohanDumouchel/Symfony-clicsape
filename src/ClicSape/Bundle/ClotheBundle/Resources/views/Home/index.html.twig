@@ -1,9 +1,17 @@
 {% extends "Layout/home.html.twig" %}
-
+{% block pager_content %}
+    {% if gamme is defined and gamme != null %}
+    <li><a href="{{ path('index',{"idGamme":gamme.id})}}">{{gamme.title}}</a></li>
+    {% endif %}
+{% endblock %}
 {% block menu %}
     {% include "Layout/menu.html.twig"%}
 {% endblock %}
 {% block carousel %}
     {% include "Layout/carousel.html.twig"%}
 {% endblock %}
+{% block banner %}
+    {% include "Layout/banner.html.twig"%}
+{% endblock %}
+
 

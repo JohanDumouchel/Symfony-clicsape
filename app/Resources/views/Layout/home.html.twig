@@ -106,21 +106,27 @@
                     <h1 class="col-xs-12 col-sm-8 col-sm-offset-3 col-md-8 col-md-offset-3 col-lg-8 col-lg-offset-3">Example page header <small>Subtext for header</small></h1>
             </div>
             {% endblock %}
-            {% block banner %}
+            {% block pager %}
             <div class="row body">
                     <ol class="breadcrumb col-xs-12 col-sm-8 col-sm-offset-3 col-md-8 col-md-offset-3 col-lg-8 col-lg-offset-3">
                         <li><a href="{{ path('index')}}">Home</a></li>
+                        {% block pager_content %}
+                        {% endblock %}
                     </ol>
             </div>
             {% endblock %}
             {% block content %}
             <div class="row body">
-                <div class=" col-sm-3 col-md-3 col-lg-2 col-lg-offset-1">
+                <div class="col-sm-3 col-md-3 col-lg-2 col-lg-offset-1">
                 {% block menu %}
                 {% endblock %}
                 </div>
                 <div class="col-xs-12 col-sm-9 col-md-9 col-lg-8">
                 {% block carousel %}
+                {% endblock %}
+                </div>
+                <div class="col-xs-12 col-sm-9 col-md-9 col-lg-8">
+                {% block banner %}
                 {% endblock %}
                 </div>
             </div>

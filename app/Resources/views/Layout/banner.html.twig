@@ -1,0 +1,17 @@
+
+<div class="container-fluid" >
+    <div class="row ">
+<div class="col-lg-1">
+</div>
+{% for key,article in listArt %}
+    {% set picture = article.getPicturesByLevel(1) %}
+    <div class="col-lg-2">
+    <img src="{{ picture.getWebPath }}" class="gallery-small"/>
+    </div>
+{% endfor %}   
+<div class="col-lg-1">
+</div>
+</div>
+
+</div>
+

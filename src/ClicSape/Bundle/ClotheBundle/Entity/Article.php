@@ -5,7 +5,7 @@ namespace ClicSape\Bundle\ClotheBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
-
+use ClicSape\Bundle\CoreBundle\Entity\Picture as Picture; 
 /**
  * Article
  *
@@ -349,5 +349,24 @@ class Article
     public function getGenders()
     {
         return $this->genders;
+    }
+    
+    public function getPicturesByLevel($limit = null){
+        
+        $listPic = Picture::orderPicLevel($this->getPictures());
+        
+        if($limit === 1 ){
+            return $listPic[0];
+        }
+        
+        $listPicSelect = new ArrayCollection;
+        
+        for($i = 0; $i < $limit ; $i++){
+            if($listPic[$i] !== null){
+                $listPicSelect[] = $listPic[$i];
+            }
+        }
+        
+        return $listPicSelect;
     }
 }

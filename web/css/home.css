@@ -6,6 +6,18 @@
     Variables   
 */
 /*
+        Global 
+    Home
+    Index
+    Login/Register
+
+*/
+/*
+----
+----    Layout
+----
+*/
+/*
     Header
 */
 #header {
@@ -121,6 +133,13 @@
 #myCarousel h2 {
   width: 100%;
   text-align: center;
+}
+/*  
+    Content    
+*/
+.gallery-small {
+  width: 100px;
+  height: 100px;
 }
 /*  
     Login

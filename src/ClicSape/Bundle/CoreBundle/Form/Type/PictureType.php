@@ -16,6 +16,10 @@ class PictureType extends AbstractType
     {
         $builder
             ->add('title','text',array('required'=> true))
+            ->add('level','choice',array(
+                'required'=> false,
+                'choices' => array( 1 => 1 , 2 => 2 ,3 => 3 ),
+                'preferred_choices' => array( 1 => 1 )))
             ->add('file','file',array('required'=> true))
         ;
     }

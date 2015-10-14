@@ -4,6 +4,7 @@ namespace ClicSape\Bundle\ClotheBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * ArticleRepository
@@ -39,6 +40,19 @@ class ArticleRepository extends EntityRepository
         }
         
         return $queryBuilder;
-    }
+    }    
     
+    public function findFromCat($listCat){
+        
+        $listArt = new ArrayCollection;
+        foreach($listCat as $key => $category){
+            $listArtTmp = $category->getArticles();
+            if($listArtTmp !== null ){
+                foreach( $listArtTmp as $key => $article){
+                    $listArt[] = $article;
+                }
+            }
+        }
+        return $listArt;
+    }
 }

@@ -32,6 +32,13 @@ class Picture
      * @ORM\Column(name="title", type="string", length=255)
      */
     private $title;
+    
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="level", type="integer", nullable=false)
+     */
+    private $level;
 
     /**
      * @var string
@@ -115,7 +122,7 @@ class Picture
     /**
      * Get value
      *
-     * @return string 
+     * @return integer 
      */
     public function getLevel()
     {
@@ -276,5 +283,28 @@ class Picture
         // on se débarrasse de « __DIR__ » afin de ne pas avoir de problème lorsqu'on affiche
         // le document/image dans la vue.
         return '/img/article';
+    }
+    
+    /* Get an ArrayCollection of Pictures
+     * and sort them by level
+     * {ArrayCollection} or {persistCollection} $listPic
+     * return {ArrayCollection} $listPic
+     */
+    public function orderPicLevel($listPic){
+        $length = count($listPic);
+        
+        if($length < 2)
+            return $listPic;
+        
+        for($i = 0; $i <= $length-1; $i++){
+            for($k = $length-1; $k >= $i+1 ; $k--){
+                if($listPic[$k]->getLevel() < $listPic[$k-1]->getLevel()){
+                    $tmpPic = $listPic[$k-1];
+                    $listPic[$k-1] = $listPic[$k];
+                    $listPic[$k] = $tmpPic;
+                }
+            }
+        }
+        return $listPic;
     }
 }
