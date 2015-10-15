@@ -10,6 +10,7 @@
             <file>file:/C:/xampp/htdocs/clicsape/src/ClicSape/Bundle/ClotheBundle/Entity/Article.php</file>
             <file>file:/C:/xampp/htdocs/clicsape/src/ClicSape/Bundle/CoreBundle/Entity/Picture.php</file>
             <file>file:/C:/xampp/htdocs/clicsape/src/ClicSape/Bundle/ClotheBundle/Controller/HomeController.php</file>
+            <file>file:/C:/xampp/htdocs/clicsape/src/ClicSape/Bundle/AdminBundle/Resources/less/global/global_admin.less</file>
             <file>file:/C:/xampp/htdocs/clicsape/src/ClicSape/Bundle/ClotheBundle/Resources/less/global_home.less</file>
             <file>file:/C:/xampp/htdocs/clicsape/app/Resources/views/Layout/banner.html.twig</file>
         </group>

@@ -1,0 +1,12 @@
+<div class="row banner">
+        <div class="col-lg-1">
+        </div>
+        {% for key,article in listArt %}
+            {% set picture = article.getPicturesByLevel(1) %}
+            <div class="col-lg-2 text-center banner-img-box">
+                <img src="{{ picture.getWebPath }}" class="gallery-small img-circle img-zoom"/>
+            </div>
+        {% endfor %}
+        <div class="col-lg-1">
+        </div>
+</div>

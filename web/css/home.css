@@ -5,6 +5,17 @@
 /*  
     Variables   
 */
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-box-shadow: 0 0 12px #11ccd3;
+  }
+  50% {
+    -webkit-box-shadow: 0 0 12px #097175;
+  }
+  100% {
+    -webkit-box-shadow: 0 0 12px #11ccd3;
+  }
+}
 /*
         Global 
     Home
@@ -138,8 +149,22 @@
     Content    
 */
 .gallery-small {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
+  border: solid #808080 1px;
+}
+.img-zoom:hover {
+  width: 200px;
+  height: 200px;
+  margin-top: -40px;
+  z-index: 100;
+  border-radius: 5%;
+  border: solid #11ccd3 1px;
+  -webkit-box-shadow: 0px 0px 12px #11ccd3;
+  -moz-box-shadow: 0px 0px 12px #11ccd3;
+  box-shadow: 0px 0px 12px #11ccd3;
+  -webkit-animation: pulse 1.5s infinite ease-in-out;
+  /* Ici on utilise l'animation référencée plus haut */
 }
 /*  
     Login
@@ -190,6 +215,17 @@ div#register div > div label {
   text-align: left;
   padding-right: 10px;
 }
+/*
+    Banner  // banner with article, pub
+*/
+.banner {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 140px;
+  background-color: #f5f5f5;
+}
 /*  
     Account    
 */
@@ -215,11 +251,7 @@ div#register div > div label {
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
     width: 250px;
-    /*display: none;*/
     transform: translateX(-250px);
-    /*        #content {
-            height: 100%;
-        } */
   }
   #menu #menu-icon {
     display: block;
