@@ -25,6 +25,7 @@ class ArticleService extends ManagerService {
         } else {
             $listArtTmp = $this->repository->findAll();
         }
+        ($listArtTmp->count() < $limit)? $limit = $listArtTmp->count() : $limit ;
         $listArtKeys = array_rand($listArtTmp->toArray(), $limit);
         
         foreach($listArtKeys as $key ){
