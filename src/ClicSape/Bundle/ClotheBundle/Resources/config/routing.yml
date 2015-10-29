@@ -1,3 +1,10 @@
 index:
     path:     /
     defaults: { _controller: ClicSapeClotheBundle:Home:index }
+    
+search:
+    path:   /search/{idCat}/{idGen}
+    defaults: { _controller: ClicSapeClotheBundle:Home:search, idCat: null, idGen: null }
+    requirements:
+        idCat: \d*
+        idGen: \d*

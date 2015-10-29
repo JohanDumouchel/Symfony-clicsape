@@ -344,7 +344,7 @@ class Article
     /**
      * Get genders
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\ArrayCollection 
      */
     public function getGenders()
     {

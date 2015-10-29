@@ -42,11 +42,16 @@ class ArticleRepository extends EntityRepository
         return $queryBuilder;
     }    
     
-    public function findFromCat($listCat){
+    public function findFromCat($listCat, $gender = null){
+        
+        if(!is_array($listCat)){
+            $listArt = $listCat->getArticlesByGender($gender);
+            return $listArt;
+        }
         
         $listArt = new ArrayCollection;
         foreach($listCat as $key => $category){
-            $listArtTmp = $category->getArticles();
+            $listArtTmp = $category->getArticlesByGender($gender);
             if($listArtTmp !== null ){
                 foreach( $listArtTmp as $key => $article){
                     $listArt[] = $article;

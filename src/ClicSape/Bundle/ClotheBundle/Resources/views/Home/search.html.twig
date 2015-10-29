@@ -3,12 +3,12 @@
     {% if gamme is defined and gamme != null %}
     <li><a href="{{ path('index',{"idGamme":gamme.id})}}">{{gamme.title}}</a></li>
     {% endif %}
+    {% if category is defined and category != null %}
+    <li>{{category.title}}</li>
+    {% endif %}
 {% endblock %}
 {% block menu %}
     {% include "Layout/menu.html.twig"%}
-{% endblock %}
-{% block carousel %}
-    {% include "Layout/carousel.html.twig"%}
 {% endblock %}
 {% block banner %}
     {% include "Layout/banner.html.twig"%}

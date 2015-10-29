@@ -146,27 +146,6 @@
   text-align: center;
 }
 /*  
-    Content    
-*/
-.gallery-small {
-  width: 120px;
-  height: 120px;
-  border: solid #808080 1px;
-}
-.img-zoom:hover {
-  width: 200px;
-  height: 200px;
-  margin-top: -40px;
-  z-index: 100;
-  border-radius: 5%;
-  border: solid #11ccd3 1px;
-  -webkit-box-shadow: 0px 0px 12px #11ccd3;
-  -moz-box-shadow: 0px 0px 12px #11ccd3;
-  box-shadow: 0px 0px 12px #11ccd3;
-  -webkit-animation: pulse 1.5s infinite ease-in-out;
-  /* Ici on utilise l'animation référencée plus haut */
-}
-/*  
     Login
 */
 div#login div {
@@ -218,13 +197,51 @@ div#register div > div label {
 /*
     Banner  // banner with article, pub
 */
+/*  
+    Content    
+*/
+.gallery-small {
+  width: 120px;
+  height: 120px;
+  border: solid #f5f5f5 1px;
+}
 .banner {
   padding-top: 10px;
   padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
   margin-top: 10px;
-  margin-bottom: 10px;
-  height: 140px;
+  height: 100%;
   background-color: #f5f5f5;
+}
+.banner .gallery-small {
+  width: 120px;
+  height: 120px;
+  border: solid #f5f5f5 1px;
+  border-radius: 5%;
+}
+.banner .thumbnail {
+  margin-left: auto;
+  margin-right: auto;
+}
+.img-zoom {
+  margin-top: 20px;
+}
+.img-zoom:hover {
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 130px;
+  height: 130px;
+  /*        margin-top:  -40px;*/
+  z-index: 100;
+  border-radius: 5%;
+  border: solid #11ccd3 1px;
+  -webkit-box-shadow: 0px 0px 12px #11ccd3;
+  -moz-box-shadow: 0px 0px 12px #11ccd3;
+  box-shadow: 0px 0px 12px #11ccd3;
+  -webkit-animation: pulse 1.5s infinite ease-in-out;
+  /* Ici on utilise l'animation référencée plus haut */
 }
 /*  
     Account    
@@ -233,6 +250,10 @@ div#register div > div label {
     Pour ecran smartphone
 */
 @media only screen and (max-width: 767px) {
+  .scrollY {
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
   .site-container {
     height: 100%;
     width: 100%;

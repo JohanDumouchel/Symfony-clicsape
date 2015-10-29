@@ -1,4 +1,10 @@
 <div class="container-fluid" >
+    
+    {% if message is defined %}
+    <div class="row">
+        {{message}}
+    </div>
+    {% endif %}
     {% include 'Layout/banner_content.html.twig' %}
 </div>
 

@@ -5,6 +5,8 @@ parameters:
 
 services:
     
+    # Form Type #
+    
     clic_sape_clothe.form.type.gender:
         class: ClicSape\Bundle\ClotheBundle\Form\Type\GenderType
         tags:
@@ -40,8 +42,10 @@ services:
     clic_sape_Adin.twig.admin_extension:
         class: ClicSape\Bundle\AdminBundle\Twig\AdminExtension
         tags:
-            - { name: twig.extension }
-        
+            - { name: twig.extension }        
+    
+    # Manager and repository to manipulate entity #
+    
     article_repository:
         class: Doctrine\ORM\EntityRepository
         factory_service: doctrine.orm.entity_manager

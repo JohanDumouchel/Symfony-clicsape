@@ -178,34 +178,6 @@
 }
 
 /*  
-    Content    
-*/
-.gallery-small{
-    width: 120px;
-    height: 120px;
-    border: solid @grey 1px ; 
-}
-.banner-img-box{
-    
-}
-.img-zoom {
-    &:hover{
-        width: 200px;
-        height: 200px;
-        margin-top:  -40px;
-        z-index: 100;
-        border-radius: 5%;
-        border: solid @blue 1px ; 
-        -webkit-box-shadow: 0px 0px 12px @blue;
-        -moz-box-shadow: 0px 0px 12px @blue;
-        box-shadow: 0px 0px 12px @blue;
-        -webkit-animation: pulse 1.5s infinite ease-in-out; /* Ici on utilise l'animation référencée plus haut */
-    }
-    
-}
-
-
-/*  
     Login
 */
 div#login {
@@ -244,23 +216,57 @@ div#register {
 /*
     Banner  // banner with article, pub
 */
+/*  
+    Content    
+*/
+.gallery-small{
+    width: 120px;
+    height: 120px;
+    border: solid @greyLight 1px ; 
+}
 
 .banner {
     padding-top: 10px;
     padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
     margin-top: 10px;
-    height: 140px;
+    height: 100%;
     background-color: @greyLight;
+    .gallery-small{
+        width: 120px;
+        height: 120px;
+        border: solid @greyLight 1px ;
+        border-radius: 5%;
+    }
+    .thumbnail {
+        margin-left: auto; 
+        margin-right: auto; 
+    }
 }
 
-.banner-info {
-    padding-bottom: 10px;
-    margin-bottom: 10px;
-    height: 40px;
-    background-color: @greyLight;
+
+
+.img-zoom {
+    margin-top: 20px;
+    
+    &:hover{
+        margin-top: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 130px;
+        height: 130px;
+/*        margin-top:  -40px;*/
+        z-index: 100;
+        border-radius: 5%;
+        border: solid @blue 1px ; 
+        -webkit-box-shadow: 0px 0px 12px @blue;
+        -moz-box-shadow: 0px 0px 12px @blue;
+        box-shadow: 0px 0px 12px @blue;
+        -webkit-animation: pulse 1.5s infinite ease-in-out; /* Ici on utilise l'animation référencée plus haut */
+    }
+    
 }
-
-
 /*  
     Account    
 */
@@ -273,6 +279,12 @@ div#register {
     Pour ecran smartphone
 */
 @media only screen and (max-width: 767px){
+    
+    .scrollY {
+        overflow: scroll;
+        -webkit-overflow-scrolling: touch;
+    } 
+
     
     .site-container{
         height:100%;

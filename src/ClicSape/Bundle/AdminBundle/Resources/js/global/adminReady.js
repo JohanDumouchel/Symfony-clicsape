@@ -23,21 +23,6 @@ $(document).ready(function() {
         });
     });
     
-    $('button#delete').on( "click",function(){
-        $this = $(this);
-        $.confirm({
-            title: false,
-            keyboardEnabled: true,
-            content: "Etes-vous sûr de vouloir supprimer cette élément?",
-            confirm: function() {
-                deleteEntity($this);
-            },
-            cancel: function() {
-                // nothing to do
-            }
-        });
-    });
-    
     // Formulaire de recherche pour les list
     $('button#filter').on("click",function(){
         $input = $(this).prev();  

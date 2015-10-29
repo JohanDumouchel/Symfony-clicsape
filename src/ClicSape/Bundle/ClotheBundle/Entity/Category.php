@@ -4,6 +4,7 @@ namespace ClicSape\Bundle\ClotheBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use ClicSape\Bundle\ClotheBundle\Entity\Gender as Gender;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
@@ -222,6 +223,30 @@ class Category
     {
         return $this->articles;
     }
+    
+    /**
+     *
+     * @return ArrayCollection 
+     */
+    public function getArticlesByGender(Gender $gender = null)
+    {
+        if($gender === null){
+            return $this->articles;
+        }
+        if(is_a($gender, 'Gender')){
+            throw new Exception('parameter gender must be an instance of gender');
+        }
+        $listArt = new ArrayCollection();
+        $listArtTmp = $this->articles;
+        foreach($listArtTmp as $key => $article){
+            $genders = $article->getGenders();
+            if($genders->contains($gender)){
+                $listArt[] = $article;
+            }
+        }        
+        return $listArt;
+    }
+    
     
     /**
      * @param GroupSize $groupSize

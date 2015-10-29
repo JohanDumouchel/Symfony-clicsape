@@ -12,7 +12,7 @@
         <script src="{{ asset('js/javascript.js') }}"></script>
         <script src="{{ asset('js/home.js') }}"></script>
     </head>
-    <body>
+    <body class="scrollY">
     {% if app.request.hasPreviousSession %}
         {% for type, messages in app.session.flashbag.all() %}
             {% for message in messages %}

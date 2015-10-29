@@ -3,16 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/clicsape/app/Resources/views/Layout/home.html.twig</file>
-            <file>file:/C:/xampp/htdocs/clicsape/src/ClicSape/Bundle/ClotheBundle/Services/ArticleService.php</file>
-            <file>file:/C:/xampp/htdocs/clicsape/src/ClicSape/Bundle/ClotheBundle/Resources/views/Home/index.html.twig</file>
-            <file>file:/C:/xampp/htdocs/clicsape/src/ClicSape/Bundle/ClotheBundle/Entity/ArticleRepository.php</file>
-            <file>file:/C:/xampp/htdocs/clicsape/src/ClicSape/Bundle/ClotheBundle/Entity/Article.php</file>
-            <file>file:/C:/xampp/htdocs/clicsape/src/ClicSape/Bundle/CoreBundle/Entity/Picture.php</file>
-            <file>file:/C:/xampp/htdocs/clicsape/src/ClicSape/Bundle/ClotheBundle/Controller/HomeController.php</file>
-            <file>file:/C:/xampp/htdocs/clicsape/src/ClicSape/Bundle/AdminBundle/Resources/less/global/global_admin.less</file>
-            <file>file:/C:/xampp/htdocs/clicsape/src/ClicSape/Bundle/ClotheBundle/Resources/less/global_home.less</file>
-            <file>file:/C:/xampp/htdocs/clicsape/app/Resources/views/Layout/banner.html.twig</file>
+            <file>file:/C:/Users/johan/Desktop/website/clicsape.com/src/ClicSape/Bundle/ClotheBundle/Resources/views/Home/search.html.twig</file>
+            <file>file:/C:/Users/johan/Desktop/website/clicsape.com/app/Resources/views/Layout/banner_content.html.twig</file>
+            <file>file:/C:/Users/johan/Desktop/website/clicsape.com/app/Resources/views/Layout/banner.html.twig</file>
+            <file>file:/C:/Users/johan/Desktop/website/clicsape.com/src/ClicSape/Bundle/ClotheBundle/Entity/ArticleRepository.php</file>
+            <file>file:/C:/Users/johan/Desktop/website/clicsape.com/src/ClicSape/Bundle/ClotheBundle/Resources/config/routing.yml</file>
+            <file>file:/C:/Users/johan/Desktop/website/clicsape.com/app/Resources/views/Layout/menu.html.twig</file>
+            <file>file:/C:/Users/johan/Desktop/website/clicsape.com/src/ClicSape/Bundle/ClotheBundle/Resources/views/Home/index.html.twig</file>
+            <file>file:/C:/Users/johan/Desktop/website/clicsape.com/src/ClicSape/Bundle/ClotheBundle/Services/ArticleService.php</file>
+            <file>file:/C:/Users/johan/Desktop/website/clicsape.com/src/ClicSape/Bundle/ClotheBundle/Controller/HomeController.php</file>
         </group>
     </open-files>
 </project-private>

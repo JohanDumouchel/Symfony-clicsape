@@ -4,10 +4,10 @@
         <button id="menu-icon">
                 <span> K </span> 
         </button>
-        <button id="gender" class="button-menu col-sm-6 col-md-6 col-lg-6" data-gender="Femme">
+        <button id="gender" class="button-menu col-sm-6 col-md-6 col-lg-6" data-gender="Femme" data-id="2">
             <span>[</span>
         </button>
-        <button id="gender" class="button-menu col-sm-6 col-md-6 col-lg-6" data-gender="Homme">
+        <button id="gender" class="button-menu col-sm-6 col-md-6 col-lg-6" data-gender="Homme" data-id="1">
             <span>]</span>
         </button>
     </div>
@@ -16,8 +16,8 @@
     <div id="content-list">
         <ul>
         {% for category in menuCat %}
-            <li class="{% for gender in category.genders %}{{gender.title}} {% endfor %}">
-                {{category.title}}
+            <li class="{% for gender in category.genders %} {{gender.title}} {% endfor %}">
+                <a href="{{path("search", { 'idCat' : category.id } )}}">{{category.title}}</a>
             </li>
         {% endfor %}
         </ul>

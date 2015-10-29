@@ -17,22 +17,43 @@ class ArticleService extends ManagerService {
         $this->repository = $repository;
     }
     
-    public function getRandomArticle( $listCat = null, $limit = 5 ){
+    public function getRandomArticle( $listCat = null, $idGen = 0, $limit = 6 )
+    {
         $listArt = new ArrayCollection;
         $listArtTmp = new ArrayCollection;
         if($listCat !== null){
-            $listArtTmp = $this->repository->findFromCat($listCat);
+            $listArtTmp = $this->repository->findFromCat($listCat,$idGen);
+            $arrayArtTmp = $listArtTmp->toArray();
         } else {
-            $listArtTmp = $this->repository->findAll();
+            $arrayArtTmp = $this->repository->findAll();
         }
-        ($listArtTmp->count() < $limit)? $limit = $listArtTmp->count() : $limit ;
-        $listArtKeys = array_rand($listArtTmp->toArray(), $limit);
+        if(count($arrayArtTmp) === 0){
+            return null;
+        }
+        if(count($arrayArtTmp) === 1 ){
+            $listArt[] = $arrayArtTmp[0];
+            return $listArt;
+        }
+        return new ArrayCollection($this->extractRandomArticle($arrayArtTmp,$limit));
+    }
+    
+    private function extractRandomArticle($listArt , $limit)
+    {
+        $array = array();
+        
+        if(!is_array($listArt)){
+            return null;
+        }
+        
+        $arrayLimit = count($listArt) ;
+        $trueLimit = ($arrayLimit < $limit)? $arrayLimit : $limit ;
+        $listArtKeys = array_rand($listArt, $trueLimit);
         
         foreach($listArtKeys as $key ){
-            $listArt[] = $listArtTmp[$key];
+            $array[] = $listArt[$key];
         }
         
-        return $listArt;
+        return $array;
     }
     
     /**
