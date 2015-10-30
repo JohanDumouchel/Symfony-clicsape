@@ -35,6 +35,10 @@ services:
         class: ClicSape\Bundle\ClotheBundle\Form\Type\ArticleType
         tags:
             - { name: form.type, alias: article_type}
+    clic_sape_clothe.form.type.article_info:
+        class: ClicSape\Bundle\ClotheBundle\Form\Type\ArticleInfoType
+        tags:
+            - { name: form.type, alias: article_info_type}
     clic_sape_core.form.type.picture:
         class: ClicSape\Bundle\CoreBundle\Form\Type\PictureType
         tags:

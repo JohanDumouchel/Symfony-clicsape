@@ -37,6 +37,12 @@ class ArticleType extends AbstractType
                 'by_reference' => false,
                 'required' => false
             ))
+            ->add('articleInfos', 'collection',array(
+                'type' => 'article_info_type',
+                'allow_add' => true,
+                'by_reference' => false,
+                'required' => false
+            ))
             ->add('ajouter','submit')
         ;
     }

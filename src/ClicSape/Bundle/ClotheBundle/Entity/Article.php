@@ -63,7 +63,7 @@ class Article
     /**
      * @var ArrayCollection ArticleInfo
      *
-     * @ORM\OneToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\ArticleInfo", mappedBy="article")
+     * @ORM\OneToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\ArticleInfo", mappedBy="article", cascade={"persist"})
      */
     private $articleInfos;
     

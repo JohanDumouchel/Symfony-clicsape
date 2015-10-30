@@ -1,7 +1,7 @@
 {% extends "Layout/home.html.twig" %}
 {% block pager_content %}
     {% if gamme is defined and gamme != null %}
-    <li><a href="{{ path('index',{"idGamme":gamme.id})}}">{{gamme.title}}</a></li>
+    <li>{{gamme.title}}</li>
     {% endif %}
 {% endblock %}
 {% block menu %}

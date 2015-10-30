@@ -15,10 +15,11 @@ class ArticleInfoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('value')
-            ->add('level')
-            ->add('infoType')
-            ->add('article')
+            ->add('value' , 'textarea' )
+            ->add('level', 'choice', array(
+                'required' => false,
+                'choices' => array( 1 => 1 , 2 => 2 ,3 => 3, 4 => 4,5 => 5, 6 => 6 ),
+                'preferred_choices' => array( 1 => 1 )))
         ;
     }
     
@@ -37,6 +38,6 @@ class ArticleInfoType extends AbstractType
      */
     public function getName()
     {
-        return 'clicsape_bundle_clothebundle_articleinfo';
+        return 'article_info_type';
     }
 }

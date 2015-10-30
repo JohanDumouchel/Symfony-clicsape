@@ -4,7 +4,8 @@ namespace ClicSape\Bundle\ClotheBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use ClicSape\Bundle\ClotheBundle\Constant\Constant as Constant;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Request as Request;
+use Symfony\Component\HttpFoundation\Response as Response;
 
 class HomeController extends Controller
 {
@@ -20,17 +21,18 @@ class HomeController extends Controller
         $data = $this->initHome($request);
         $idGamme = $request->get('idGamme');
         $menuCat = $data['menuCat'];
-        
+
         $em = $this->getDoctrine()->getManager();
         $repoGam = $em->getRepository('ClicSapeClotheBundle:Gamme');
         $articleManager = $this->get('article_manager');
         $data['listPic'] = $repoGam->getAllPictures($idGamme);
         $data['listArt'] = $articleManager->getRandomArticle($menuCat);
-                
-        return $this->render('ClicSapeClotheBundle:Home:index.html.twig', $data);    
+
+        return $this->render('ClicSapeClotheBundle:Home:index.html.twig', $data);  
     }
     
-    public function searchAction(Request $request, $idCat, $idGen){
+    public function searchAction(Request $request, $idCat, $idGen)
+    {
         $data = $this->initHome($request);
         
         $em = $this->getDoctrine()->getManager();
@@ -53,25 +55,35 @@ class HomeController extends Controller
         return $this->render('ClicSapeClotheBundle:Home:search.html.twig', $data); 
     }
     
+    public function articleAction(Request $request)
+    {
+        $data = initHome($request);
+        
+        return $this->render('ClicSapeClotheBundle:Home:article.html.twig', $data);
+    }
+    
     /* 
      * initialization Home page :
      * Menu content
      * Menu gender
      * Gamme 
      */
-    public function initHome(Request $request){
+    private function initHome(Request $request)
+    {
         $idGamme = $request->get('idGamme');
         
         $em = $this->getDoctrine()->getManager();
         $repoGam = $em->getRepository('ClicSapeClotheBundle:Gamme');
         $repoGen = $em->getRepository('ClicSapeClotheBundle:Gender');
         
+        $allGamme = $repoGam->findAll();
         $menuCat = $repoGam->getAllCat($idGamme);
         $menuGen = $repoGen->findAll();
         $gamme = ( $idGamme !== null )?$repoGam->find($idGamme): null;
         
         $dataMenu = array(
             'gamme' => $gamme,
+            'allGamme' => $allGamme,
             'menuCat' => $menuCat,
             'menuGen' => $menuGen
         );

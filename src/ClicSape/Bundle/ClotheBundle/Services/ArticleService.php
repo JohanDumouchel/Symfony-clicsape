@@ -17,12 +17,12 @@ class ArticleService extends ManagerService {
         $this->repository = $repository;
     }
     
-    public function getRandomArticle( $listCat = null, $idGen = 0, $limit = 6 )
+    public function getRandomArticle( $listCat = null, $gender = null, $limit = 6 )
     {
         $listArt = new ArrayCollection;
         $listArtTmp = new ArrayCollection;
         if($listCat !== null){
-            $listArtTmp = $this->repository->findFromCat($listCat,$idGen);
+            $listArtTmp = $this->repository->findFromCat($listCat,$gender);
             $arrayArtTmp = $listArtTmp->toArray();
         } else {
             $arrayArtTmp = $this->repository->findAll();

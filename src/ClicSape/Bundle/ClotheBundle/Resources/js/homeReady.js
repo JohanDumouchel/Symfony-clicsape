@@ -54,4 +54,17 @@ $(document).ready(function() {
     $('#hide-site').on("click", function (e) {
         $('body').removeClass('with-menu');
     });
+    
+    if($('.menu-list').attr('data-gamme') !== undefined){
+        $aMenu = $('.menu-list').find('a');
+        console.log($aMenu);
+        $idGamme = $('.menu-list').attr('data-gamme');
+        $aMenu.on("click",function(e){
+            e.preventDefault();
+            console.log($(this));
+            href = $(this).attr('href') + '?idGamme=' + $idGamme ;
+            window.location.href = href ;
+        });
+    }
+    
 });

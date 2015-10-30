@@ -5,6 +5,7 @@ namespace ClicSape\Bundle\ClotheBundle\Entity;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Common\Collections\ArrayCollection;
+use ClicSape\Bundle\ClotheBundle\Entity\Category as Category;
 
 /**
  * ArticleRepository
@@ -43,8 +44,7 @@ class ArticleRepository extends EntityRepository
     }    
     
     public function findFromCat($listCat, $gender = null){
-        
-        if(!is_array($listCat)){
+        if(is_a($listCat, 'ClicSape\Bundle\ClotheBundle\Entity\Category')){
             $listArt = $listCat->getArticlesByGender($gender);
             return $listArt;
         }

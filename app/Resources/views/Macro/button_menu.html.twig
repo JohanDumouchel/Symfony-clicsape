@@ -1,0 +1,10 @@
+{# 
+    button gamme
+    {routing} url page 
+    {id} entity's id to modify
+#}
+{% macro gamme(page,gamme) %}
+        <a href="{{ path(page,{"idGamme":gamme.id})}}">
+            {{gamme.title}}
+        </a>
+{% endmacro %}

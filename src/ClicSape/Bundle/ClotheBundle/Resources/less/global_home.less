@@ -13,18 +13,21 @@
 @greyLight : #f5f5f5;
 @menuwidthXS: 250px;
 
+
 @-webkit-keyframes pulse {
     0% {
         -webkit-box-shadow: 0 0 12px @blue;
+        -moz-box-shadow: 0 0 12px @blue;
     }
     50% {
         -webkit-box-shadow: 0 0 12px darken(@blue,20%);
+        -moz-box-shadow: 0 0 12px darken(@blue,20%);
     }
     100% {
         -webkit-box-shadow: 0 0 12px @blue;
+        -moz-box-shadow: 0 0 12px @blue;
     }
 }
-
 .fontGlyph(@em) { 
     font-family: "glyphyxonenf";
     font-size: unit(@em,em);
@@ -72,7 +75,9 @@
         padding:0px;
     }
 }
-
+.button-active {
+    background: lighten(@grey,10);
+}
 /*  
     Menu
 */

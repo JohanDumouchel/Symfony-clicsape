@@ -14,7 +14,11 @@
     </div>
     <div id="content" class="row"> 
     <div id="content-list">
-        <ul>
+        <ul class="menu-list"
+            {% if gamme != null%}
+                data-gamme="{{gamme.id}}"
+            {% endif %}
+            >
         {% for category in menuCat %}
             <li class="{% for gender in category.genders %} {{gender.title}} {% endfor %}">
                 <a href="{{path("search", { 'idCat' : category.id } )}}">{{category.title}}</a>

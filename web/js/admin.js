@@ -27,7 +27,7 @@ function deleteEntity($button){
 //Fonction pour initialiser les champs multiple d'un formulaire
 function initMultiField(idContainer,idLinkAdd,entityWording){
     var $container = $('div#'+idContainer);
-    var $linkAdd = $('<a href="#" id="add_'+idLinkAdd+'" class="btn">Ajouter une '+entityWording+'</a>');
+    var $linkAdd = $('<a href="#" id="add_' + idLinkAdd + '" class="btn">Ajouter une ' + entityWording + '</a>');
     $container.append($linkAdd);
      // On ajoute un nouveau champ à chaque clic sur le lien d'ajout.
     $linkAdd.click(function(e) {

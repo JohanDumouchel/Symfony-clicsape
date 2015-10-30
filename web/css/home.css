@@ -8,12 +8,15 @@
 @-webkit-keyframes pulse {
   0% {
     -webkit-box-shadow: 0 0 12px #11ccd3;
+    -moz-box-shadow: 0 0 12px #11ccd3;
   }
   50% {
     -webkit-box-shadow: 0 0 12px #097175;
+    -moz-box-shadow: 0 0 12px #097175;
   }
   100% {
     -webkit-box-shadow: 0 0 12px #11ccd3;
+    -moz-box-shadow: 0 0 12px #11ccd3;
   }
 }
 /*
@@ -38,6 +41,9 @@
   height: 60px;
   width: auto;
   padding: 0px;
+}
+.button-active {
+  background: #9a9a9a;
 }
 /*  
     Menu

@@ -48,7 +48,7 @@ class ArticleInfo
     /**
      * @var Article
      *
-     * @ORM\ManyToOne(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Article", inversedBy="articleInfos")
+     * @ORM\ManyToOne(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Article", inversedBy="articleInfos", cascade={"persist"})
      */
     private $article;
 
