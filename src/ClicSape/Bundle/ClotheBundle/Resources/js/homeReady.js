@@ -5,6 +5,11 @@
  */
 $(document).ready(function() {
     
+    // nav gender button init
+    $('button#gender').each(function(){
+        initMenu($(this));
+    });
+    
     // nav gender button handle
     $('button#gender').on("click",function(){
         $(this).toggleClass('active');
@@ -37,7 +42,7 @@ $(document).ready(function() {
                 }
             });
         } else {
-            $('div#content-list > ul > li').show();
+            $(list).show();
             $(list + ' a').each(function(){
                 removeParamHref($(this));
             });
@@ -57,11 +62,9 @@ $(document).ready(function() {
     
     if($('.menu-list').attr('data-gamme') !== undefined){
         $aMenu = $('.menu-list').find('a');
-        console.log($aMenu);
         $idGamme = $('.menu-list').attr('data-gamme');
         $aMenu.on("click",function(e){
             e.preventDefault();
-            console.log($(this));
             href = $(this).attr('href') + '?idGamme=' + $idGamme ;
             window.location.href = href ;
         });

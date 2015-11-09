@@ -134,7 +134,7 @@ class ArticleInfo
      *
      * @return ArticleInfo 
      */
-    public function setArticle(\ClicSape\Bundle\ClotheBundle\Entity\Article $article)
+    public function setArticle(\ClicSape\Bundle\ClotheBundle\Entity\Article $article = null)
     {
         $this->article = $article;
         

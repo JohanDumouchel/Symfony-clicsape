@@ -49,6 +49,7 @@ class HomeController extends Controller
             $data['message'] = Constant::noArticle;
             $listArt = $articleManager->getRandomArticle(null,null,25);
         }
+        $data['gender'] = $gender;
         $data['listArt'] = $listArt;
         $data['category'] = $category;
         

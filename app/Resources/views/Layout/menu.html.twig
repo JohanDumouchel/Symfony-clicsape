@@ -4,10 +4,18 @@
         <button id="menu-icon">
                 <span> K </span> 
         </button>
-        <button id="gender" class="button-menu col-sm-6 col-md-6 col-lg-6" data-gender="Femme" data-id="2">
+        <button id="gender" class="button-menu
+                {% if gender is defined and gender != null and gender.id == 2 %}
+                    active
+                {% endif %}
+                col-sm-6 col-md-6 col-lg-6" data-gender="Femme" data-id="2">
             <span>[</span>
         </button>
-        <button id="gender" class="button-menu col-sm-6 col-md-6 col-lg-6" data-gender="Homme" data-id="1">
+        <button id="gender" class="button-menu 
+                {% if gender is defined and gender != null and gender.id == 1 %}
+                    active
+                {% endif %}
+                col-sm-6 col-md-6 col-lg-6" data-gender="Homme" data-id="1">
             <span>]</span>
         </button>
     </div>
@@ -21,7 +29,7 @@
             >
         {% for category in menuCat %}
             <li class="{% for gender in category.genders %} {{gender.title}} {% endfor %}">
-                <a href="{{path("search", { 'idCat' : category.id } )}}">{{category.title}}</a>
+                <a href="{{path("search", { 'idCat' : category.id } ) }}">{{category.title}}</a>
             </li>
         {% endfor %}
         </ul>

@@ -4,6 +4,7 @@ namespace ClicSape\Bundle\AdminBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use ClicSape\Bundle\ClotheBundle\Entity\Article;
+use ClicSape\Bundle\AdminBundle\Helper\AdminHelper as Admin;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -23,16 +24,12 @@ class ArticleController extends Controller
     {
         $article = new Article();
         $form = $this->createForm('article_type', $article);
-        
         if ($form->handleRequest($request)->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($form->getData());
             $article = $form->getData();
-            $pictures = $article->getPictures();
-            foreach($pictures as $picture){
-                $picture->setArticle($article);
-                $em->persist($picture);
-            }
+            Admin::persistEntityToCollection($em,$article, $article->getPictures());
+            Admin::persistEntityToCollection($em,$article, $article->getArticleInfos());
             $em->flush();
             
             return $this->forward('ClicSapeAdminBundle:Article:list');
@@ -52,22 +49,23 @@ class ArticleController extends Controller
         if($article == null){
             throw $this->createNotFoundException('Aucun article existant pour l\'id : '.$id);
         }
+        
         $form = $this->createForm('article_type', $article);
         $request = Request::createFromGlobals();
         
         if ($form->handleRequest($request)->isValid()) {
             $article = $form->getData();
-            $pictures = $article->getPictures();
-            foreach($pictures as $picture){
-                if($picture->getFile() === null && $picture->getTitle() === null){
-                    $article->removePicture($picture);
-                    $picture->setArticle();
-                } else {
-                    $picture->setArticle($article);
-                }
-                $em->persist($picture);
-            }
-            $em->persist($article);
+            
+            Admin::removeEntityToCollection($em, 
+                    $article, 
+                    $article->getPictures(), 
+                    array('File','Title'));
+            
+            Admin::removeEntityToCollection($em, 
+                    $article,
+                    $article->getArticleInfos(), 
+                    array('Value','Level'));
+            
             $em->flush();
             
             return $this->forward('ClicSapeAdminBundle:Article:list');
@@ -89,11 +87,12 @@ class ArticleController extends Controller
         
         if($article !== null){
             $em->remove($article);
-            $pictures = $article->getPictures();
-            foreach($pictures as $picture){
-                $picture->setArticle();
-                $em->persist($picture);
-            }
+            Admin::removeEntityToCollection($em, 
+                    $article, 
+                    $article->getPictures());
+            Admin::removeEntityToCollection($em, 
+                    $article,
+                    $article->getArticleInfos());
             $em->flush();
             return new Response(json_encode(true));
         }else{
@@ -123,4 +122,6 @@ class ArticleController extends Controller
             ));
         return new Response($content);
     }
+    
+    
 }

@@ -1,7 +1,33 @@
 /* 
- * 
+ * Fonction global 
  * 
  * Author     : Johan Dumouchel
+ */
+
+/*
+ * function to init gender buttons.
+ * 
+ * get the gender activated and 
+ * change the category menu and links.
+ * 
+ */
+function initMenu(button){
+    if(button.hasClass('active')){
+        //data of the selected gender
+        gender = button.attr("data-gender");
+        idGender = button.attr("data-id");
+        list = 'div#content-list > ul > li';
+        listGender = list + '.' + gender ;
+
+        $(list).hide();
+        $(listGender).show();
+        $(list + ' a').each(function(){
+            ajoutParamHref($(this),idGender);
+        });
+    }
+}
+/*
+ * Add a text to a link
  */
 function ajoutParamHref($a,text){
     if( $a.attr('href') !== undefined ){
@@ -9,6 +35,9 @@ function ajoutParamHref($a,text){
         $a.attr('href', href + '/' + text );
     }
 }
+/*
+ * Remove the last parameter of link 
+ */
 function removeParamHref($a){
     if( $a.attr('href') !== undefined ){
         var regex = new RegExp('(.*)/(\\d*)$');
