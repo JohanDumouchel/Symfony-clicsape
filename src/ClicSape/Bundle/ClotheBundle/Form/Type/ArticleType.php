@@ -15,21 +15,27 @@ class ArticleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
-            ->add('description')
+            ->add('title', null, array(
+                'attr'=> array('class'=>'form-control')
+            ))
+            ->add('description',null, array(
+                'attr'=> array('class'=>'form-control')
+            ))
             ->add('categories','entity',array(
                 'class' => 'ClicSapeClotheBundle:Category',
                 'choice_label' => 'title',
                 'multiple' => true,
                 'by_reference' => false,
-                'required' => false
+                'required' => false,
+                'attr'=> array('class'=>'form-control')
             ))
             ->add('genders','entity',array(
                 'class' => 'ClicSapeClotheBundle:Gender',
                 'choice_label' => 'title',
                 'multiple' => true,
                 'by_reference' => false,
-                'required' => false
+                'required' => false,
+                'attr'=> array('class'=>'form-control')
             ))
             ->add('pictures','collection',array(
                 'type' => 'picture_type',

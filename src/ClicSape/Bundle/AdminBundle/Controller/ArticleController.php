@@ -51,10 +51,8 @@ class ArticleController extends Controller
         }
         $form = $this->createForm('article_type', $article);
         $request = Request::createFromGlobals();
-        
         if ($form->handleRequest($request)->isValid()) {
             $article = $form->getData();
-            
             Admin::removeEntityToCollection($em, 
                     $article, 
                     $article->getPictures(), 

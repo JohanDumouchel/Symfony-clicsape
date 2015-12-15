@@ -15,11 +15,21 @@ class CountryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('wording','text')
-            ->add('money','text')
-            ->add('symbol','text')
-            ->add('code','text')
-            ->add('ajouter','submit')
+            ->add('wording','text',array(
+                'attr'=> array('class'=>'form-control')
+            ))
+            ->add('money','text',array(
+                'attr'=> array('class'=>'form-control')
+            ))
+            ->add('symbol','text',array(
+                'attr'=> array('class'=>'form-control')
+            ))
+            ->add('code','text',array(
+                'attr'=> array('class'=>'form-control')
+            ))
+            ->add('ajouter','submit',array(
+                'attr'=> array('class'=>'form-control')
+            ))
         ;
     }
     

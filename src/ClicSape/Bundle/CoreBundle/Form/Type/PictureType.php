@@ -15,12 +15,19 @@ class PictureType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title','text',array('required'=> true))
+            ->add('title','text',array(
+                'required'=> true,
+                'attr'=> array('class'=>'form-control')
+            ))
             ->add('level','choice',array(
                 'required'=> false,
                 'choices' => array( 1 => 1 , 2 => 2 ,3 => 3 ),
-                'preferred_choices' => array( 1 => 1 )))
-            ->add('file','file',array('required'=> true))
+                'preferred_choices' => array( 1 => 1 ),
+                'attr'=> array('class'=>'form-control')
+            ))
+            ->add('file','file',array(
+                'required'=> true
+            ))
         ;
     }
     

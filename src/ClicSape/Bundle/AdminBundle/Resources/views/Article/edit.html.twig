@@ -1,15 +1,13 @@
 {% extends "ClicSapeAdminBundle::Layout/base_admin.html.twig" %}
 
-{% block title %}ClicSapeAdminBundle:Article:edit{% endblock %}
+{% block title %}ClicSape Admin.{% endblock %}
 
 {% block h1 %}
-    <h1>Welcome to the Article:edit page</h1>
+    <h1>Modification d'un article</h1>
 {% endblock %}   
  
 {% block body %}
-  <form method="post" {{ form_enctype(form) }}>
-    {{ form_widget(form) }}
-  </form>
+    {% include "ClicSapeAdminBundle::Article/form.html.twig"%}
 {% endblock %}
 
 {% block javascripts %}

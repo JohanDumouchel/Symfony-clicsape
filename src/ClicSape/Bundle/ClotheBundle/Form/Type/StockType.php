@@ -26,8 +26,12 @@ class StockType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('quantity','integer')
-            ->add('quantity_alert','integer')
+            ->add('quantity','integer',array(
+                'attr'=> array('class'=>'form-control')
+            ))
+            ->add('quantity_alert','integer',array(
+                'attr'=> array('class'=>'form-control')
+            ))
         ;
     }
     

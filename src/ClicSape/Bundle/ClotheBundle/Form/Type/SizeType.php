@@ -15,8 +15,12 @@ class SizeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('level','number')
-            ->add('wording','text')
+            ->add('level','number',array(
+                'attr'=> array('class'=>'form-control')
+            ))
+            ->add('wording','text',array(
+                'attr'=> array('class'=>'form-control')
+            ))
         ;
     }
     

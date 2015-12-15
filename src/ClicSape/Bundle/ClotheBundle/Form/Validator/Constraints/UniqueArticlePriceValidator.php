@@ -10,11 +10,15 @@ class UniqueArticlePriceValidator extends ConstraintValidator{
     
     public function validate($object, Constraint $constraint)
     {
-        if( count($object) > 0 ){
-            $tab = array();
-            $error = array();
-            foreach($object as $price){
-                $countryName = $price->getCountry()->getWording();                
+        if( count($object) < 2 ){
+            return;
+        }
+        $tab = array();
+        $error = array();
+        foreach($object as $price){
+            $country = $price->getCountry();
+            if($country != null){
+                $countryName = $country->getWording();
                 if(isset($tab[$countryName])){
                     $tab[$countryName]++;
                     $error[$countryName] = $tab[$countryName];
@@ -22,10 +26,10 @@ class UniqueArticlePriceValidator extends ConstraintValidator{
                     $tab[$countryName] = 1 ;
                 }
             }
-            if(!empty($error)){
-                $this->context->buildViolation($constraint->getMessage($error))
-                ->addViolation();              
-            }
+        }
+        if(!empty($error)){
+            $this->context->buildViolation($constraint->getMessage($error))
+            ->addViolation();              
         }
     }
 }

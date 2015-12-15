@@ -1,0 +1,37 @@
+{{ form_start(form) }}
+    <div class="col-lg-12 form-errors">
+        {{ form_errors(form) }}
+    </div>
+    <div class="col-lg-3">
+        <div class="form-group ">
+            {{ form_row(form.title) }}
+        </div>
+        <div class="form-group">
+            {{ form_row(form.description) }}
+        </div>
+        <div class="form-group">
+            {{ form_row(form.categories) }}
+        </div>
+        <div class="form-group">
+            {{ form_row(form.genders) }}
+        </div>
+        <div class="form-group">
+            {{ form_row(form.ajouter) }}
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="form-group">
+            {{ form_row(form.pictures) }}
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="form-group">
+            {{ form_row(form.articleInfos) }}
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="form-group">
+            {{ form_row(form.prices) }}
+        </div>
+    </div>
+{{ form_end(form) }}

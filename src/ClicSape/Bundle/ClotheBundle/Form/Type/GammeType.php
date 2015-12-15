@@ -15,7 +15,9 @@ class GammeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title','text')
+            ->add('title','text',array(
+                'attr'=> array('class'=>'form-control')
+            ))
         ;
     }
     

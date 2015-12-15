@@ -27,7 +27,6 @@ function setUrlAdmin(dest,entity){
     var url = window.location.href;
     var regex = new RegExp('(.*admin/)?');
     var result = url.match(regex);
-    console.log(result);
     return result[1]+entity+'/'+dest;
 }
 
@@ -161,7 +160,6 @@ function createSelectTable(url,$content){
         dataType: 'html'
     });    
     request.done(function(data){
-       // oncrée le tableau 
        $content.html(data);
     });
     request.error(function(data){

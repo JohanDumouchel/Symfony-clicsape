@@ -15,11 +15,14 @@ class ArticleInfoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('value' , 'textarea' )
+            ->add('value' , 'textarea', array(
+                'attr'=> array('class'=>'form-control')
+            ))
             ->add('level', 'choice', array(
                 'required' => false,
                 'choices' => array( 1 => 1 , 2 => 2 ,3 => 3, 4 => 4,5 => 5, 6 => 6 ),
-                'preferred_choices' => array( 1 => 1 )))
+                'preferred_choices' => array( 1 => 1 ),
+                'attr'=> array('class'=>'form-control')))
         ;
     }
     
