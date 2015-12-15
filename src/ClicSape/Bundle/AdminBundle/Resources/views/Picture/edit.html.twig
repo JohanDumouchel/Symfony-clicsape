@@ -6,7 +6,5 @@
     <h1>Welcome to the Picture:edit page</h1>
 {% endblock %}
 {% block body %}
-  <form method="post" {{ form_enctype(form) }}>
-    {{ form_widget(form) }}
-  </form>
+    {% include "ClicSapeAdminBundle::Picture/form.html.twig"%}
 {% endblock %}

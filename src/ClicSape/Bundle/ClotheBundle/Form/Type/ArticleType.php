@@ -55,7 +55,9 @@ class ArticleType extends AbstractType
                 'by_reference' => false,
                 'required' => false
             ))
-            ->add('ajouter','submit')
+            ->add('ajouter','submit',array(
+                'attr'=> array('class'=>'btn btn-primary')
+            ))
         ;
     }
     

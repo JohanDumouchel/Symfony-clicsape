@@ -1,15 +1,11 @@
 {% extends "ClicSapeAdminBundle::Layout/base_admin.html.twig" %}
 
-{% block title %}ClicSapeAdminBundle:GroupSize:add{% endblock %}
-
 {% block h1 %}
-    <h1>Welcome to the GroupSize:add page</h1>
+    <h1>Ajout d'un groupe de tailles</h1>
 {% endblock %}
 
 {% block body %}
-    <form method="post" {{ form_enctype(form) }}>
-      {{ form_widget(form) }}
-    </form>
+    {% include "ClicSapeAdminBundle::GroupSize/form.html.twig"%}
 {% endblock %}
 {% block javascripts %}
     <script src="{{ asset('js/admin/groupSize.js') }}"></script>

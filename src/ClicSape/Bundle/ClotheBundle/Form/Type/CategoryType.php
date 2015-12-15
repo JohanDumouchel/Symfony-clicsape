@@ -45,7 +45,9 @@ class CategoryType extends AbstractType
                 'required' => false,
                 'attr'=> array('class'=>'form-control')
             ))
-            ->add('ajouter','submit')
+            ->add('ajouter','submit',array(
+                'attr'=> array('class'=>'btn btn-primary')
+            ))
         ;
     }
     

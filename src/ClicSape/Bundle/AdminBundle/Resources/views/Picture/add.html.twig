@@ -7,10 +7,5 @@
 {% endblock %}
 
 {% block body %}
-    <form method="post" {{ form_enctype(form) }}>
-      {{ form_widget(form) }}
-        <div>
-            <button type="submit">Ajouter</button>
-        </div>
-    </form>
+    {% include "ClicSapeAdminBundle::Picture/form.html.twig"%}
 {% endblock %}

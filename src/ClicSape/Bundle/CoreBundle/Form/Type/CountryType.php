@@ -28,7 +28,7 @@ class CountryType extends AbstractType
                 'attr'=> array('class'=>'form-control')
             ))
             ->add('ajouter','submit',array(
-                'attr'=> array('class'=>'form-control')
+                'attr'=> array('class'=>'btn btn-primary')
             ))
         ;
     }

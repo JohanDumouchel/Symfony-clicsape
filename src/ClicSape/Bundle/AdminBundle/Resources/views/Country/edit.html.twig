@@ -1,12 +1,9 @@
 {% extends "ClicSapeAdminBundle::Layout/base_admin.html.twig" %}
 
-{% block title %}ClicSapeAdminBundle:Country:edit{% endblock %}
-
 {% block h1 %}
-    <h1>Welcome to the Country:edit page</h1>
+    <h1>Modification d'un groupe de tailles</h1>
 {% endblock %}
+
 {% block body %}
-  <form method="post" {{ form_enctype(form) }}>
-    {{ form_widget(form) }}
-  </form>
+    {% include "ClicSapeAdminBundle::Country/form.html.twig"%}
 {% endblock %}

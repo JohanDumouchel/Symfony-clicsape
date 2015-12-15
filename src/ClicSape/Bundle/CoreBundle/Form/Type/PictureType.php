@@ -26,7 +26,8 @@ class PictureType extends AbstractType
                 'attr'=> array('class'=>'form-control')
             ))
             ->add('file','file',array(
-                'required'=> true
+                'required'=> true,
+                'attr'=> array('class'=>'btn btn-default btn-file')
             ))
         ;
     }

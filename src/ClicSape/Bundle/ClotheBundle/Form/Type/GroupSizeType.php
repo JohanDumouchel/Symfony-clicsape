@@ -16,7 +16,9 @@ class GroupSizeType extends AbstractType
     {
         $builder
             ->add('disabled','checkbox', array(
-                'required' => false
+                'required' => false,
+//                'label_attr'=> array('class'=>'form-control'),
+                'attr'=> array('class'=>'form-control')
             ))
             ->add('title','text',array(
                 'attr'=> array('class'=>'form-control')
@@ -24,8 +26,7 @@ class GroupSizeType extends AbstractType
             ->add('sizes','collection',array(
                 'type' => 'size_type',
                 'allow_add' => true,
-                'by_reference' => false,
-                'attr'=> array('class'=>'form-control')
+                'by_reference' => false
             ))
             ->add('countries','entity',array(
                 'class' => 'ClicSapeCoreBundle:Country',
