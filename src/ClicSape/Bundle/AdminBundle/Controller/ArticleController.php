@@ -30,9 +30,10 @@ class ArticleController extends Controller
             $article = $form->getData();
             Admin::persistEntityToCollection($em,$article, $article->getPictures());
             Admin::persistEntityToCollection($em,$article, $article->getArticleInfos());
+            Admin::persistEntityToCollection($em,$article, $article->getPrices());
             $em->flush();
             
-            return $this->forward('ClicSapeAdminBundle:Article:list');
+            return $this->forward('ClicSapeAdminBundle:Article:list');  
         }
         
         return $this->render('ClicSapeAdminBundle:Article:add.html.twig', array(
@@ -44,12 +45,10 @@ class ArticleController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $repoArt = $em->getRepository('ClicSapeClotheBundle:Article');
-        $article = $repoArt->find($id);
-        
+        $article = $repoArt->find($id);        
         if($article == null){
             throw $this->createNotFoundException('Aucun article existant pour l\'id : '.$id);
         }
-        
         $form = $this->createForm('article_type', $article);
         $request = Request::createFromGlobals();
         
@@ -65,6 +64,11 @@ class ArticleController extends Controller
                     $article,
                     $article->getArticleInfos(), 
                     array('Value','Level'));
+            
+            Admin::removeEntityToCollection($em,
+                    $article,
+                    $article->getPrices(), 
+                    array('Country','Value'));
             
             $em->flush();
             
@@ -93,6 +97,9 @@ class ArticleController extends Controller
             Admin::removeEntityToCollection($em, 
                     $article,
                     $article->getArticleInfos());
+            Admin::removeEntityToCollection($em, 
+                    $article,
+                    $article->getPrices());
             $em->flush();
             return new Response(json_encode(true));
         }else{

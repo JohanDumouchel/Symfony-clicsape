@@ -32,12 +32,24 @@ class Price
     
     /**
      * @var Article
-     * @Assert\Type(type="ArticleType")
-     *
-     * @ORM\ManyToOne(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Article", inversedBy="prices")
+     * 
+     * @ORM\ManyToOne(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Article", inversedBy="prices", cascade={"persist"})
      */
     private $article;
+    
+    /**
+     * @var Country
+     *
+     * @ORM\ManyToOne(targetEntity="ClicSape\Bundle\CoreBundle\Entity\Country", inversedBy="prices", cascade={"persist"})
+     */
+    private $country;
 
+    function __construct() {
+        $this->id ;
+        $this->value ;
+        $this->article ;
+        $this->country ;
+    }
 
     /**
      * Get id
@@ -91,6 +103,27 @@ class Price
      public function getArticle()
     {
         return $this->article;
+    }
+    
+    /**
+     * @param Country $country
+     *
+     * @return Price 
+     */
+    public function setCountry(\ClicSape\Bundle\CoreBundle\Entity\Country $country = null)
+    {
+        $this->country = $country;
+        
+        return $this;
+    }
+    
+    /**
+     *
+     * @return Price 
+     */
+     public function getCountry()
+    {
+        return $this->country;
     }
     
 }

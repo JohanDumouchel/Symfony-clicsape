@@ -43,6 +43,12 @@ class ArticleType extends AbstractType
                 'by_reference' => false,
                 'required' => false
             ))
+            ->add('prices', 'collection',array(
+                'type' => 'price_type',
+                'allow_add' => true,
+                'by_reference' => false,
+                'required' => false
+            ))
             ->add('ajouter','submit')
         ;
     }

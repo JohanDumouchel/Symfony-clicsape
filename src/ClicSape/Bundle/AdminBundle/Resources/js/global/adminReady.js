@@ -24,7 +24,7 @@ $(document).ready(function() {
     });
     
     // Formulaire de recherche pour les list
-    $('button#filter').on("click",function(){
+    $('button#filter').on( "click",function(){
         $input = $(this).prev();  
         if($input.is(':hidden')){
             $input.show();
@@ -41,13 +41,13 @@ $(document).ready(function() {
         
     });
     
-    // Formulaire de recherche pour les list
-    $('button#refresh').on("click",function(){
+    // refraichir la liste d'article et enlever les filtres
+    $('button#refresh').on( "click",function(){
         refresh($('tbody'),$(this).attr('data-url'));        
     });
     
     // Formulaire de recherche pour les list
-    $('button#filterSelect').on("click",function(){
+    $('button#filterSelect').on( "click",function(){
         url = $(this).attr('data-url');
         entity = $(this).attr('data-entity');
         entityJoin = $(this).attr('data-entity-join');
@@ -66,13 +66,10 @@ $(document).ready(function() {
             },
             confirmButton: 'Recherche',
             confirm: function(){
-                console.log('confirm');
                 $inputs = this.$b.find('input:checked');
                 if($inputs){
                     var data = '[';
                     $inputs.each(function(index,element){
-                        console.log(index);
-                        console.log(element);
                         val = $(element).attr('value');
                         if(index === 0){
                             data +='"'+ val+'"';

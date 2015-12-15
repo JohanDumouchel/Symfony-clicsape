@@ -31,34 +31,42 @@ class HomeController extends Controller
         return $this->render('ClicSapeClotheBundle:Home:index.html.twig', $data);  
     }
     
-    public function searchAction(Request $request, $idCat, $idGen)
+    /* 
+     * Article search page :
+     * Menu (By initHome())
+     * 
+     */
+    public function searchAction(Request $request, $idCat)
     {
         $data = $this->initHome($request);
         
         $em = $this->getDoctrine()->getManager();
         $repoCat = $em->getRepository('ClicSapeClotheBundle:Category');
-        $gender = ($idGen !== null && intval($idGen) )? $em->getRepository('ClicSapeClotheBundle:Gender')->find($idGen): null;
         
         $articleManager = $this->get('article_manager');
         $category = ($idCat === null)? null:$repoCat->find($idCat);
         if($category === null){
             $data['message'] = Constant::noCategory;
         }
+        $gender = $data['gender'];
         $listArt = $articleManager->getRandomArticle($category,$gender,25);
         if($listArt === null){
             $data['message'] = Constant::noArticle;
             $listArt = $articleManager->getRandomArticle(null,null,25);
         }
-        $data['gender'] = $gender;
         $data['listArt'] = $listArt;
         $data['category'] = $category;
         
         return $this->render('ClicSapeClotheBundle:Home:search.html.twig', $data); 
     }
     
+    /* 
+     * Article page :
+     * 
+     */
     public function articleAction(Request $request)
     {
-        $data = initHome($request);
+        $data = initHome($request);        
         
         return $this->render('ClicSapeClotheBundle:Home:article.html.twig', $data);
     }
@@ -72,6 +80,7 @@ class HomeController extends Controller
     private function initHome(Request $request)
     {
         $idGamme = $request->get('idGamme');
+        $idGen = $request->get('idGen');
         
         $em = $this->getDoctrine()->getManager();
         $repoGam = $em->getRepository('ClicSapeClotheBundle:Gamme');
@@ -81,8 +90,10 @@ class HomeController extends Controller
         $menuCat = $repoGam->getAllCat($idGamme);
         $menuGen = $repoGen->findAll();
         $gamme = ( $idGamme !== null )?$repoGam->find($idGamme): null;
+        $gender = ( $idGen !== null )?$repoGen->find($idGen): null;
         
         $dataMenu = array(
+            'gender' => $gender,
             'gamme' => $gamme,
             'allGamme' => $allGamme,
             'menuCat' => $menuCat,

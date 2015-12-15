@@ -15,8 +15,19 @@ class PriceType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('value')
-            ->add('article')
+            ->add('value','money')
+            ->add('country','entity',array(
+            'class' => 'ClicSapeCoreBundle:Country',
+            'choice_label' => 'wording',
+            'multiple' => false,
+            'required' => true))
+//            ->add('article','entity',array(
+//            'class' => 'ClicSapeClotheBundle:Article',
+//            'choice_label' => 'id',
+//            'multiple' => false,
+//            'by_reference' => false,
+//            'required' => true))    
+            
         ;
     }
     
@@ -35,6 +46,6 @@ class PriceType extends AbstractType
      */
     public function getName()
     {
-        return 'clicsape_bundle_clothebundle_price';
+        return 'price_type';
     }
 }

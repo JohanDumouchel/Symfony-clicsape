@@ -1,10 +1,10 @@
 
-//Fonction pour supprimer une entity et sa ligne dans le tableau 
+//Delete an entity and remove it 
 function deleteEntity($button){
     $('.loader').show();
     var regex = new RegExp('(\\w+)?_(\\d+)');
-    var result = $button.attr('data-entity').match(regex);
-    var url = 'delete';
+    var result = $button.attr('data-entity').match(regex);    
+    var url = setUrlAdmin('delete',result[1]);
     var $row = $button.closest("tr");
     $.ajax({
         url: url,
@@ -12,7 +12,6 @@ function deleteEntity($button){
         dataType : 'json',
         data: 'id='+result[2],
         success : function(result, statut){
-            //gérer la gestion des droit admin
             $row.remove();
         },
         error : function(resultat, statut, erreur){
@@ -23,8 +22,16 @@ function deleteEntity($button){
         }
     });
 }
+//construct the url base from the current url
+function setUrlAdmin(dest,entity){
+    var url = window.location.href;
+    var regex = new RegExp('(.*admin/)?');
+    var result = url.match(regex);
+    console.log(result);
+    return result[1]+entity+'/'+dest;
+}
 
-//Fonction pour initialiser les champs multiple d'un formulaire
+//Initialyze multiple field in Symfony Form
 function initMultiField(idContainer,idLinkAdd,entityWording){
     var $container = $('div#'+idContainer);
     var $linkAdd = $('<a href="#" id="add_' + idLinkAdd + '" class="btn">Ajouter une ' + entityWording + '</a>');
@@ -37,7 +44,7 @@ function initMultiField(idContainer,idLinkAdd,entityWording){
     });
 }
 
-// Fonction qui ajoute les champs de saisie
+// Add a prototype of field to create an entity
 function addPrototype($container,entityWording) {
     // A faire : récupérer les div pour récupérer l'index
     var regexIndex = new RegExp($container.attr('id')+'_(\\d+)');
@@ -59,7 +66,8 @@ function addPrototype($container,entityWording) {
     addLinkRemove($prototype);
     $container.append($prototype);
 }
-// La fonction qui ajoute un lien de suppression d'une catégorie
+
+// Add a button to remove multiple entity field
 function addLinkRemove($prototype) {
     $lienSuppression = $('<button class="btn btn-danger">Supprimer</button>');
     $prototype.append($lienSuppression);
@@ -70,12 +78,14 @@ function addLinkRemove($prototype) {
     });
 }
 
+// Check multiple entity field to add over a button "addLinkRemove" 
 function checkMultiField(idContainer){
         $divs = $('div[id^='+idContainer+'_]');
         for(i = 0; i < $divs.length; i++)
             addLinkRemove($($divs[i]).parent("div"));
 }
 
+// Get entity list from a filter
 function filterList($content,url,filter,value){
     $('.loader').show();
     param = jsonParamFilter(filter,value);
@@ -95,6 +105,7 @@ function filterList($content,url,filter,value){
     });
 }
 
+// Remove all filter and refresh list content
 function refresh($content,url){
     $('.loader').show();
     request = $.ajax({
@@ -112,10 +123,12 @@ function refresh($content,url){
     });
 }
 
+// add a filter paremeter  in a json object
 function jsonParamFilter(filter,value){
     return param = $.parseJSON('{"filter" : {"'+filter+'" : "'+value+'"}}');
 }
 
+// Get entity list from a filter select
 function filterJoinList($content,entity,entityJoin,data){
     $('.loader').show();
     var param = $.parseJSON('{"entityJoin":"' + entityJoin + '",' + '"data" :' + data + '}');
@@ -139,6 +152,7 @@ function filterJoinList($content,entity,entityJoin,data){
     });
 }
 
+// Init a entity list of join entity to filter the list
 function createSelectTable(url,$content){
     $('.loader-dialog').show();
     request = $.ajax({

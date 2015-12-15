@@ -1,12 +1,23 @@
 <?php
 
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 namespace ClicSape\Bundle\ClotheBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class InfoTypeType extends AbstractType
+/**
+ * Description of StockType
+ *
+ * @author johan
+ */
+class StockType extends AbstractType 
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,8 +26,8 @@ class InfoTypeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
-            ->add('category')
+            ->add('quantity','integer')
+            ->add('quantity_alert','integer')
         ;
     }
     
@@ -26,7 +37,7 @@ class InfoTypeType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'ClicSape\Bundle\ClotheBundle\Entity\InfoType'
+            'data_class' => 'ClicSape\Bundle\ClotheBundle\Entity\Stock'
         ));
     }
 
@@ -35,6 +46,6 @@ class InfoTypeType extends AbstractType
      */
     public function getName()
     {
-        return 'infotype_type';
+        return 'stock_type';
     }
 }

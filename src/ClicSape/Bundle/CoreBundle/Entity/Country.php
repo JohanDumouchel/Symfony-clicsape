@@ -58,11 +58,20 @@ class Country
     private $groupSizes;
     
     /**
+     * @var ArrayCollection GroupSize
+     * 
+     * @ORM\OneToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Price", mappedBy="country", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $prices;
+    
+    /**
      * Constructor
      */
     public function __construct()
     {
         $this->groupSizes = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->prices = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
     /**
@@ -198,5 +207,38 @@ class Country
     public function getGroupSizes()
     {
         return $this->groupSizes;
+    }
+    
+    /**
+     * Add price
+     *
+     * @param \ClicSape\Bundle\ClotheBundle\Entity\Price $price
+     * @return Country
+     */
+    public function addPrice(\ClicSape\Bundle\ClotheBundle\Entity\Price $price)
+    {
+        $this->prices[] = $price;
+
+        return $this;
+    }
+
+    /**
+     * Remove price
+     *
+     * @param \ClicSape\Bundle\ClotheBundle\Entity\Price $price
+     */
+    public function removePrice(\ClicSape\Bundle\ClotheBundle\Entity\Price $price)
+    {
+        $this->prices->removeElement($price);
+    }
+
+    /**
+     * Get prices
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPrices()
+    {
+        return $this->prices;
     }
 }

@@ -21,3 +21,7 @@ clic_sape_admin_picture:
 clic_sape_admin_gender:
     resource: "@ClicSapeAdminBundle/Resources/config/routing/gender.yml"
     prefix:     /gender
+
+clic_sape_admin_debug:
+    path:     /debug/
+    defaults: { _controller: ClicSapeAdminBundle:Debug:debug }

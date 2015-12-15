@@ -3,6 +3,7 @@
 namespace ClicSape\Bundle\ClotheBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use ClicSape\Bundle\ClotheBundle\Form\Validator\Constraints as ClotheAssert;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 use ClicSape\Bundle\CoreBundle\Entity\Picture as Picture; 
@@ -41,15 +42,17 @@ class Article
 
     /**
      * @var ArrayCollection Price
+     * @ClotheAssert\UniqueArticlePrice
      *
-     * @ORM\OneToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Price", mappedBy="article")
+     * @ORM\OneToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Price", mappedBy="article", cascade={"persist"})
+     *  
      */
     private $prices;
     
     /**
      * @var ArrayCollection Stock
      * 
-     * @ORM\OneToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Stock", mappedBy="article")
+     * @ORM\OneToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Stock", mappedBy="article", cascade={"persist"})
      */
     private $stocks;
     

@@ -7,7 +7,7 @@
  */
 
 namespace ClicSape\Bundle\AdminBundle\Helper;
-// use Symfony\Component\DependencyInjection\ContainerAware ; 
+
 /**
  * Description of adminHelper
  *
@@ -28,7 +28,6 @@ class AdminHelper {
     public static function removeEntityToCollection($em,$entity,$collections,$criteria = null,$delete = true)
     {
         $setEntity = 'set' . (new \ReflectionClass($entity))->getShortName();
-        
         foreach($collections as $item){
             $removeItem = 'remove' . (new \ReflectionClass($item))->getShortName();
             if(self::ifCriteriaAnd($item,$criteria)){
@@ -69,7 +68,7 @@ class AdminHelper {
                 $result = false;
             }
         }
-            
+        
         return $result;
     }
 }

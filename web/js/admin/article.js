@@ -1,7 +1,8 @@
 $(document).ready(function() {
-    initMultiField('article_type_pictures','picture','image');
+    initMultiField('article_type_pictures','picture','Images');
     checkMultiField('article_type_pictures');
-    initMultiField('article_type_articleInfos','articleInfo','Info supplémentaire');
+    initMultiField('article_type_articleInfos','articleInfo','Informations supplémentaire');
     checkMultiField('article_type_articleInfos');
-    
+    initMultiField('article_type_prices','price','Prix');
+    checkMultiField('article_type_prices');
 });

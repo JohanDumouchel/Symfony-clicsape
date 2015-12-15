@@ -1,0 +1,18 @@
+{% extends "ClicSapeAdminBundle::Layout/base_admin.html.twig" %}
+
+{% block title %}Debug{% endblock %}
+
+{% block h1 %}
+    <h1>Welcome to the Article:add page</h1>
+{% endblock %}
+
+{% block body %}
+    {{dump(article)}}
+    <p>
+        {{article.prices[0].value}}
+    </p>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('js/admin/article.js') }}"></script>
+{% endblock %}

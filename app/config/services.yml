@@ -43,6 +43,20 @@ services:
         class: ClicSape\Bundle\CoreBundle\Form\Type\PictureType
         tags:
             - { name: form.type, alias: picture_type}
+    clic_sape_clothe.form.type.price:
+        class: ClicSape\Bundle\ClotheBundle\Form\Type\PriceType
+        tags:
+            - { name: form.type, alias: price_type}
+    
+    #constraint validator 
+    
+    validator.unique.unique_article_price:
+        class: ClicSape\Bundle\ClotheBundle\Form\Validator\Constraints\UniqueArticlePriceValidator
+        tags:
+            - { name: validator.constraint_validator, alias: unique_article_price }
+    
+    # Twig function from class extend twig extension.
+    
     clic_sape_Adin.twig.admin_extension:
         class: ClicSape\Bundle\AdminBundle\Twig\AdminExtension
         tags:
