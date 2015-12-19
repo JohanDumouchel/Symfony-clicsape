@@ -1,9 +1,8 @@
-{% extends "Layout/home.html.twig" %}
+{% extends "ClicSapeAdminBundle::Layout/base_admin.html.twig" %}
 
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block fos_user_content %}
-
     <div class="container">
         <div class="row">
             <div class="col-lg-6 col-md-6" id="login">
@@ -14,5 +13,4 @@
             </div>
         </div>
     </div>
-
 {% endblock fos_user_content %}

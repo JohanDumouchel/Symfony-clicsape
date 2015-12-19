@@ -1,1 +1,14 @@
-{# empty Twig template #}
+{% extends "Layout/home.html.twig" %}
+{% block pager_content %}
+    {% if gamme is defined and gamme != null %}
+    <li>{{gamme.title}}</li>
+    {% endif %}
+{% endblock %}
+{% block menu %}
+    {% include "Layout/menu.html.twig"%}
+{% endblock %}
+
+{% block aside_content %}
+    {% include "Layout/article_content.html.twig"%}
+{% endblock %}
+

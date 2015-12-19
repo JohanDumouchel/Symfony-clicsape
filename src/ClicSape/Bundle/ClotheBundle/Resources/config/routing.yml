@@ -8,3 +8,14 @@ search:
     requirements:
         idCat: \d*
         idGen: \d*
+login:
+    path:     /login
+    defaults: { _controller: ClicSapeUserBundle:Default:login }
+
+login_check:
+    path:   /login_check
+    defaults: { _controller: ClicSapeUserBundle:Security:check }
+    
+logout:
+    path:   /logout
+    defaults: { _controller: ClicSapeUserBundle:Security:logout }

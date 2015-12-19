@@ -75,16 +75,17 @@
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        {% for gam in allGamme%}
-                            
-                            {% if gamme.id is defined and gam.id == gamme.id %}
-                                <li class="button-active">
-                            {% else %}
-                                <li>
-                            {% endif %}
-                            {{buttonMenu.gamme('index',gam)}}
-                            </li>
-                        {% endfor %}
+                        {% if Gam is defined %}
+                            {% for gam in allGamme%}                            
+                                {% if gamme.id is defined and gam.id == gamme.id %}
+                                    <li class="button-active">
+                                {% else %}
+                                    <li>
+                                {% endif %}
+                                {{buttonMenu.gamme('index',gam)}}
+                                </li>
+                            {% endfor %}
+                        {%endif%}
                         <li><a>
                             <button class="btn btn-default btn-cart">
                                 <span class="glyphicon glyphicon-shopping-cart"> </span>
@@ -99,7 +100,7 @@
                                 </button>
                                 </a>
                             {% else %}
-                                <a href="{{ path('clic_sape_user_login') }}">
+                                <a href="{{ path('login') }}">
                                     <button class="btn btn-default btn-login">
                                         <span class="glyphicon glyphicon-user"> Login</span>
                                     </button>
@@ -132,7 +133,7 @@
                 {% endblock %}
                 </div>
                 <div class="col-xs-12 col-sm-9 col-md-9 col-lg-8">
-                {% block carousel %}
+                {% block aside_content %}
                 {% endblock %}
                 {% block banner %}
                 {% endblock %}

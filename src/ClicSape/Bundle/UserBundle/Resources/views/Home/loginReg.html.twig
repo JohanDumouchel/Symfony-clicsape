@@ -1,0 +1,16 @@
+{% extends "Layout/home.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6" id="login">
+                {{ loginView|raw }}
+            </div>
+            <div class="col-lg-6 col-md-6" id="register">
+                {{ registrationView|raw }}
+            </div>
+        </div>
+    </div>
+{% endblock fos_user_content %}

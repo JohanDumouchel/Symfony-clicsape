@@ -1,3 +1,0 @@
-clic_sape_user_login:
-    path:     /
-    defaults: { _controller: ClicSapeUserBundle:Default:login }

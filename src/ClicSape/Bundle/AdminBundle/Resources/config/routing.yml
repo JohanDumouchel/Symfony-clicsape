@@ -1,3 +1,7 @@
+clic_sape_admin_dashboard:
+    path:     /
+    defaults: { _controller: ClicSapeAdminBundle:Dashboard:dashboard }
+
 clic_sape_admin_article:
     resource: "@ClicSapeAdminBundle/Resources/config/routing/article.yml"
     prefix:     /article
@@ -21,6 +25,18 @@ clic_sape_admin_picture:
 clic_sape_admin_gender:
     resource: "@ClicSapeAdminBundle/Resources/config/routing/gender.yml"
     prefix:     /gender
+    
+clic_sape_admin_login:
+    path:     /login
+    defaults: { _controller: ClicSapeUserBundle:Default:login }
+
+clic_sape_admin_check:
+    path:   /login_check
+    defaults: { _controller: ClicSapeUserBundle:Security:check }
+    
+clic_sape_admin_logout:
+    path:   /logout
+    defaults: { _controller: ClicSapeUserBundle:Security:logout }
 
 clic_sape_admin_debug:
     path:     /debug/

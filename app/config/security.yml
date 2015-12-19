@@ -3,8 +3,8 @@ security:
         FOS\UserBundle\Model\UserInterface: sha512
 
     role_hierarchy:
-        ROLE_ADMIN:       ROLE_USER
-        ROLE_SUPER_ADMIN: ROLE_ADMIN
+            ROLE_ADMIN:       ROLE_USER
+            ROLE_SUPER_ADMIN: ROLE_ADMIN
         
     providers:
         in_memory:
@@ -16,29 +16,51 @@ security:
         dev:
             pattern: ^/(_(profiler|wdt|error)|css|images|js)/
             security: false
-
+            #(/|/log/)admin/
+        admin:
+            pattern: ^/admin/
+            form_login:
+                provider: fos_userbundle
+                csrf_provider: security.csrf.token_manager
+                remember_me:  true
+                check_path: clic_sape_admin_check
+                login_path: clic_sape_admin_login
+                #login success
+                default_target_path: clic_sape_admin_dashboard
+                # login failure redirecting options (read further below)
+                failure_path: clic_sape_admin_login
+                failure_forward: false
+            logout: 
+                path: clic_sape_admin_logout
+                target: clic_sape_admin_login
+            anonymous: ~
+            
         main:
             pattern: ^/
             form_login:
                 provider: fos_userbundle
                 csrf_provider: security.csrf.token_manager
                 remember_me:  true
-                check_path: /login_check
-                login_path: /log/
+                check_path: login_check
+                login_path: login
                 #login success
                 always_use_default_target_path: false
-                default_target_path:            /
-                target_path_parameter:          _target_path
+                default_target_path:            index
                 use_referer:                    false
                 # login failure redirecting options (read further below)
-                failure_path:    /log/
+                failure_path:    login
                 failure_forward: false
-                failure_path_parameter: _failure_path
-
-            logout:       true
+            logout:
+                path: logout
             anonymous:    true
-        
             
     access_control:
-        - { path: ^/log/, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin/, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        
+        - { path: ^/, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin, role: ROLE_ADMIN }
+#        - { path: ^/.*/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+#        - { path: ^/.*/logout$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+#        - { path: ^/.*/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+#        - { path: ^/.*/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        
+        

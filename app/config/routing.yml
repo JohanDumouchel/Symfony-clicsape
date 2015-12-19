@@ -6,9 +6,6 @@ clic_sape:
     resource: "@ClicSapeClotheBundle/Resources/config/routing.yml"
     prefix:   /
 
-clic_sape_log:
-    resource: "@ClicSapeUserBundle/Resources/config/routing.yml"
-    prefix:   /log
     
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"

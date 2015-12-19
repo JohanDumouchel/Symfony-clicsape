@@ -24,6 +24,7 @@ class SecurityController extends BaseController
     {
         /** @var $session \Symfony\Component\HttpFoundation\Session\Session */
         $session = $request->getSession();
+        
 
         if (class_exists('\Symfony\Component\Security\Core\Security')) {
             $authErrorKey = Security::AUTHENTICATION_ERROR;
@@ -58,10 +59,14 @@ class SecurityController extends BaseController
                 ? $this->get('form.csrf_provider')->generateCsrfToken('authenticate')
                 : null;
         }
+        
+        $template = ( $request->attributes->get('Request')->attributes->get('admin') )?'ClicSapeUserBundle:Admin:login.html.twig':null;
+
         return $this->renderLogin(array(
             'last_username' => $lastUsername,
             'error' => $error,
             'csrf_token' => $csrfToken,
+            'template' => $template
         ));
     }
 
@@ -75,7 +80,9 @@ class SecurityController extends BaseController
      */
     protected function renderLogin(array $data)
     {
-        return $this->render('FOSUserBundle:Security:login.html.twig', $data);
+        $template = (isset($data['template']) && $data['template'] !== null)?$data['template']:'FOSUserBundle:Security:login.html.twig';
+        
+        return $this->render($template, $data);
     }
 
     public function checkAction()
@@ -85,6 +92,7 @@ class SecurityController extends BaseController
 
     public function logoutAction()
     {
+        var_dump('toto');
         throw new \RuntimeException('You must activate the logout in your security firewall configuration.');
     }
 }
