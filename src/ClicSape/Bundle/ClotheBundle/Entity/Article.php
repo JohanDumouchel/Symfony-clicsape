@@ -7,6 +7,7 @@ use ClicSape\Bundle\ClotheBundle\Form\Validator\Constraints as ClotheAssert;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 use ClicSape\Bundle\CoreBundle\Entity\Picture as Picture; 
+use ClicSape\Bundle\ClotheBundle\Entity\ArticleInfo as ArticleInfo; 
 /**
  * Article
  *
@@ -354,22 +355,33 @@ class Article
         return $this->genders;
     }
     
+    private function getLimited($array,$limit = null){
+        if($limit === 1 ){
+            return $array[0];
+        }
+        
+        $arraySelect = new ArrayCollection;
+        
+        for($i = 0; $i < $limit ; $i++){
+            if($array[$i] !== null){
+                $arraySelect[] = $array[$i];
+            }
+        }
+        
+        return $arraySelect;
+        
+    }
     public function getPicturesByLevel($limit = null){
         
         $listPic = Picture::orderPicLevel($this->getPictures());
         
-        if($limit === 1 ){
-            return $listPic[0];
-        }
+        return $this->getLimited($listPic,$limit);
+    }
+    
+    public function getArticleInfoByLevel($limit = null){
         
-        $listPicSelect = new ArrayCollection;
+        $listArtInfo = ArticleInfo::orderArtInfoLevel($this->getArticleInfos());
         
-        for($i = 0; $i < $limit ; $i++){
-            if($listPic[$i] !== null){
-                $listPicSelect[] = $listPic[$i];
-            }
-        }
-        
-        return $listPicSelect;
+        return $this->getLimited($listArtInfo,$limit);
     }
 }

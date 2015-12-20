@@ -2,10 +2,12 @@
         {% for key,article in listArt %}
             {% set picture = article.getPicturesByLevel(1) %}
             <div class="col-xs-12 col-sm-4 col-md-3 col-lg-2 text-center thumbnail">
-                <img src="{{ picture.getWebPath }}" class="gallery-small img-zoom"/>
-                <div class="caption">
-                    <span>{{ article.title }}</span>
-                </div>
+                <a href="{{path('article',{'idArt':article.id})}}">
+                    <img src="{{ picture.getWebPath }}" class="gallery-small img-zoom"/>
+                    <div class="caption">
+                        <span>{{ article.title }}</span>
+                    </div>
+                </a>
             </div>
         {% endfor %}
 </div>

@@ -249,6 +249,11 @@ div#register div > div label {
   -webkit-animation: pulse 1.5s infinite ease-in-out;
   /* Ici on utilise l'animation référencée plus haut */
 }
+.gallery {
+  width: auto;
+  height: 250px;
+  margin: auto;
+}
 /*  
     Account    
 */

@@ -1,14 +1,20 @@
 {% extends "Layout/home.html.twig" %}
+{% block h1 %}
+    <div class="row body">
+        <h1 class="col-xs-12 col-sm-8 col-sm-offset-3 col-md-8 col-md-offset-3 col-lg-8 col-lg-offset-3">{{article.title}} <small></small></h1>
+    </div>
+{% endblock %}
 {% block pager_content %}
     {% if gamme is defined and gamme != null %}
     <li>{{gamme.title}}</li>
     {% endif %}
+    <li>{{article.title}}</li>
 {% endblock %}
 {% block menu %}
     {% include "Layout/menu.html.twig"%}
 {% endblock %}
 
 {% block aside_content %}
-    {% include "Layout/article_content.html.twig"%}
+    {% include "ClicSapeClotheBundle::Home/article_content.html.twig"%}
 {% endblock %}
 

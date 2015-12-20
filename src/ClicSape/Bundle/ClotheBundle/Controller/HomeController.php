@@ -64,10 +64,15 @@ class HomeController extends Controller
      * Article page :
      * 
      */
-    public function articleAction(Request $request)
+    public function articleAction(Request $request,$idArt)
     {
-        $data = initHome($request);        
-        
+        $data = $this->initHome($request);
+        $articleManager = $this->get('article_manager');
+        $article = $articleManager->getRepository()->find($idArt);
+        if($article == null){
+            $data['message'] = Constant::noArticle;
+        }
+        $data['article'] = $article;
         return $this->render('ClicSapeClotheBundle:Home:article.html.twig', $data);
     }
     

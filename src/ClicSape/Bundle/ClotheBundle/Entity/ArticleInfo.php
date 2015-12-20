@@ -149,4 +149,22 @@ class ArticleInfo
     {
         return $this->article;
     }
+    
+    public function orderArtInfoLevel($listArtInfo){
+        $length = count($listArtInfo);
+        
+        if($length < 2)
+            return $listArtInfo;
+        
+        for($i = 0; $i <= $length-1; $i++){
+            for($k = $length-1; $k >= $i+1 ; $k--){
+                if($listArtInfo[$k]->getLevel() < $listArtInfo[$k-1]->getLevel()){
+                    $tmpPic = $listArtInfo[$k-1];
+                    $listArtInfo[$k-1] = $listArtInfo[$k];
+                    $listArtInfo[$k] = $tmpPic;
+                }
+            }
+        }
+        return $listArtInfo;
+    }
 }

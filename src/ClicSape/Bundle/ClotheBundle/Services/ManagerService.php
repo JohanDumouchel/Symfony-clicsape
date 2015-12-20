@@ -16,6 +16,10 @@ class ManagerService {
         $this->repository = $repository;
     }
     
+    public function getRepository(){
+        return $this->repository;
+    }
+    
     public function findAll(){
         return $this->repository->findAll();
     }

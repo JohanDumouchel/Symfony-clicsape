@@ -8,6 +8,11 @@ search:
     requirements:
         idCat: \d*
         idGen: \d*
+article:
+    path:     /article/{idArt}
+    defaults: { _controller: ClicSapeClotheBundle:Home:article }
+    requirements:
+        idArt: \d*
 login:
     path:     /login
     defaults: { _controller: ClicSapeUserBundle:Default:login }

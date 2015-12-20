@@ -1,0 +1,21 @@
+<div class="container-fluid" >
+    <div class="row">
+        <div class="col-lg-6">
+            <img src="{{article.getPicturesByLevel(1).getWebPath()}}" class="gallery"/>
+        </div>
+        <div class="col-lg-6">
+            <div class="container-fluid">
+                <div class="row">
+                    <h3> Description </h3>
+                    <p>{{article.description}}</p>
+                </div>
+                <div class="row">
+                    <h3> Info sup. </h3>
+                    {% for articleInfo in article.articleInfos %}
+                        <p>{{articleInfo.value}}</p>                    
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
