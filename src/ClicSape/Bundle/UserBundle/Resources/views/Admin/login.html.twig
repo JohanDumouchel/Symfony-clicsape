@@ -1,8 +1,8 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-{% if error %}
-    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-{% endif %}
+    {% if error %}
+        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
 <form  action="{{ path("clic_sape_admin_check") }}" method="post">
     <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
     <div class="row">
@@ -21,4 +21,3 @@
         <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
     </div>
 </form>
-

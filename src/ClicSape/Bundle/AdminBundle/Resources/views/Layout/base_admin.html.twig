@@ -15,7 +15,7 @@
         {% import 'ClicSapeAdminBundle::Macro/button.html.twig' as button %}
         <div class="container-fluid">
             <div class="row">
-                <nav id="admin-nav" class="navbar navbar-inverse {#navbar-fixed-top#}">
+                <nav id="admin-nav" class="navbar navbar-inverse navbar-fixed-top">
                 <div class="container-fluid">
                     <div class="navbar-header">
                         <a class="navbar-brand" href="{{path('clic_sape_admin_dashboard')}}">Admin</a>
@@ -58,20 +58,22 @@
                 {% endfor %}
             {% endif %}
             <div class="row">
-            {% block fos_user_content %}
-                <div class="row well">
-                    {% block h1 %}
-                    {% endblock %}
+                <div class="container-fluid">
+                {% block fos_user_content %}
+                    <div class="row well">
+                        {% block h1 %}
+                        {% endblock %}
+                    </div>
+                    <div class="row">
+                        {% block searchBar %}
+                        {% endblock %}
+                    </div>
+                    <div class="row" id="admin-body">
+                        {% block body %}
+                        {% endblock %}
+                    </div>
+                {% endblock %}
                 </div>
-                <div class="row">
-                    {% block searchBar %}
-                    {% endblock %}
-                </div>
-                <div class="row" id="admin-body">
-                    {% block body %}
-                    {% endblock %}
-                </div>
-            {% endblock %}
             </div>
         </div>
         <div class="loader"></div>

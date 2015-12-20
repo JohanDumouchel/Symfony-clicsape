@@ -13,18 +13,19 @@ security:
             id: fos_user.user_provider.username
 
     firewalls:
-        dev:
-            pattern: ^/(_(profiler|wdt|error)|css|images|js)/
-            security: false
-            #(/|/log/)admin/
+#        dev:
+#            pattern: ^/(_(profiler|wdt|error)|css|images|js)/
+#            security: false
+            
         admin:
-            pattern: ^/admin/
+            pattern: ^/admin
             form_login:
                 provider: fos_userbundle
                 csrf_provider: security.csrf.token_manager
                 remember_me:  true
                 check_path: clic_sape_admin_check
                 login_path: clic_sape_admin_login
+                use_referer: false
                 #login success
                 default_target_path: clic_sape_admin_dashboard
                 # login failure redirecting options (read further below)
@@ -56,11 +57,8 @@ security:
             
     access_control:
         
-        - { path: ^/, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/[^admin], role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin, role: ROLE_ADMIN }
-#        - { path: ^/.*/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-#        - { path: ^/.*/logout$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-#        - { path: ^/.*/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
-#        - { path: ^/.*/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         
         

@@ -4,7 +4,18 @@
 */
 @url-img: '../img/';
 @loader: 'loader.gif';
-
+.formAjust(){
+    input {
+            width: 45%;
+        }
+    label {
+        width: 20%;
+        min-width: 130px;
+        max-width: 200px;
+        text-align:left;
+        padding-right: 10px;
+    }
+}
 .loader, .loader-dialog {
     position : fixed;
     z-index: 9999;
@@ -17,7 +28,7 @@
 }
 
 body {
-    margin-top: 50px;
+    margin-top: 65px;
 }
 
 .gallery {
@@ -29,3 +40,41 @@ body {
     width: 50px;
     height: 50px;
 }
+#login-admin{
+    padding-top: 20px;
+    div#login {
+        div{
+            padding-bottom: 10px ; 
+            padding-top: 10px ; 
+            text-align: left;
+            .formAjust();
+
+            input#remember_me {
+                width: 20%;
+                min-width: 130px;
+                max-width: 200px;
+                text-align:left;
+                padding-right: 10px;
+            }
+            input#remember_me + label {
+                width: 45%;
+            }
+            input#_submit{
+                width:20%;
+            }
+        }
+    }
+    /*
+        Register
+    */
+    div#register {
+        div > div{
+            padding-bottom: 10px ; 
+            padding-top: 10px ; 
+            text-align:left;
+            .formAjust();
+        }
+    }
+}
+
+

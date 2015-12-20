@@ -14,7 +14,7 @@
   cursor: wait;
 }
 body {
-  margin-top: 50px;
+  margin-top: 65px;
 }
 .gallery {
   width: 100px;
@@ -23,4 +23,53 @@ body {
 .gallery-small {
   width: 50px;
   height: 50px;
+}
+#login-admin {
+  padding-top: 20px;
+  /*
+        Register
+    */
+}
+#login-admin div#login div {
+  padding-bottom: 10px ;
+  padding-top: 10px ;
+  text-align: left;
+}
+#login-admin div#login div input {
+  width: 45%;
+}
+#login-admin div#login div label {
+  width: 20%;
+  min-width: 130px;
+  max-width: 200px;
+  text-align: left;
+  padding-right: 10px;
+}
+#login-admin div#login div input#remember_me {
+  width: 20%;
+  min-width: 130px;
+  max-width: 200px;
+  text-align: left;
+  padding-right: 10px;
+}
+#login-admin div#login div input#remember_me + label {
+  width: 45%;
+}
+#login-admin div#login div input#_submit {
+  width: 20%;
+}
+#login-admin div#register div > div {
+  padding-bottom: 10px ;
+  padding-top: 10px ;
+  text-align: left;
+}
+#login-admin div#register div > div input {
+  width: 45%;
+}
+#login-admin div#register div > div label {
+  width: 20%;
+  min-width: 130px;
+  max-width: 200px;
+  text-align: left;
+  padding-right: 10px;
 }
