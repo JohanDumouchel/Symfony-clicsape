@@ -1,0 +1,80 @@
+<?php
+
+namespace ClicSape\Bundle\ClotheBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
+
+/**
+ * Category
+ *
+ * @ORM\Table(name="category")
+ * @ORM\Entity(repositoryClass="ClicSape\Bundle\ClotheBundle\Entity\CategoryRepository")
+ */
+class Category
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     * @Assert\Type(type="string")
+     * 
+     * @ORM\Column(name="title", type="string", length=55)
+     */
+    private $title;
+
+    /**
+     * @var string
+     * @Assert\Type(type="string")
+     * 
+     * @ORM\Column(name="description", type="text")
+     */
+    private $description;
+    
+    /**
+     * @var ArrayCollection InfoType
+     * @Assert\Type(type="InfoTypeType")
+     * 
+     * @ORM\OneToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\InfoType", mappedBy="category")
+     */
+    private $infoTypes;
+
+    /**
+     * @var ArrayCollection Article
+     * @Assert\Type(type="ArticleType")
+     * 
+     * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Article", inversedBy="categories")
+     */
+    private $articles;
+    
+    /**
+     * 
+     * 
+     * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Size", inversedBy="categories")
+     */
+    private $sizes;
+    
+    /**
+     * 
+     * 
+     * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Gamme", inversedBy="categories")
+     */
+    private $gammes;
+    
+    /**
+     * 
+     * 
+     * @ORM\ManyToMany(targetEntity="ClicSape\Bundle\ClotheBundle\Entity\Gender", mappedBy="categories")
+     */
+    private $genders;
+    
+    
+}
